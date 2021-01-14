@@ -1,0 +1,3 @@
+.my-zing-chart div[id$="license"] {
+  display: none !important;
+}

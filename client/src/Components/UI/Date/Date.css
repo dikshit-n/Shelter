@@ -1,0 +1,25 @@
+.react-datepicker-wrapper {
+  display: block !important;
+  width: 100% !important;
+}
+
+.date {
+  width: 100%;
+  cursor: pointer;
+  border-radius: 6px;
+  outline: none;
+  border: 2px solid rgb(231, 230, 230);
+  padding: 5px 15px;
+}
+.react-datepicker__navigation {
+  width: 15px !important;
+  height: 15px !important;
+}
+.react-datepicker__navigation--next {
+  /* background-color: rgb(56, 176, 56) !important; */
+  outline: none !important;
+}
+.react-datepicker__navigation--previous {
+  /* background-color: red !important; */
+  outline: none !important;
+}

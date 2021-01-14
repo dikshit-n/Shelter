@@ -1,0 +1,313 @@
+@import "https://fonts.googleapis.com/css?family=Open+Sans:600,700";
+
+/* * {
+  font-family: "Open Sans", sans-serif;
+} */
+
+.ReactTable {
+  padding: 20px;
+  background: white;
+}
+.my-table-container {
+  width: 100%;
+  overflow-x: scroll;
+}
+.react-table-container {
+  width: 100%;
+}
+.react-table-input {
+  box-shadow: none !important;
+  height: 30px;
+  max-width: 200px;
+  margin-left: auto;
+  margin-right: 0;
+}
+.dummy-text-box {
+  height: 53px;
+}
+.rwd-table {
+  margin: auto;
+  min-width: 700px;
+  /* min-width: 200px; */
+  max-width: 100%;
+  /* border-collapse: collapse; */
+  /* border: 1px solid #f2f2f2; */
+}
+
+.rwd-table thead > tr {
+  /* border-top: none; */
+  background: #f7f7f7;
+  box-shadow: 0 0 100px 0 #0f0f0f;
+  color: #566e86;
+  /* background: #77d5d4; */
+  /* color: #fff; */
+}
+
+.rwd-table tbody {
+  animation: grow 5s forwards !important;
+}
+@keyframes grow {
+  0% {
+    height: 0;
+  }
+  100% {
+    height: 100%;
+  }
+}
+
+.rwd-table tr {
+  /* border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd; */
+  border: 1px solid #dddddd;
+  background-color: white;
+}
+
+.rwd-table tbody tr:nth-child(odd) {
+  background-color: #f8f8f8;
+}
+/* .rwd-table tr:nth-child(odd):not(:first-child) {
+  background-color: #ebf3f9;
+} */
+
+.rwd-table th {
+  display: none;
+}
+
+.rwd-table td {
+  display: block;
+  position: relative;
+}
+
+.rwd-table td:first-child {
+  margin-top: 0.5em;
+}
+
+.rwd-table td:last-child {
+  margin-bottom: 0.5em;
+}
+
+.rwd-table td:before {
+  /* position: absolute; */
+  content: attr(data-th) ": ";
+  /* font-weight: bold; */
+  width: 120px;
+  display: inline-block;
+  color: #000;
+  /* left: 10px; */
+}
+
+.rwd-table th,
+.rwd-table td {
+  text-align: left;
+}
+
+.rwd-table {
+  color: #333;
+  border-radius: 1px;
+  overflow: hidden;
+}
+
+/* .rwd-table tr {
+  border-color: #bfbfbf;
+} */
+
+/* .rwd-table th, */
+.rwd-table > tbody td {
+  padding: 0.5em 1em;
+}
+.rt-resizable-header-content {
+  /* text-align: center; */
+  width: 100%;
+  /* padding: 0; */
+  /* margin-bottom: 10px; */
+  /* border-bottom: 1px solid #dddddd; */
+}
+/* .rt-thead > thead > tr {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+} */
+.rt-thead > tr > th {
+  /* text-align: center !important; */
+  /* padding: 10px; */
+  border: 1px solid #dddddd;
+  background: white;
+  /* background: linear-gradient(#f1f1f1, white); */
+}
+.rt-thead > tr > th > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0;
+}
+.rt-thead > tr > th > div > .rt-resizable-header-content {
+  background: white;
+  padding: 20px 10px;
+}
+@media screen and (max-width: 601px) {
+  .rwd-table tr:nth-child(2) {
+    border-top: none;
+  }
+  .react-table-container * {
+    /* text-align: right !important; */
+  }
+  .react-table-container tbody > tr > td {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  .react-table-container tbody > tr {
+    display: flex;
+    flex-direction: column;
+  }
+  .rwd-table td:before {
+    text-align: left !important;
+  }
+}
+@media screen and (min-width: 600px) {
+  .rwd-table > tbody tr:hover {
+    background-color: #ececec;
+    /* background-color: #f0f7f9; */
+  }
+  /* .rwd-table tr:hover:not(:first-child) {
+    background-color: #d8e7f3;
+  } */
+  .rwd-table td:before {
+    display: none;
+  }
+  .rwd-table th,
+  .rwd-table td {
+    display: table-cell;
+  }
+  .rwd-table > tbody td {
+    padding: 0.25em 0.5em;
+    min-width: 200px;
+    border: 1px solid #e5e5e5;
+  }
+  /* .rwd-table > thead > tr > th {
+    padding: 0 !important;
+  } */
+  .rwd-table th:first-child,
+  .rwd-table td:first-child {
+    padding-left: 0;
+  }
+  .rwd-table tbody th:last-child,
+  .rwd-table tbody td:last-child {
+    padding-right: 0;
+  }
+  /* .rwd-table th, */
+  .rwd-table tbody td {
+    padding: 1em !important;
+  }
+}
+
+/* THE END OF THE IMPORTANT STUFF */
+
+/* Basic Styling */
+.react-table-container h1 {
+  text-align: center;
+  font-size: 2.4em;
+  color: #f2f2f2;
+}
+.container {
+  display: block;
+  text-align: center;
+}
+.react-table-container h3 {
+  display: inline-block;
+  position: relative;
+  text-align: center;
+  font-size: 1.5em;
+  color: #cecece;
+}
+.react-table-container h3:before {
+  content: "\25C0";
+  position: absolute;
+  left: -50px;
+  -webkit-animation: leftRight 2s linear infinite;
+  animation: leftRight 2s linear infinite;
+}
+.react-table-container h3:after {
+  content: "\25b6";
+  position: absolute;
+  right: -50px;
+  -webkit-animation: leftRight 2s linear infinite reverse;
+  animation: leftRight 2s linear infinite reverse;
+}
+@-webkit-keyframes leftRight {
+  0% {
+    -webkit-transform: translateX(0);
+  }
+  25% {
+    -webkit-transform: translateX(-10px);
+  }
+  75% {
+    -webkit-transform: translateX(10px);
+  }
+  100% {
+    -webkit-transform: translateX(0);
+  }
+}
+@keyframes leftRight {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-10px);
+  }
+  75% {
+    transform: translateX(10px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.empty-message-container {
+  width: 100% !important;
+  /* background: #f0f7f9; */
+  /* border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px; */
+  color: #000;
+  min-height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.overflow-elipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.above-table {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%;
+}
+
+/*
+    Don't look at this last part. It's unnecessary. I was just playing with pixel gradients... Don't judge.
+*/
+/*
+@media screen and (max-width: 601px) {
+  .rwd-table tr {
+    background-image: -webkit-linear-gradient(left, #428bca 137px, #f5f9fc 1px, #f5f9fc 100%);
+    background-image: -moz-linear-gradient(left, #428bca 137px, #f5f9fc 1px, #f5f9fc 100%);
+    background-image: -o-linear-gradient(left, #428bca 137px, #f5f9fc 1px, #f5f9fc 100%);
+    background-image: -ms-linear-gradient(left, #428bca 137px, #f5f9fc 1px, #f5f9fc 100%);
+    background-image: linear-gradient(left, #428bca 137px, #f5f9fc 1px, #f5f9fc 100%);
+  }
+  .rwd-table tr:nth-child(odd) {
+    background-image: -webkit-linear-gradient(left, #428bca 137px, #ebf3f9 1px, #ebf3f9 100%);
+    background-image: -moz-linear-gradient(left, #428bca 137px, #ebf3f9 1px, #ebf3f9 100%);
+    background-image: -o-linear-gradient(left, #428bca 137px, #ebf3f9 1px, #ebf3f9 100%);
+    background-image: -ms-linear-gradient(left, #428bca 137px, #ebf3f9 1px, #ebf3f9 100%);
+    background-image: linear-gradient(left, #428bca 137px, #ebf3f9 1px, #ebf3f9 100%);
+  }
+}*/

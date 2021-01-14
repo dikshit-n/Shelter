@@ -1,0 +1,63 @@
+{
+  "name": "fass-school",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@testing-library/jest-dom": "^5.11.6",
+    "@testing-library/react": "^11.2.2",
+    "@testing-library/user-event": "^12.3.0",
+    "axios": "^0.21.0",
+    "bootstrap": "^4.5.3",
+    "compress.js": "^1.1.2",
+    "country-data": "0.0.31",
+    "jquery": "^3.5.1",
+    "jspdf": "^2.2.0",
+    "match-sorter": "^6.0.2",
+    "papaparse": "^5.3.0",
+    "prop-types": "^15.7.2",
+    "random-color-rgb": "^1.1.1",
+    "react": "^17.0.1",
+    "react-datepicker": "^3.3.0",
+    "react-dom": "^17.0.1",
+    "react-dropzone": "^11.2.4",
+    "react-redux": "^7.2.2",
+    "react-router": "^5.2.0",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "4.0.1",
+    "react-select": "^3.1.1",
+    "react-style-proptype": "^3.2.2",
+    "react-table": "^7.6.2",
+    "react-tooltip": "^4.2.11",
+    "react-transition-group": "^4.4.1",
+    "reactstrap": "^8.7.1",
+    "redux": "^4.0.5",
+    "redux-thunk": "^2.3.0",
+    "uniqid": "^5.2.0",
+    "web-vitals": "^0.2.4",
+    "zingchart-react": "^3.1.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

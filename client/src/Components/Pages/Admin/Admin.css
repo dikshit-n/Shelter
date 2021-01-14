@@ -1,0 +1,8 @@
+.nav-profile-active {
+  box-shadow: 0 0 10px 0 var(--profile-active-color1),
+    0 0 10px 0 var(--profile-active-color2) !important;
+}
+
+.top-right-arrow + .arrow::before {
+  border-bottom-color: #39444a !important;
+}

@@ -1,0 +1,20 @@
+.my-card {
+  padding: 50px;
+  border-radius: 10px;
+  text-align: left;
+  width: fit-content;
+  background: var(--white);
+  box-shadow: 0 0 2px 0 rgb(221, 221, 221), 0 0 2px 0 rgb(172, 172, 172);
+}
+
+@media (max-width: 600px) {
+  .my-card {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .card-title-responsive {
+    font-size: 20px;
+  }
+}

@@ -1,0 +1,21 @@
+.info {
+  width: fit-content;
+  max-width: 100%;
+  margin: auto;
+  min-height: 30px;
+  max-height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.info > p {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 17px;
+}
+
+.remove-para-margin {
+  margin: 0;
+}

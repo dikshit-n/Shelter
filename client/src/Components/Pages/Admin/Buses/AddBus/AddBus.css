@@ -1,0 +1,14 @@
+.each-add-field {
+  transition: all 0.3s ease-out;
+  max-width: 100% !important;
+  border-radius: 3px !important;
+  border: 1px solid rgb(216, 216, 216);
+  background: var(--white) !important;
+  padding-left: 10px;
+  height: 40px;
+  margin: 5px 0;
+}
+
+.each-add-field:focus-within {
+  border-color: rgb(137, 136, 136);
+}

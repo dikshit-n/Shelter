@@ -1,0 +1,93 @@
+.add-school {
+  /* background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  background-image: url("../../../../../assets/add-school-bg.png"); */
+  display: flex;
+  /* align-items: center;
+  justify-content: center; */
+  z-index: 1;
+  position: relative;
+  /* background: var(--add-admin-bg-color); */
+}
+
+.add-form-container {
+  width: 100%;
+  background: transparent;
+}
+
+.add-form {
+  text-align: left;
+  position: relative;
+  padding: 30px 50px;
+  padding-bottom: 0;
+  width: 80%;
+  height: fit-content;
+  /* margin: auto; */
+  border-radius: 10px;
+  z-index: 1;
+  background: var(--add-admin-form-bg-color);
+  /* box-shadow: inset 0 0 10px 0 rgb(103, 103, 103); */
+}
+
+.each-textbox {
+  background: var(--add-admin-form-input-color);
+  width: 100%;
+  max-width: 100%;
+  margin: 10px auto;
+  border-radius: 5px;
+  border: 1px solid rgb(202, 202, 202);
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.each-textbox:focus-within,
+.each-textbox:focus-within {
+  border-color: rgb(137, 136, 136);
+}
+
+/* .each-textbox > input::placeholder,
+.each-textbox > textarea::placeholder,
+.each-textbox > i {
+  color: var(--black);
+} */
+
+@media (max-width: 600px) {
+  .add-form {
+    padding: 20px;
+    width: fit-content;
+  }
+  .add-school-header {
+    padding: 20px;
+  }
+  .each-textbox {
+    /* width: 220px !important; */
+    /* min-width: 100% !important; */
+  }
+}
+
+.blur-bg-container {
+  height: 100%;
+  width: 100%;
+}
+
+.add-button {
+  /* background: transparent; */
+  border: 2px solid var(--my-blue);
+  color: var(--my-blue);
+  transition: all 0.3s ease-out;
+  margin: 0;
+  width: fit-content;
+}
+
+.add-button:hover {
+  color: var(--white);
+  background: var(--my-blue);
+}
+
+.add-school-header {
+  padding: 20px 50px;
+  width: 100%;
+  text-align: left;
+  border-bottom: 1px solid rgb(230, 230, 230);
+}

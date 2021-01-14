@@ -1,0 +1,20 @@
+.empty-data {
+  width: 200px;
+  height: 200px;
+  background-image: url("../../../assets/empty.png");
+  background-position: center;
+  background-size: cover;
+}
+
+.empty-message-detail {
+  width: fit-content;
+  max-width: 200px;
+  margin: auto;
+}
+
+@media (max-width: 520px) {
+  .empty-data {
+    width: 100px;
+    height: 100px;
+  }
+}

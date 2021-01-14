@@ -1,0 +1,70 @@
+.view-employees-table {
+  position: relative;
+  width: 50%;
+  height: 100%;
+  margin: 20px 0;
+  padding: 50px 20px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+.view-employees-table .ReactTable {
+  position: relative;
+  width: calc(100% - 20px);
+  max-width: 1200px;
+  margin: auto;
+}
+
+.view-employees-table .refresh-button {
+  position: absolute;
+  top: -50px;
+  right: 0px;
+}
+
+/* @media (max-width: 500px) {
+  .view-admin-table {
+    padding: 20px 0;
+    width: calc(90vw - 4em);
+  }
+  .scroller-container {
+    width: 100% !important;
+  }
+} */
+
+@media (max-width: 500px) {
+  .view-employees-container {
+    min-width: calc(200vw - 8em) !important;
+  }
+}
+
+.each-employee-view-container {
+  height: 100%;
+  width: 50%;
+  overflow-y: scroll;
+}
+
+.view-employees-container {
+  min-width: calc(200vw - 30em);
+  height: 100%;
+  /* height: calc(100vh - 4em - 20px) !important; */
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  transition: transform 0.5s ease;
+  overflow-y: hidden;
+}
+
+.employee-scroller-container {
+  position: relative;
+  width: 100%;
+  flex: 1;
+  overflow: hidden;
+}
+
+.employee-scroll-right {
+  transform: translateX(0);
+}
+.employee-scroll-left {
+  transform: translateX(-50%);
+}

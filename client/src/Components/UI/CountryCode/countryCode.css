@@ -1,0 +1,51 @@
+.country-code {
+  padding: 0 5px;
+  width: fit-content;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.country-code > select {
+  width: 100%;
+  height: 100%;
+  outline: none;
+  border: none;
+}
+
+.country-code > select::-webkit-scrollbar {
+  width: 5px;
+}
+
+.country-code > select::-webkit-scrollbar-thumb {
+  background-color: grey;
+  border-radius: 1px;
+}
+
+.country-code select::-ms-expand {
+  display: none;
+}
+.country-code select {
+  background: none !important;
+  background-image: none !important;
+  background-color: none !important;
+  /* -moz-appearance: none !important;
+  -webkit-appearance: none !important;
+  appearance: none !important; */
+}
+
+.country-code select:hover,
+.country-code select:focus {
+  background: none !important;
+  background-image: none !important;
+  background-color: none !important;
+  /* -moz-appearance: none !important;
+  -webkit-appearance: none !important;
+  appearance: none !important; */
+  color: inherit !important;
+}
+.country-code option {
+  font-weight: normal !important;
+}

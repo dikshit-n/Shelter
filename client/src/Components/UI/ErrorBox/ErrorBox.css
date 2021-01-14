@@ -1,0 +1,48 @@
+/* .error-box {
+  background: #ec4a57 !important;
+  color: white;
+  padding: 10px !important;
+  margin: auto;
+  width: fit-content;
+  max-width: 100%;
+}
+
+.error-box > * {
+  margin: 0;
+}
+.error-box > p {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 17px;
+}
+
+.error-box-container {
+  padding-top: 100px;
+}
+
+.error-box img {
+  margin-right: 10px;
+} */
+
+.error-data {
+  width: 150px;
+  height: 90px;
+  background-image: url("../../../assets/error-cat.png");
+  background-position: center;
+  background-size: 150px 90px;
+  background-repeat: no-repeat;
+}
+
+.empty-message-detail {
+  width: fit-content;
+  max-width: 200px;
+  margin: auto;
+}
+
+@media (max-width: 520px) {
+  .empty-data {
+    width: 100px;
+    height: 100px;
+  }
+}

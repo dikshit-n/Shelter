@@ -1,0 +1,110 @@
+.input-field,
+.input-field-textarea,
+.input-field-select {
+  max-width: 380px;
+  width: 100%;
+  background-color: #f0f0f0;
+  margin: 10px 0;
+  height: 55px;
+  border-radius: 55px;
+  display: flex;
+  /* display: grid;
+  grid-template-columns: 50px calc(100% - 50px); */
+  padding: 0 0.4rem;
+  position: relative;
+}
+
+.input-field i,
+.input-field-textarea i,
+.input-field-select i {
+  width: 50px;
+  text-align: center;
+  line-height: 55px;
+  color: #acacac;
+  transition: 0.5s;
+  font-size: 1.1rem;
+}
+
+.input-field input,
+.input-field-textarea textarea,
+.input-field-select select {
+  flex: 1;
+  background: none;
+  outline: none;
+  border: none;
+  line-height: 1;
+  /* font-weight: 600; */
+  font-size: 1.1rem;
+  color: #333;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+.input-field-select select::-ms-expand {
+  display: none;
+}
+.input-field-select select {
+  background: none !important;
+  background-image: none !important;
+  background-color: none !important;
+  /* -moz-appearance: none !important;
+  -webkit-appearance: none !important;
+  appearance: none !important; */
+}
+
+.input-field-select select:hover,
+.input-field-select select:focus {
+  background: none !important;
+  background-image: none !important;
+  background-color: none !important;
+  /* -moz-appearance: none !important;
+  -webkit-appearance: none !important;
+  appearance: none !important; */
+  color: inherit !important;
+}
+.input-field-select option {
+  font-weight: normal !important;
+}
+
+.input-field input::placeholder,
+.input-field-textarea textarea::placeholder,
+.input-field-select select::placeholder {
+  color: #aaa;
+  font-weight: 500;
+}
+
+/* .input-field-textarea {
+  max-width: 380px;
+  width: calc(100% - 10px);
+  background-color: #f0f0f0;
+  margin: 10px 0;
+  height: fit-content;
+  border-radius: 30px;
+  display: grid;
+  grid-template-columns: 50px calc(100% - 50px);
+  padding: 0 0.4rem;
+  position: relative;
+} */
+.input-field-textarea textarea {
+  background: none;
+  outline: none;
+  border: none;
+  line-height: 1;
+  /* font-weight: 600; */
+  font-size: 1.1rem;
+  padding: 17px 0;
+  color: #333;
+}
+
+.form-label {
+  margin-bottom: -10px;
+  margin-top: 10px;
+  font-weight: bold;
+  color: rgb(96, 93, 93);
+}
+
+.width_0 {
+  max-width: 0;
+}
