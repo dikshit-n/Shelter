@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { connect } from "react-redux";
+import { NavLink, useRouteMatch } from "react-router-dom";
 import { loginSuccess } from "../../../redux/Auth/Login";
 import AsyncButton from "../../../UI/AsyncButton/AsyncButton";
 import EachField from "../../../UI/FormField/FormField";
@@ -10,9 +11,11 @@ import "./UserSignUp.css";
 
 const UserSignUp = (props) => {
   const [formData, setFormData] = useState({
-    // email: props.email,
+    email: "",
     password: "",
+    type: "",
   });
+  const match = useRouteMatch();
   // update
   const [message, setMessage] = useState(" ");
   const [status, setStatus] = useState({
@@ -36,14 +39,9 @@ const UserSignUp = (props) => {
       loading: true,
       status: "",
     });
-    let submitData = {
-      id: props.token,
-      type: props.temporaryType,
-      password: formData.password,
-    };
-    console.log(submitData);
+    console.log(formData);
     axiosInstance
-      .post("/verify/create-password", submitData)
+      .post("/verify/create-password", formData)
       .then((res) => {
         console.log(res.data);
         setStatus({
@@ -81,6 +79,20 @@ const UserSignUp = (props) => {
 
   var schema = [
     {
+      name: "email",
+      // displayName: "Name",
+      placeholder: "User Name",
+      type: "text",
+      value: formData.email,
+      onChange: changeHandler,
+      required: true,
+      spellCheck: false,
+      autoComplete: "off",
+      addon: <i className="fas fa-user" />,
+      autoFocus: true,
+      containerClassName: "sign-up-textboxes",
+    },
+    {
       name: "password",
       placeholder: "Create Password",
       type: passwordOpen ? "text" : "password",
@@ -101,6 +113,17 @@ const UserSignUp = (props) => {
         />
       ),
     },
+    {
+      name: "type",
+      type: "select",
+      value: formData.type,
+      onChange: changeHandler,
+      required: true,
+      containerClassName: "sign-up-textboxes signup-dropdown",
+      options: ["User__user", "House Owner__owner"],
+      placeholder: "Account Type",
+      addon: <i className="fas fa-user-shield" />,
+    },
   ];
 
   return (
@@ -114,15 +137,25 @@ const UserSignUp = (props) => {
             {schema.map((el, index) => (
               <EachField key={index} {...el} />
             ))}
-            <AsyncButton
-              disabled={!valid()}
-              type="submit"
-              className="white bg-blue"
-              loading={status.loading}
-              status={status.status}
-            >
-              Create
-            </AsyncButton>
+            <br />
+            <div className="d-flex justify-content-between auth-buttons flex-vertical-center margin-auto">
+              <AsyncButton
+                disabled={!valid()}
+                type="submit"
+                style={{ margin: 0 }}
+                className="white bg-blue"
+                loading={status.loading}
+                status={status.status}
+              >
+                Create
+              </AsyncButton>
+              <NavLink
+                className="white"
+                to={match.url.replace("signup", "signin")}
+              >
+                Already a user ?
+              </NavLink>
+            </div>
           </form>
         </div>
       </div>

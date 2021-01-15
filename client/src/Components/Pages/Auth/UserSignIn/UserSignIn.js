@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { connect } from "react-redux";
+import { NavLink, useRouteMatch } from "react-router-dom";
 import { loginSuccess } from "../../../redux/Auth/Login";
 import AsyncButton from "../../../UI/AsyncButton/AsyncButton";
 import EachField from "../../../UI/FormField/FormField";
@@ -9,6 +10,7 @@ import { setCookie } from "../../../Utility/cookies";
 import "./UserSignIn.css";
 
 const UserSignIn = (props) => {
+  const match = useRouteMatch();
   useEffect(() => {
     localStorage.removeItem("route");
   }, []);
@@ -138,15 +140,23 @@ const UserSignIn = (props) => {
               <i className="fas fa-lock" />
               <input type="password" placeholder="Password" />
             </div> */}
-            <AsyncButton
-              disabled={!valid()}
-              type="submit"
-              className="signin-button"
-              loading={status.loading}
-              status={status.status}
-            >
-              Login
-            </AsyncButton>
+            <div className="d-flex justify-content-between auth-buttons flex-vertical-center">
+              <NavLink
+                className="white"
+                to={match.url.replace("signin", "signup")}
+              >
+                New user ?
+              </NavLink>
+              <AsyncButton
+                disabled={!valid()}
+                type="submit"
+                className="signin-button"
+                loading={status.loading}
+                status={status.status}
+              >
+                Login
+              </AsyncButton>
+            </div>
           </form>
 
           {/* signupform 

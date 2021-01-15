@@ -171,6 +171,24 @@
   transition: 1.8s ease-in-out;
   border-radius: 50%;
   z-index: 6;
+  animation: enter 1s forwards;
+}
+
+@keyframes enter {
+  0% {
+    right: 0;
+  }
+  100% {
+    right: 48%;
+  }
+}
+@-webkit-keyframes enter {
+  0% {
+    right: 0;
+  }
+  100% {
+    right: 48%;
+  }
 }
 
 .image {
@@ -191,6 +209,10 @@
 .left-panel {
   pointer-events: all;
   padding: 3rem 17% 2rem 12%;
+}
+
+.signin-container * {
+  transition: all 0.3s ease !important;
 }
 
 .right-panel {
@@ -232,9 +254,33 @@
 
 /* ANIMATION */
 
+.signin-container * {
+  transition: all 0.3s ease !important;
+}
+
 .signin-container.sign-up-mode:before {
   transform: translate(100%, -50%);
   right: 52%;
+  animation: show-up 1s forwards;
+}
+
+@keyframes show-up {
+  0% {
+    right: 0;
+  }
+  100% {
+    right: 52%;
+  }
+}
+@-webkit-keyframes show-up {
+  0% {
+    transform: translate(0%, 0%);
+    right: 0;
+  }
+  100% {
+    transform: translate(100%, -50%);
+    right: 52%;
+  }
 }
 
 .signin-container.sign-up-mode .left-panel .image,
@@ -331,7 +377,7 @@
   .signin-container:before {
     width: 1500px;
     height: 1500px;
-    transform: translateX(-50%);
+    /* transform: translateX(-50%); */
     left: 30%;
     bottom: 68%;
     right: initial;
@@ -413,4 +459,24 @@
 .signin-button {
   color: var(--white);
   background: var(--my-blue);
+  margin: 0;
+}
+
+.auth-buttons {
+  width: 100%;
+  max-width: 360px;
+}
+.signup-dropdown {
+  padding-right: 20px;
+}
+.signup-dropdown > i {
+  color: #aaa !important;
+}
+.signup-dropdown select {
+  color: #aaa !important;
+  font-weight: 500 !important;
+}
+.signup-dropdown select::placeholder {
+  color: #aaa !important;
+  font-weight: 500 !important;
 }

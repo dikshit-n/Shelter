@@ -12,8 +12,8 @@ const Auth = (props) => {
   }, []);
   return (
     <Switch>
-      <Route path={props.match.url + "/signin"} component={UserSignIn} />
-      {/* <Route path={props.match.url + "/signup"} component={UserSignUp} /> */}
+      <Route path={props.match.url + "/signin"} exact component={UserSignIn} />
+      <Route path={props.match.url + "/signup"} component={UserSignUp} />
       {/* <Route path={props.match.url + "/signup"} component={Signup} /> */}
       <Redirect to={props.match.url + "/signin"} />
     </Switch>
