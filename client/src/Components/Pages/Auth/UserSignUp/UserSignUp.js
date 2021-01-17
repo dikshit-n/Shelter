@@ -32,7 +32,7 @@ const UserSignUp = (props) => {
   const [passwordOpen, setPasswordOpen] = useState(false);
 
   const changeHandler = (event) => {
-    const { name, value } = event.target;
+    var { name, value } = event.target;
     const numberTypes = ["phone"];
     if (numberTypes.some((el) => el === name)) value = filterNumbers(value);
     setMessage(" ");
