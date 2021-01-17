@@ -43,7 +43,7 @@ const UserSignIn = (props) => {
       status: "",
     });
     axiosInstance
-      .post("/signin/admin", formData)
+      .post("/server1/SignIn", formData)
       .then((res) => {
         console.log(res.data);
         setStatus({
