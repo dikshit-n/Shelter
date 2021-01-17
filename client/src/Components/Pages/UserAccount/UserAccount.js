@@ -3,6 +3,7 @@ import Sidebar from "../../UI/Sidebar/Sidebar";
 import AddHouse from "./AddHouse/AddHouse";
 import HomePage from "./HomePage/HomePage";
 import HouseDetail from "./HomePage/HouseDetail/HouseDetail";
+import Profile from "./Profile/Profile";
 import "./UserAccount.css";
 
 const UserAccount = (props) => {
@@ -32,6 +33,7 @@ const UserAccount = (props) => {
       <Sidebar routes={sidebarRoutes} />
       <div className="page-content">
         <Route path="/addhouse" exact component={AddHouse} />
+        <Route path="/profile" exact component={Profile} />
         <Route path="/home" exact component={HomePage} />
         <Route path="/home/:id" component={HouseDetail} />
         <Redirect to={"/home"} />

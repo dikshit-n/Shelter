@@ -1,11 +1,12 @@
 import { useState } from "react";
-import { connect } from "react-redux";
+import { connect, useDispatch } from "react-redux";
 import { NavLink, useRouteMatch } from "react-router-dom";
 import { loginSuccess } from "../../../redux/Auth/Login";
 import AsyncButton from "../../../UI/AsyncButton/AsyncButton";
 import EachField from "../../../UI/FormField/FormField";
 import FormInfo from "../../../UI/FormInfo/FormInfo";
 import { axiosInstance } from "../../../Utility/axiosInstance";
+import { setCookie } from "../../../Utility/cookies";
 import { filterNumbers } from "../../../Utility/filterNumbers";
 // import { setCookie } from "../../../Utility/cookies";
 import "./UserSignUp.css";
@@ -21,6 +22,7 @@ const UserSignUp = (props) => {
     email: "",
   });
   const match = useRouteMatch();
+  const dispatch = useDispatch();
   // update
   const [message, setMessage] = useState(" ");
   const [status, setStatus] = useState({
@@ -48,7 +50,7 @@ const UserSignUp = (props) => {
     });
     console.log(formData);
     axiosInstance
-      .post("/verify/create-password", formData)
+      .post("/server1/SignUp", formData)
       .then((res) => {
         console.log(res.data);
         setStatus({
@@ -61,9 +63,10 @@ const UserSignUp = (props) => {
             status: "",
           });
         }, 500);
-        if (res.status === 200) {
-          props.history.replace("/auth");
-        }
+        setCookie("token", res.data.token, {
+          expires: new Date(3030, 0, 1).toUTCString(),
+        });
+        dispatch(loginSuccess(res.data));
       })
       .catch((err) => {
         console.log(err);
@@ -158,7 +161,7 @@ const UserSignUp = (props) => {
       required: true,
       containerClassName: "sign-up-textboxes",
       placeholder: "District",
-      addon: <i className="fa fa-area-chart" />,
+      addon: <i className="fas fa-area-chart" />,
     },
     {
       name: "email",

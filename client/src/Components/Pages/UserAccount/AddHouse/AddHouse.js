@@ -7,6 +7,7 @@ import AsyncButton from "../../../UI/AsyncButton/AsyncButton";
 import { axiosInstance } from "../../../Utility/axiosInstance";
 import HomeImageUpload from "../../../UI/HouseImageUpload/HouseImageUpload";
 import Slick from "../../../UI/Slick/Slick";
+import { numberWithComma } from "../../../Utility/numberWithComma";
 
 const AddHouse = (props) => {
   const [data, setData] = useState({
@@ -30,12 +31,20 @@ const AddHouse = (props) => {
   const [open, setOpen] = useState(false);
 
   const changeHandler = ({ target: { name, value } }) => {
-    const numberTypes = ["contact"];
+    const numberTypes = [
+      "contact",
+      "maximumSharing",
+      "currentlyOccupied",
+      // "monthlyRent",
+    ];
+    const withCommas = ["monthlyRent"];
     setError("");
     setData((prev) => ({
       ...prev,
       [name]: numberTypes.some((el) => el === name)
         ? filterNumbers(value)
+        : withCommas.some((el) => el === name)
+        ? numberWithComma(filterNumbers(value))
         : value,
     }));
   };
@@ -115,22 +124,23 @@ const AddHouse = (props) => {
     },
   ];
 
-  const submitHandler = ({ preventDefault }) => {
-    preventDefault();
+  const submitHandler = (event) => {
+    event.preventDefault();
     setStatus({ loading: true, status: "" });
-    setTimeout(() => setStatus({ loading: false, status: "" }), 500);
     axiosInstance
       .post("/addhpuse", data)
       .then((res) => {
         console.log(res.data);
         setStatus({ loading: false, status: "success" });
-        setTimeout(() => setStatus({ loading: false, status: "" }), 500);
-        props.history.push("/home");
+        setTimeout(() => {
+          setStatus({ loading: false, status: "" });
+          props.history.push("/home");
+        }, 500);
       })
       .catch((err) => {
         console.log(err);
         setStatus({ loading: false, status: "error" });
-        setTimeout(() => setStatus({ loading: false, status: "" }), 500);
+        setTimeout(() => setStatus({ loading: false, status: "" }), 700);
       });
   };
 

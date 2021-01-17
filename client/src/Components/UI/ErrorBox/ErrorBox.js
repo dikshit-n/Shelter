@@ -20,6 +20,7 @@
 import "./ErrorBox.css";
 
 const ErrorBox = ({ message, component }) => {
+  console.log(message);
   return (
     <div className="margin-auto fit-content" style={{ padding: 50 }}>
       <div className="flex-center margin-auto error-data"></div>

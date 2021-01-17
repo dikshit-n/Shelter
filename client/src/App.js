@@ -7,7 +7,6 @@ import Logout from "./Components/Pages/Auth/Logout/Logout";
 import SuperAdminMax from "./Components/Pages/SuperAdminMax/SuperAdminMax";
 import { checkAuthStatus } from "./Components/redux/Auth/Login";
 import UserAccount from "./Components/Pages/UserAccount/UserAccount";
-import { setCookie } from "./Components/Utility/cookies";
 
 function App(props) {
   const location = useLocation();

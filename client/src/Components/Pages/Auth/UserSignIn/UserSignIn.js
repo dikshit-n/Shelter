@@ -83,7 +83,7 @@ const UserSignIn = (props) => {
       name: "email",
       // displayName: "Name",
       placeholder: "User Name",
-      type: "text",
+      type: "email",
       value: formData.email,
       onChange: changeHandler,
       required: true,
