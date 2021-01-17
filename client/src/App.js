@@ -2,15 +2,11 @@ import { Suspense, useEffect } from "react";
 import { connect } from "react-redux";
 import { Redirect, Route, Switch, useLocation, withRouter } from "react-router";
 import "./App.css";
-import Admin from "./Components/Pages/Admin/Admin";
-import AdminSignin from "./Components/Pages/Auth/AdminSignIn/AdminSignin";
 import Auth from "./Components/Pages/Auth/Auth";
 import Logout from "./Components/Pages/Auth/Logout/Logout";
-import VerificationPage from "./Components/Pages/Auth/Verify/VerificationPage";
-import Outsider from "./Components/Pages/Outsider/Outsider";
-import Superadmin from "./Components/Pages/Superadmin/Superadmin";
 import SuperAdminMax from "./Components/Pages/SuperAdminMax/SuperAdminMax";
 import { checkAuthStatus } from "./Components/redux/Auth/Login";
+import UserAccount from "./Components/Pages/UserAccount/UserAccount";
 
 function App(props) {
   const location = useLocation();
@@ -40,44 +36,38 @@ function App(props) {
   // filtering routes based on the authentication state of user
   const getRoutes = () => {
     if (props.auth) {
-      if (props.type === "company") {
+      if (props.type === "owner") {
         return (
           <Switch>
             <Route path="/logout" component={Logout} />
-            {/* <Route path="/verifytoken/:token" component={VerificationPage} />
-            <Route path="/outsiders/form/register/:id" component={Outsider} /> */}
             <Route path="/admin" component={SuperAdminMax} />
             <Redirect to="/admin" />
           </Switch>
         );
-      } else if (props.type === "superadmin") {
+      } else if (props.type === "user") {
         return (
           <Switch>
             <Route path="/logout" component={Logout} />
-            {/* <Route path="/verifytoken/:token" component={VerificationPage} />
-            <Route path="/outsiders/form/register/:id" component={Outsider} /> */}
-            <Route path="/" component={Superadmin} />
+            <Route path="/" component={UserAccount} />
             <Redirect to="/" />;
           </Switch>
         );
-      } else if (props.type === "admin") {
-        return (
-          <Switch>
-            <Route path="/logout" component={Logout} />
-            {/* <Route path="/verifytoken/:token" component={VerificationPage} />
-            <Route path="/outsiders/form/register/:id" component={Outsider} /> */}
-            <Route path="/" component={Admin} />
-            <Redirect to="/" />
-          </Switch>
-        );
       }
+      // else if (props.type === "admin") {
+      //   return (
+      //     <Switch>
+      //       <Route path="/logout" component={Logout} />
+      //       {/* <Route path="/verifytoken/:token" component={VerificationPage} />
+      //       <Route path="/outsiders/form/register/:id" component={Outsider} /> */}
+      //       <Route path="/" component={Admin} />
+      //       <Redirect to="/" />
+      //     </Switch>
+      //   );
+      // }
     } else {
       // unauthenticated routes
       return (
         <Switch>
-          {/* <Route path="/verifytoken/:token" component={VerificationPage} />
-          <Route path="/outsiders/form/register/:id" component={Outsider} /> */}
-          {/* <Route path="/admin/auth" component={AdminSignin} /> */}
           <Route path="/auth" component={Auth} />
           <Redirect to="/auth" />
         </Switch>
@@ -97,11 +87,12 @@ function App(props) {
 
 const mapStateToProps = (state) => {
   return {
-    auth:
-      state.login.data.token !== undefined && state.login.data.token !== null,
+    // auth:
+    //   state.login.data.token !== undefined && state.login.data.token !== null,
+    auth: true,
     loading: state.login.loading,
     error: state.login.error,
-    type: state.login.data.type,
+    type: state.login.data.type || "user",
   };
 };
 

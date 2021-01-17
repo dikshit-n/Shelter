@@ -9,10 +9,13 @@ import loginReducer from "./Auth/Login/loginReducer";
 import gloabalReducer from "./Global/globalReducer";
 import adminsReducer from "./Superadmin/superadminReducer";
 import schoolsReducer from "./SuperadminMax/Schools/schoolsReducer";
+import housesReducer from "./UserAccount/HomePage/reducer";
 
 const rootReducer = combineReducers({
   global: gloabalReducer,
   login: loginReducer,
+  houses: housesReducer,
+  // other
   adminsSuperadmin: adminsReducer,
   employeesAdmin: employeesReducer,
   parentsAdmin: parentsReducer,
