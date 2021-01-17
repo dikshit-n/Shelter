@@ -5,7 +5,7 @@ import { useRouteMatch } from "react-router";
 import { fetchUsers } from "../../../redux/UserAccount/HomePage/actions";
 import EmptyMessage from "../../../UI/EmptyMessage/EmptyMessage";
 import ErrorBox from "../../../UI/ErrorBox/ErrorBox";
-import EachHouse from ".././EachHouse/EachHouse";
+import EachHouse from "./EachHouse/EachHouse";
 
 var mount = 0;
 

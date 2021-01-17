@@ -1,7 +1,8 @@
 import { Redirect, Route } from "react-router";
 import Sidebar from "../../UI/Sidebar/Sidebar";
+import AddHouse from "./AddHouse/AddHouse";
 import HomePage from "./HomePage/HomePage";
-import HouseDetail from "./HouseDetail/HouseDetail";
+import HouseDetail from "./HomePage/HouseDetail/HouseDetail";
 import "./UserAccount.css";
 
 const UserAccount = (props) => {
@@ -20,7 +21,8 @@ const UserAccount = (props) => {
     //   },
     // },
     { name: "Home", to: "/home", icon: "fa fa-home" },
-    { name: "Update Profile", to: "/profile", icon: "fas fa-user" },
+    { name: "Add House", to: "/addhouse", icon: "fas fa-upload" },
+    { name: "Profile", to: "/profile", icon: "fas fa-user" },
     { name: "Logout", to: "/logout", icon: "fas fa-power-off" },
   ];
 
@@ -28,6 +30,7 @@ const UserAccount = (props) => {
     <div className="page-container">
       <Sidebar routes={sidebarRoutes} />
       <div className="page-content">
+        <Route path="/addhouse" exact component={AddHouse} />
         <Route path="/home" exact component={HomePage} />
         <Route path="/home/:id" component={HouseDetail} />
         <Redirect to={"/home"} />

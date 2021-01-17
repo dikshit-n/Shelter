@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
-import EachField from "../../../UI/FormField/FormField";
-import MyCard from "../../../UI/MyCard/MyCard";
-import Slick from "../../../UI/Slick/Slick";
-import { axiosInstance } from "../../../Utility/axiosInstance";
+import EachField from "../../../../UI/FormField/FormField";
+import MyCard from "../../../../UI/MyCard/MyCard";
+import Slick from "../../../../UI/Slick/Slick";
+import { axiosInstance } from "../../../../Utility/axiosInstance";
 import "./HouseDetail.css";
-import _1 from "../../../../assets/demo1.jpg";
-import _2 from "../../../../assets/demo2.jpg";
-import _3 from "../../../../assets/demo3.jpg";
-import AsyncButton from "../../../UI/AsyncButton/AsyncButton";
+import _1 from "../../../../../assets/demo1.jpg";
+import _2 from "../../../../../assets/demo2.jpg";
+import _3 from "../../../../../assets/demo3.jpg";
+import AsyncButton from "../../../../UI/AsyncButton/AsyncButton";
 
 const HouseDetail = (props) => {
   const [data, setData] = useState({
@@ -21,6 +21,7 @@ const HouseDetail = (props) => {
     town: "",
     district: "",
     contact: "",
+    images: [_1, _2, _3],
   });
   const [loading, setLoading] = useState(false);
 
@@ -51,6 +52,7 @@ const HouseDetail = (props) => {
           town: "dindukal town",
           district: "dindukal",
           contact: "923840923094",
+          images: [_1, _2, _3],
         });
       });
   }, []);
@@ -94,8 +96,6 @@ const HouseDetail = (props) => {
     },
   ];
 
-  let images = [_1, _2, _3, _1, _2, _3];
-
   return (
     <div className="house-detail">
       <MyCard className="house-details-container">
@@ -107,7 +107,7 @@ const HouseDetail = (props) => {
         </AsyncButton>
         <br />
         <div>
-          <Slick items={images} />
+          <Slick items={data.images} />
         </div>
         <br />
         <br />

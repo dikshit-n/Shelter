@@ -1,0 +1,41 @@
+.each-step {
+  display: grid;
+  grid-template-columns: 20px minmax(150px, 1fr);
+  grid-gap: 20px;
+  margin: 5px 0;
+}
+
+.step-name {
+  text-align: left;
+  margin: auto 0;
+}
+
+.step-black {
+  color: grey;
+}
+.upload-loading {
+  background: transparent;
+}
+.upload-success {
+  background: rgb(96, 228, 96);
+}
+
+.upload-error {
+  background: coral;
+}
+
+.upload-warning {
+  background: #f6e902;
+}
+
+.status-icon {
+  color: white;
+  border-radius: 50%;
+  box-shadow: 9px 9px 16px rgb(163, 177, 198, 0.6),
+    -9px -9px 16px rgba(255, 255, 255, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 25px;
+  height: 25px;
+}

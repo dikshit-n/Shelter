@@ -1,6 +1,6 @@
-import { numberWithComma } from "../../../Utility/numberWithComma";
+import { numberWithComma } from "../../../../Utility/numberWithComma";
 import "./EachHouse.css";
-import DefaultHouse from "../../../../assets/default-house-image.jpg";
+import DefaultHouse from "../../../../../assets/default-house-image.jpg";
 import { useHistory } from "react-router";
 
 const EachHouse = (props) => {
