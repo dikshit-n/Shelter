@@ -1,0 +1,38 @@
+.request-navigator {
+  border-bottom: 1px solid rgb(230, 230, 230);
+}
+.navigation-container {
+  position: relative;
+  width: fit-content;
+  margin: auto;
+  padding: 10px 20px;
+  padding-top: 50px;
+  box-sizing: border-box;
+}
+.each-navigation {
+  text-decoration: none !important;
+  margin: 10px;
+  font-size: 17px;
+  font-weight: bold;
+  padding: 10px;
+  color: #475e6d;
+  opacity: 0.5;
+}
+.each-navigation:hover {
+  color: #475e6d;
+}
+
+.navigator-active {
+  opacity: 0.85;
+}
+
+@media (max-width: 520px) {
+  .each-navigation {
+    font-size: 13px;
+    white-space: nowrap;
+  }
+  .navigation-container {
+    padding: 10px 10px;
+    margin: auto;
+  }
+}

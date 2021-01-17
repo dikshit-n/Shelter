@@ -4,6 +4,7 @@ import AddHouse from "./AddHouse/AddHouse";
 import HomePage from "./HomePage/HomePage";
 import HouseDetail from "./HomePage/HouseDetail/HouseDetail";
 import Profile from "./Profile/Profile";
+import Requests from "./Requests/Requests";
 import "./UserAccount.css";
 
 const UserAccount = (props) => {
@@ -32,6 +33,7 @@ const UserAccount = (props) => {
     <div className="page-container">
       <Sidebar routes={sidebarRoutes} />
       <div className="page-content">
+        <Route path="/requests" component={Requests} />
         <Route path="/addhouse" exact component={AddHouse} />
         <Route path="/profile" exact component={Profile} />
         <Route path="/home" exact component={HomePage} />

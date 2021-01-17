@@ -15,20 +15,20 @@ const EachHouse = (props) => {
         className="house-image"
       />
       <div className="house-details-container flex-row flex-wrap">
-        <div className="each-detail">
-          <div className="single-detail">
+        <div className="each-house-description">
+          <div>
             <small className="text-left">
               <strong>{props.name}</strong>
             </small>
           </div>
-          <div className="single-detail">
+          <div>
             <small className="text-left">
               <strong>₹ {numberWithComma(props.rupees)}</strong>
             </small>
           </div>
         </div>
-        <div className="each-detail address">
-          <div className="single-detail">
+        <div className="each-house-description address">
+          <div>
             <small className="text-left">
               <strong>{props.address}</strong>
             </small>

@@ -138,15 +138,13 @@ const Place = (props) => {
                 loading={loading}
               />
             </div>
-            <div className="places-list-container">
-              <AnimatedList
-                error={tableError?.length > 0 ? tableError : null}
-                loading={loading}
-                emptyMessage="No places found"
-              >
-                {getList()}
-              </AnimatedList>
-            </div>
+            <AnimatedList
+              error={tableError?.length > 0 ? tableError : null}
+              loading={loading}
+              emptyMessage="No places found"
+            >
+              {getList()}
+            </AnimatedList>
           </div>
         </div>
         <div className="each-place-view-container bg-milk-white">

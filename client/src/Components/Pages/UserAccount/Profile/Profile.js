@@ -29,6 +29,7 @@ const Profile = (props) => {
   const [loading, setLoading] = useState(false);
 
   // states for logo
+  const [logoCache, setLogoCache] = useState(null);
   const [processing, setProcessing] = useState(false);
   const [imageError, setImageError] = useState(" ");
   const inputRef = useRef();
@@ -52,6 +53,7 @@ const Profile = (props) => {
         console.log(res.data);
         setLoading(false);
         setFormData((prev) => ({ ...prev, ...res.data }));
+        setLogoCache(res.data?.logo);
       })
       .catch((err) => {
         console.log(err);
@@ -148,6 +150,22 @@ const Profile = (props) => {
       ),
     },
     {
+      name: "gender",
+      type: "select",
+      value: formData.gender,
+      onChange: changeHandler,
+      required: true,
+      containerClassName: "each-house-detail",
+      placeholder: "Gender",
+      options: ["Male", "Female", "Non-Binary"],
+      addon: (
+        <i
+          style={{ fontSize: 13, marginTop: -8, marginLeft: -10 }}
+          className="fas fa-venus"
+        />
+      ),
+    },
+    {
       name: "street",
       type: "text",
       value: formData.street,
@@ -219,7 +237,7 @@ const Profile = (props) => {
     setUpdateError(" ");
     console.log(formData);
     axiosInstance
-      .post("/updateprofile", formData)
+      .post("/updateprofile", { ...formData, phone: formData.phone.toString() })
       .then((err) => {
         console.log(err);
         setStatus({ loading: false, status: "success" });
@@ -245,6 +263,7 @@ const Profile = (props) => {
       formData.street,
       formData.town,
       formData.district,
+      formData.gender,
     ];
     return requiredFields.every((el) => el.toString().trim() !== "");
   };
@@ -295,7 +314,10 @@ const Profile = (props) => {
     <MyCard style={{ width: "80%", margin: "50px auto", paddingBottom: 0 }}>
       {
         <AsyncButton
-          onClick={() => setEdit((prev) => !prev)}
+          onClick={() => {
+            setEdit((prev) => !prev);
+            if (edit) setFormData((prev) => ({ ...prev, logo: logoCache }));
+          }}
           className={edit ? "bg-red" : "bg-blue"}
         >
           {edit ? "Cancel" : "Edit"}

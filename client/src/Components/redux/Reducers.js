@@ -10,6 +10,7 @@ import gloabalReducer from "./Global/globalReducer";
 import adminsReducer from "./Superadmin/superadminReducer";
 import schoolsReducer from "./SuperadminMax/Schools/schoolsReducer";
 import housesReducer from "./UserAccount/HomePage/reducer";
+import requestsReducer from "./UserAccount/Requests/requestsReducer";
 
 const rootReducer = combineReducers({
   global: gloabalReducer,
@@ -24,6 +25,7 @@ const rootReducer = combineReducers({
   busesAdmin: busesReducer,
   busLogAdmin: busLogReducer,
   homeAdmin: homeReducerAdmin,
+  requests: requestsReducer,
 });
 
 export default rootReducer;

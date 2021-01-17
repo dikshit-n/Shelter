@@ -7,8 +7,12 @@
   margin: auto 20px;
 }
 
-.each-house-description {
-  margin: 0 10px;
+.single-detail {
+  /* display: grid;
+      grid-auto-columns: fit-content;
+      grid-template-areas: "a a";
+      gap: 30px;
+      grid-template-columns: 80px 100px; */
 }
 
 .each-house {
@@ -36,4 +40,18 @@
 
 .address {
   max-width: 200px;
+}
+
+.request-button {
+  /* background: transparent; */
+  border: 2px solid var(--my-blue);
+  color: var(--my-blue);
+  transition: all 0.3s ease-out;
+  margin: 0;
+  width: fit-content;
+}
+
+.request-button:hover {
+  color: var(--white);
+  background: var(--my-blue) !important;
 }
