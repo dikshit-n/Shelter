@@ -7,6 +7,7 @@ import Logout from "./Components/Pages/Auth/Logout/Logout";
 import SuperAdminMax from "./Components/Pages/SuperAdminMax/SuperAdminMax";
 import { checkAuthStatus } from "./Components/redux/Auth/Login";
 import UserAccount from "./Components/Pages/UserAccount/UserAccount";
+import { setCookie } from "./Components/Utility/cookies";
 
 function App(props) {
   const location = useLocation();
@@ -87,12 +88,13 @@ function App(props) {
 
 const mapStateToProps = (state) => {
   return {
-    // auth:
-    //   state.login.data.token !== undefined && state.login.data.token !== null,
-    auth: true,
+    auth:
+      state.login.data.token !== undefined && state.login.data.token !== null,
+    // auth: true,
     loading: state.login.loading,
     error: state.login.error,
-    type: state.login.data.type || "user",
+    // type: state.login.data.type,
+    type: "user",
   };
 };
 

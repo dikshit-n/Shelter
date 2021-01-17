@@ -9,6 +9,8 @@ import _1 from "../../../../../assets/demo1.jpg";
 import _2 from "../../../../../assets/demo2.jpg";
 import _3 from "../../../../../assets/demo3.jpg";
 import AsyncButton from "../../../../UI/AsyncButton/AsyncButton";
+import HouseDetailLoader from "./HouseDetailLoader/HouseDetailLoader";
+import ErrorBox from "../../../../UI/ErrorBox/ErrorBox";
 
 const HouseDetail = (props) => {
   const [data, setData] = useState({
@@ -24,6 +26,7 @@ const HouseDetail = (props) => {
     images: [_1, _2, _3],
   });
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   const params = useParams();
 
@@ -42,6 +45,7 @@ const HouseDetail = (props) => {
       .catch((err) => {
         console.log(err);
         setLoading(false);
+        setError("We ran into trouble !");
         setData({
           ownerName: "Gokulnath",
           monthlyRent: "1000",
@@ -96,7 +100,20 @@ const HouseDetail = (props) => {
     },
   ];
 
-  return (
+  return loading ? (
+    <HouseDetailLoader />
+  ) : (
+    // : error ? (
+    //   <>
+    //     <ErrorBox message={error} />
+    //     <AsyncButton
+    //       className="blue back-button bck-transparent"
+    //       onClick={() => props.history.goBack()}
+    //     >
+    //       <i className="fas fa-chevron-left"></i> Back
+    //     </AsyncButton>
+    //   </>
+    // )
     <div className="house-detail">
       <MyCard className="house-details-container">
         <AsyncButton

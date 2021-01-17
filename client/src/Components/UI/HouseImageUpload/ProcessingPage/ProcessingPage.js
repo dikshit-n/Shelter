@@ -7,7 +7,7 @@ import { compressFile } from "../../../Utility/fileOperations";
 
 const ProcessingPage = (props) => {
   const [steps, setSteps] = useState([
-    { name: "Validation Images", status: "loading", message: "" },
+    { name: "Validating Images", status: "loading", message: "" },
     { name: "Compressing", status: "", message: "" },
   ]);
   const [limit] = useState(null);

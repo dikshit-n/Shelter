@@ -21,8 +21,9 @@ const UserAccount = (props) => {
     //   },
     // },
     { name: "Home", to: "/home", icon: "fa fa-home" },
-    { name: "Add House", to: "/addhouse", icon: "fas fa-upload" },
     { name: "Profile", to: "/profile", icon: "fas fa-user" },
+    { name: "Requests", to: "/requests", icon: "fas fa-paper-plane" },
+    { name: "Add House", to: "/addhouse", icon: "fas fa-upload" },
     { name: "Logout", to: "/logout", icon: "fas fa-power-off" },
   ];
 
