@@ -6,14 +6,19 @@ import AsyncButton from "../../../UI/AsyncButton/AsyncButton";
 import EachField from "../../../UI/FormField/FormField";
 import FormInfo from "../../../UI/FormInfo/FormInfo";
 import { axiosInstance } from "../../../Utility/axiosInstance";
+import { filterNumbers } from "../../../Utility/filterNumbers";
 // import { setCookie } from "../../../Utility/cookies";
 import "./UserSignUp.css";
 
 const UserSignUp = (props) => {
   const [formData, setFormData] = useState({
-    email: "",
+    name: "",
     password: "",
-    type: "",
+    phone: "",
+    street: "",
+    town: "",
+    district: "",
+    email: "",
   });
   const match = useRouteMatch();
   // update
@@ -26,6 +31,8 @@ const UserSignUp = (props) => {
 
   const changeHandler = (event) => {
     const { name, value } = event.target;
+    const numberTypes = ["phone"];
+    if (numberTypes.some((el) => el === name)) value = filterNumbers(value);
     setMessage(" ");
     setFormData((prev) => ({
       ...prev,
@@ -79,11 +86,11 @@ const UserSignUp = (props) => {
 
   var schema = [
     {
-      name: "email",
+      name: "name",
       // displayName: "Name",
       placeholder: "User Name",
       type: "text",
-      value: formData.email,
+      value: formData.name,
       onChange: changeHandler,
       required: true,
       spellCheck: false,
@@ -114,17 +121,72 @@ const UserSignUp = (props) => {
       ),
     },
     {
-      name: "type",
-      type: "select",
-      value: formData.type,
+      name: "phone",
+      type: "text",
+      value: formData.phone,
       onChange: changeHandler,
       required: true,
-      containerClassName: "sign-up-textboxes signup-dropdown",
-      options: ["User__user", "House Owner__owner"],
-      placeholder: "Account Type",
-      addon: <i className="fas fa-user-shield" />,
+      containerClassName: "sign-up-textboxes",
+      placeholder: "Contact Nmber",
+      addon: <i className="fas fa-phone" />,
+    },
+    {
+      name: "street",
+      type: "text",
+      value: formData.street,
+      onChange: changeHandler,
+      required: true,
+      containerClassName: "sign-up-textboxes",
+      placeholder: "Street",
+      addon: <i className="fas fa-street-view" />,
+    },
+    {
+      name: "town",
+      type: "text",
+      value: formData.town,
+      onChange: changeHandler,
+      required: true,
+      containerClassName: "sign-up-textboxes",
+      placeholder: "Town",
+      addon: <i className="fas fa-city" />,
+    },
+    {
+      name: "district",
+      type: "text",
+      value: formData.district,
+      onChange: changeHandler,
+      required: true,
+      containerClassName: "sign-up-textboxes",
+      placeholder: "District",
+      addon: <i className="fa fa-area-chart" />,
+    },
+    {
+      name: "email",
+      // displayName: "Name",
+      placeholder: "Email",
+      type: "email",
+      value: formData.email,
+      onChange: changeHandler,
+      required: true,
+      spellCheck: false,
+      autoComplete: "off",
+      addon: <i className="fas fa-envelope" />,
+      autoFocus: true,
+      containerClassName: "sign-up-textboxes",
     },
   ];
+
+  // {
+  //   name: "type",
+  //   type: "select",
+  //   value: formData.type,
+  //   onChange: changeHandler,
+  //   required: true,
+  //   containerClassName: "sign-up-textboxes signup-dropdown",
+  //   options: ["User__user", "House Owner__owner"],
+  //   placeholder: "Account Type",
+  //   addon: <i className="fas fa-user-shield" />,
+  // },
 
   return (
     <div className="signin-container sign-up-mode">
