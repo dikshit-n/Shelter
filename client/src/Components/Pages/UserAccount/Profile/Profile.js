@@ -48,7 +48,7 @@ const Profile = (props) => {
   const fetchData = () => {
     setLoading(true);
     axiosInstance
-      .get("/profile")
+      .get("server1/profile")
       .then((res) => {
         console.log(res.data);
         setLoading(false);
@@ -254,7 +254,7 @@ const Profile = (props) => {
     setUpdateError(" ");
     console.log(formData);
     axiosInstance
-      .post("/updateprofile", { ...formData, phone: formData.phone.toString() })
+      .post("server1/UpdateProfile", { ...formData, phone: formData.phone.toString() })
       .then((err) => {
         console.log(err);
         setStatus({ loading: false, status: "success" });
