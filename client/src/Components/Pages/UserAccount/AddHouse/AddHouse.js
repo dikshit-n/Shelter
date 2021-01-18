@@ -128,7 +128,7 @@ const AddHouse = (props) => {
     event.preventDefault();
     setStatus({ loading: true, status: "" });
     axiosInstance
-      .post("/addhpuse", data)
+      .post("/server1/AddHouse", data)
       .then((res) => {
         console.log(res.data);
         setStatus({ loading: false, status: "success" });
