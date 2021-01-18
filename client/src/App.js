@@ -11,7 +11,7 @@ import { setCookie } from "./Components/Utility/cookies";
 function App(props) {
   const location = useLocation();
   useEffect(() => {
-    setCookie("token", "waidskjm");
+    // setCookie("token", "waidskjm");
     let unsupportedRoutes = ["verifyToken", "visitors"];
     let currentLocation = window.location.href;
     if (!unsupportedRoutes.some((el) => currentLocation.includes(el)))
