@@ -1,7 +1,6 @@
 import { axiosInstance } from "../../../Utility/axiosInstance";
 import { deleteCookie, getCookie } from "../../../Utility/cookies";
 import * as actionTypes from "../../constants";
-import schoolLogo from "../../../../assets/logo.webp";
 import avatar from "../../../../assets/default-logo.png";
 
 export const loginStart = () => {
@@ -21,7 +20,7 @@ export const loginSuccess = (data) => {
   console.log(data, " loginActions");
   return {
     type: actionTypes.LOGIN_SUCCESS,
-    data: { ...data, schoolLogo, avatar },
+    data,
   };
 };
 
@@ -29,9 +28,6 @@ export const logout = () => {
   deleteCookie("token");
   localStorage.removeItem("route");
   window.location.reload();
-  // return {
-  //   type: actionTypes.LOGOUT,
-  // };
 };
 
 export const deleteToken = () => {
@@ -49,21 +45,6 @@ export const checkAuthStatus = () => {
     } else {
       dispatch(loginFailure());
     }
-    console.log(token);
-    // axiosInstance
-    //   .post("/checkauthstatus", { id: token })
-    //   .then((res) => {
-    //     console.log(res.data);
-    //     console.log("Success auth");
-    //     dispatch(loginSuccess(res.data));
-    //   })
-    //   .catch((err) => {
-    //     // dispatch(logout());
-    //     console.log(err);
-    //     console.log("Failure auth");
-    //     let error = err.response?.statusText || "Something went wrong";
-    //     dispatch(loginFailure(error));
-    //   });
   };
 };
 

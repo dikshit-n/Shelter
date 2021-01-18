@@ -7,8 +7,6 @@ import { axiosInstance } from "../../../Utility/axiosInstance";
 import { deleteToken, logout } from "../../../redux/Auth/Login/loginActions";
 
 const Logout = (props) => {
-  const dispatch = useDispatch();
-  const type = useSelector((state) => state.login.data.type);
   localStorage.removeItem("route");
   // dispatch(logout());
   window.location.reload();

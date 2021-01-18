@@ -150,6 +150,23 @@ const Profile = (props) => {
       ),
     },
     {
+      name: "accountType",
+      type: "select",
+      value: formData.accountType,
+      onChange: changeHandler,
+      required: true,
+      containerClassName: "each-house-detail",
+      // placeholder: "Gender",
+      options: ["User__user", "Owner__owner"],
+      addon: (
+        <i
+          style={{ fontSize: 13, marginTop: -8, marginLeft: -10 }}
+          className="fas fa-user-shield"
+        />
+      ),
+      defaultValue: "user",
+    },
+    {
       name: "gender",
       type: "select",
       value: formData.gender,

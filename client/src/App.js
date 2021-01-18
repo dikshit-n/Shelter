@@ -4,14 +4,15 @@ import { Redirect, Route, Switch, useLocation, withRouter } from "react-router";
 import "./App.css";
 import Auth from "./Components/Pages/Auth/Auth";
 import Logout from "./Components/Pages/Auth/Logout/Logout";
-import SuperAdminMax from "./Components/Pages/SuperAdminMax/SuperAdminMax";
 import { checkAuthStatus } from "./Components/redux/Auth/Login";
 import UserAccount from "./Components/Pages/UserAccount/UserAccount";
+import { setCookie } from "./Components/Utility/cookies";
 
 function App(props) {
   const location = useLocation();
   useEffect(() => {
-    let unsupportedRoutes = ["verifyToken", "visitors", "signup"];
+    setCookie("token", "waidskjm");
+    let unsupportedRoutes = ["verifyToken", "visitors"];
     let currentLocation = window.location.href;
     if (!unsupportedRoutes.some((el) => currentLocation.includes(el)))
       props.checkAuthStatus(); // checking authentication status of user on each reload
@@ -36,34 +37,13 @@ function App(props) {
   // filtering routes based on the authentication state of user
   const getRoutes = () => {
     if (props.auth) {
-      if (props.type === "owner") {
-        return (
-          <Switch>
-            <Route path="/logout" component={Logout} />
-            <Route path="/admin" component={SuperAdminMax} />
-            <Redirect to="/admin" />
-          </Switch>
-        );
-      } else if (props.type === "user") {
-        return (
-          <Switch>
-            <Route path="/logout" component={Logout} />
-            <Route path="/" component={UserAccount} />
-            <Redirect to="/" />;
-          </Switch>
-        );
-      }
-      // else if (props.type === "admin") {
-      //   return (
-      //     <Switch>
-      //       <Route path="/logout" component={Logout} />
-      //       {/* <Route path="/verifytoken/:token" component={VerificationPage} />
-      //       <Route path="/outsiders/form/register/:id" component={Outsider} /> */}
-      //       <Route path="/" component={Admin} />
-      //       <Redirect to="/" />
-      //     </Switch>
-      //   );
-      // }
+      return (
+        <Switch>
+          <Route path="/logout" component={Logout} />
+          <Route path="/" component={UserAccount} />
+          <Redirect to="/" />;
+        </Switch>
+      );
     } else {
       // unauthenticated routes
       return (

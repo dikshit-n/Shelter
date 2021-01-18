@@ -1,8 +1,0 @@
-.dummy-div {
-  height: fit-content;
-  width: 100%;
-}
-.employees-container {
-  display: flex;
-  flex-direction: column;
-}
