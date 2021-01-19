@@ -124,6 +124,7 @@ const AddHouse = (props) => {
     setStatus({ loading: true, status: "" });
     axiosInstance
       .post("/server1/AddHouse", {
+        // .post("/server1/AddHouse", {
         ...data,
         monthlyRent: filterNumbers(data.monthlyRent).toString(),
       })
