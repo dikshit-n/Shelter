@@ -9,6 +9,10 @@ import HomeImageUpload from "../../../UI/HouseImageUpload/HouseImageUpload";
 import Slick from "../../../UI/Slick/Slick";
 import { numberWithComma } from "../../../Utility/numberWithComma";
 
+let country_state_district = require("country_state_district");
+
+let districts = country_state_district.getDistrictsByStateId(32);
+
 const AddHouse = (props) => {
   const [data, setData] = useState({
     ownerName: "",
@@ -102,6 +106,9 @@ const AddHouse = (props) => {
       required: true,
     },
     {
+      type: "select",
+      options: [...districts.map((el) => el.name)],
+      placeholder: "Choose District",
       displayName: "District",
       value: data.district,
       name: "district",

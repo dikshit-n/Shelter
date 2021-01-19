@@ -11,6 +11,10 @@ import { filterNumbers } from "../../../Utility/filterNumbers";
 // import { setCookie } from "../../../Utility/cookies";
 import "./UserSignUp.css";
 
+let country_state_district = require("country_state_district");
+
+let districts = country_state_district.getDistrictsByStateId(32);
+
 const UserSignUp = (props) => {
   const [formData, setFormData] = useState({
     name: "",
@@ -134,14 +138,15 @@ const UserSignUp = (props) => {
       addon: <i className="fas fa-phone" />,
     },
     {
-      name: "district",
-      type: "text",
+      type: "select",
+      options: [...districts.map((el) => el.name)],
+      placeholder: "Choose District",
       value: formData.district,
+      name: "district",
       onChange: changeHandler,
+      containerClassName: "sign-up-textboxes signup-dropdown",
       required: true,
-      containerClassName: "sign-up-textboxes",
-      placeholder: "District",
-      addon: <i className="fas fa-area-chart" />,
+      addon: <i className="fas fa-map-marker" />,
     },
     {
       name: "town",

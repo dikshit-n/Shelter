@@ -11,6 +11,10 @@ import ErrorBox from "../../../UI/ErrorBox/ErrorBox";
 import FormInfo from "../../../UI/FormInfo/FormInfo";
 import ProfileLoader from "./ProfileLoader/ProfileLoader";
 
+let country_state_district = require("country_state_district");
+
+let districts = country_state_district.getDistrictsByStateId(32);
+
 const Profile = (props) => {
   const [formData, setFormData] = useState({
     name: "",
@@ -213,17 +217,18 @@ const Profile = (props) => {
       ),
     },
     {
-      name: "district",
-      type: "text",
+      type: "select",
+      options: [...districts.map((el) => el.name)],
+      placeholder: "Choose District",
       value: formData.district,
+      name: "district",
       onChange: changeHandler,
-      required: true,
       containerClassName: "each-house-detail",
-      placeholder: "District",
+      required: true,
       addon: (
         <i
           style={{ fontSize: 13, marginTop: -8, marginLeft: -10 }}
-          className="fas fa-area-chart"
+          className="fas fa-map-marker"
         />
       ),
     },
