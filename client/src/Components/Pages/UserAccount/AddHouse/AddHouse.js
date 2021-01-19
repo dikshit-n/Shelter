@@ -31,12 +31,7 @@ const AddHouse = (props) => {
   const [open, setOpen] = useState(false);
 
   const changeHandler = ({ target: { name, value } }) => {
-    const numberTypes = [
-      "contact",
-      "maximumSharing",
-      "currentlyOccupied",
-      // "monthlyRent",
-    ];
+    const numberTypes = ["contact", "maximumSharing", "currentlyOccupied"];
     const withCommas = ["monthlyRent"];
     setError("");
     setData((prev) => ({
@@ -128,7 +123,10 @@ const AddHouse = (props) => {
     event.preventDefault();
     setStatus({ loading: true, status: "" });
     axiosInstance
-      .post("/server1/AddHouse", data)
+      .post("/server1/AddHouse", {
+        ...data,
+        monthlyRent: filterNumbers(data.monthlyRent).toString(),
+      })
       .then((res) => {
         console.log(res.data);
         setStatus({ loading: false, status: "success" });

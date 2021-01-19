@@ -18,19 +18,19 @@ const EachHouse = (props) => {
         <div className="each-house-description">
           <div>
             <small className="text-left">
-              <strong>{props.name}</strong>
+              <strong>{props.ownerName}</strong>
             </small>
           </div>
           <div>
             <small className="text-left">
-              <strong>₹ {numberWithComma(props.rupees)}</strong>
+              <strong>₹ {numberWithComma(props.monthlyRent)}</strong>
             </small>
           </div>
         </div>
         <div className="each-house-description address">
           <div>
             <small className="text-left">
-              <strong>{props.address}</strong>
+              <strong>{props.town + ", " + props.district}</strong>
             </small>
           </div>
         </div>

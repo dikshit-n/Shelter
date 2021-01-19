@@ -10,6 +10,7 @@
     "bootstrap": "^4.5.3",
     "compress.js": "^1.1.2",
     "country-data": "0.0.31",
+    "country_state_district": "^1.0.4",
     "jquery": "^3.5.1",
     "jspdf": "^2.2.0",
     "match-sorter": "^6.0.2",

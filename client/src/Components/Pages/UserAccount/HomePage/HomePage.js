@@ -1,34 +1,62 @@
 import "./HomePage.css";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useRouteMatch } from "react-router";
 import { fetchUsers } from "../../../redux/UserAccount/HomePage/actions";
 import EmptyMessage from "../../../UI/EmptyMessage/EmptyMessage";
 import ErrorBox from "../../../UI/ErrorBox/ErrorBox";
 import EachHouse from "./EachHouse/EachHouse";
+import AsyncButton from "../../../UI/AsyncButton/AsyncButton";
+import { Modal } from "reactstrap";
+import { filterNumbers } from "../../../Utility/filterNumbers";
+import { numberWithComma } from "../../../Utility/numberWithComma";
+import EachField from "../../../UI/FormField/FormField";
+import ReactModal from "../../../UI/ReactModal/ReactModal";
+import { deleteEmptyKeys } from "../../../Utility/deleteEmptyKeys";
 
 var mount = 0;
 
+let country_state_district = require("country_state_district");
+
+let districts = country_state_district.getDistrictsByStateId(32);
+
 const HomePage = (props) => {
+  const [show, setShow] = useState(false);
+  const [formData, setFormData] = useState({
+    ownerName: "",
+    monthlyRent: "",
+    feature: "",
+    maximumSharing: "",
+    district: "",
+  });
   let { data, error, loading } = useSelector((state) => state.houses);
   const match = useRouteMatch();
   data = [
     {
-      name: "Gokulnath",
-      rupees: 1000,
-      address: "Dubai Cross Street, Dubai Main road, Dubai",
+      ownerName: "Gokulnath",
+      monthlyRent: 1000,
+      town: "Dubai Town",
+      feature: "",
+      maximumSharing: 100,
+      district: "Dindigul",
       image: null,
     },
     {
-      name: "Hariharan",
-      rupees: 2000,
-      address: "Amazon Forest, Forest Main, Africa",
+      ownerName: "Hariharan",
+      monthlyRent: 2000,
+      town: "Amazon Forest",
+      feature: "",
+      maximumSharing: 100,
+      district: "Forest Main",
       image: null,
     },
     {
-      name: "Thirunelveli",
-      rupees: 10000,
-      address: "Thirunelveli Cross Street, Thiru Main, Thirunelveli",
+      ownerName: "Thirunelveli",
+      monthlyRent: 10000,
+      town: "Thirunelveli Cross Street",
+      feature: "",
+      maximumSharing: 100,
+      district: "Tirunelveli",
       image: null,
     },
   ];
@@ -44,18 +72,162 @@ const HomePage = (props) => {
     fetchUsers("/houses");
   };
 
+  const changeHandler = ({ target: { name, value } }) => {
+    const numberTypes = ["contact", "maximumSharing", "currentlyOccupied"];
+    const withCommas = ["monthlyRent"];
+    setFormData((prev) => ({
+      ...prev,
+      [name]: numberTypes.some((el) => el === name)
+        ? filterNumbers(value)
+        : withCommas.some((el) => el === name)
+        ? numberWithComma(filterNumbers(value))
+        : value,
+    }));
+  };
+
+  var schema = [
+    {
+      displayName: "Owner Name",
+      value: formData.ownerName,
+      name: "ownerName",
+      onChange: changeHandler,
+      containerClassName: "each-house-detail",
+      required: true,
+    },
+
+    {
+      displayName: "Montly Rent",
+      value: formData.monthlyRent,
+      name: "monthlyRent",
+      onChange: changeHandler,
+      containerClassName: "each-house-detail",
+      required: true,
+    },
+    {
+      displayName: "Feature",
+      value: formData.feature,
+      name: "feature",
+      onChange: changeHandler,
+      containerClassName: "each-house-detail",
+      required: true,
+    },
+    {
+      displayName: "Maximum Sharing",
+      value: formData.maximumSharing,
+      name: "maximumSharing",
+      onChange: changeHandler,
+      containerClassName: "each-house-detail",
+      required: true,
+    },
+    {
+      type: "select",
+      options: [...districts.map((el) => el.name)],
+      placeholder: "Choose District",
+      displayName: "District",
+      value: formData.district,
+      name: "district",
+      onChange: changeHandler,
+      containerClassName: "each-house-detail",
+      required: true,
+    },
+  ];
+
+  const getFilteredList = () => {
+    const absolutes = ["maximumSharing", "monthlyRent"];
+    const numbers = ["monthlyRent"];
+    let filteredData = [...data];
+    if (Object.values(formData).every((el) => el.toString().trim() === "")) {
+      return [...filteredData];
+    } else {
+      let nonEmptyFilters = { ...deleteEmptyKeys(formData) };
+      filteredData = [
+        ...filteredData.filter((el) => {
+          let keys = Object.keys(nonEmptyFilters);
+          let values = Object.values(nonEmptyFilters);
+          let conditions = keys.map((ele, index) => {
+            if (numbers.includes(ele)) {
+              el[ele] = filterNumbers(el[ele]);
+              values[index] = filterNumbers(values[index]);
+            }
+            console.log(ele, el[ele], values[index]);
+            if (absolutes.includes(ele)) {
+              return el[ele] === values[index];
+            }
+            return el[ele]
+              .toString()
+              .toLowerCase()
+              .includes(values[index].toString().toLowerCase());
+          });
+          return conditions.every((el) => el);
+        }),
+      ];
+      return filteredData;
+    }
+  };
+
+  const getFilterStatus = () => {
+    return Object.values(formData).every((el) => el.toString().trim() === "");
+  };
+
+  const clearFilters = () => {
+    setFormData({
+      ownerName: "",
+      monthlyRent: "",
+      feature: "",
+      maximumSharing: "",
+      district: "",
+    });
+  };
+
+  let afterFilter = getFilteredList();
+
   return (
-    <div className="houses-container flex-row flex-wrap">
-      {loading ? (
-        <div>loading...</div>
-      ) : error ? (
-        <ErrorBox message={error} />
-      ) : data.length === 0 ? (
-        <EmptyMessage message={"No Houses Found"} />
-      ) : (
-        data.map((el, index) => <EachHouse key={index} {...el} />)
-      )}
-    </div>
+    <>
+      <ReactModal open={show} toggle={() => setShow((prev) => !prev)}>
+        {schema.map((el, index) => (
+          <EachField {...el} key={index} />
+        ))}
+        <AsyncButton onClick={() => setShow(false)} className="bg-blue">
+          Done
+        </AsyncButton>
+      </ReactModal>
+      <div
+        className="houses-container flex-row flex-wrap"
+        style={{ position: "relative", marginTop: 30 }}
+      >
+        <div className="flex-row filter-button">
+          <AsyncButton
+            className="bg-red"
+            style={{ visibility: getFilterStatus() ? "hidden" : "visible" }}
+            disabled={loading}
+            onClick={clearFilters}
+          >
+            Clear Filters
+          </AsyncButton>
+          &nbsp;&nbsp;
+          <AsyncButton
+            className="bg-blue"
+            disabled={loading}
+            onClick={() => setShow(true)}
+          >
+            Add Filters
+          </AsyncButton>
+        </div>
+        {loading ? (
+          <div>loading...</div>
+        ) : error ? (
+          <ErrorBox message={error} />
+        ) : afterFilter.length === 0 ? (
+          <EmptyMessage message={"No Houses Found"} />
+        ) : (
+          <>
+            {afterFilter.map((el, index) => (
+              <EachHouse key={index} {...el} />
+            ))}
+          </>
+        )}
+      </div>
+    </>
   );
 };
 
