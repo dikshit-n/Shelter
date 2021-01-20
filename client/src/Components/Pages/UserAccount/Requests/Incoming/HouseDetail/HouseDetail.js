@@ -1,20 +1,16 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router";
-import EachField from "../../../../UI/FormField/FormField";
-import MyCard from "../../../../UI/MyCard/MyCard";
-import Slick from "../../../../UI/Slick/Slick";
-import { axiosInstance } from "../../../../Utility/axiosInstance";
+import { withRouter } from "react-router";
+import { axiosInstance } from "../../../../../Utility/axiosInstance";
 import "./HouseDetail.css";
-import _1 from "../../../../../assets/demo1.jpg";
-import _2 from "../../../../../assets/demo2.jpg";
-import _3 from "../../../../../assets/demo3.jpg";
-import AsyncButton from "../../../../UI/AsyncButton/AsyncButton";
+import AsyncButton from "../../../../../UI/AsyncButton/AsyncButton";
 import HouseDetailLoader from "./HouseDetailLoader/HouseDetailLoader";
-import ErrorBox from "../../../../UI/ErrorBox/ErrorBox";
+import EachField from "../../../../../UI/FormField/FormField";
+import MyCard from "../../../../../UI/MyCard/MyCard";
+import DefaultImage from "../../../../../../assets/default-logo.png";
 
 const HouseDetail = (props) => {
   const [data, setData] = useState({
-    ownerName: "",
+    name: "",
     monthlyRent: "",
     feature: "",
     maximumSharing: "",
@@ -23,68 +19,23 @@ const HouseDetail = (props) => {
     town: "",
     district: "",
     contact: "",
-    images: [_1, _2, _3],
+    logo: null,
   });
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
   const [status, setStatus] = useState({
     loading: false,
     status: "",
   });
 
-  const params = useParams();
-
   useEffect(() => {
-    setLoading(true);
-    axiosInstance
-      .post(`/singlehouse/`, { houseId: params.id })
-      .then((res) => {
-        console.log(res.data);
-        setLoading(false);
-        setData((prev) => ({
-          ...prev,
-          ...res.data,
-        }));
-      })
-      .catch((err) => {
-        console.log(err);
-        setLoading(false);
-        setError("We ran into trouble !");
-        setData({
-          ownerName: "Gokulnath",
-          monthlyRent: "1000",
-          feature: "BHK - bla bla bla",
-          maximumSharing: "3",
-          currentlyOccupied: "1",
-          street: "Dindukal street",
-          town: "dindukal town",
-          district: "dindukal",
-          contact: "923840923094",
-          images: [_1, _2, _3],
-        });
-      });
-  }, []);
+    if (Object.keys(props.details).length !== 0) {
+      setData({ ...props.details });
+    }
+  }, [props.details]);
 
   var schema = [
     {
-      displayName: "Owner Name",
-      value: data.ownerName,
-    },
-    {
-      displayName: "Montly Rent",
-      value: data.monthlyRent,
-    },
-    {
-      displayName: "Feature",
-      value: data.feature,
-    },
-    {
-      displayName: "Maximum Sharing",
-      value: data.maximumSharing,
-    },
-    {
-      displayName: "Currently Occupied",
-      value: data.currentlyOccupied,
+      displayName: "Name",
+      value: data.name,
     },
     {
       displayName: "Street",
@@ -104,16 +55,16 @@ const HouseDetail = (props) => {
     },
   ];
 
-  const sendRequest = () => {
+  const acceptRequest = () => {
     setStatus({ loading: true, status: "" });
     axiosInstance
-      .post("/sendrequest", { houseId: data.houseId })
+      .post("/acceptrequest", { houseId: data.houseId })
       .then((res) => {
         console.log(res.data);
         setStatus({ loading: false, status: "success" });
         setTimeout(() => {
           setStatus({ loading: false, status: "" });
-          props.history.goBack();
+          props.close();
         }, 500);
       })
       .catch((err) => {
@@ -123,10 +74,10 @@ const HouseDetail = (props) => {
       });
   };
 
-  return loading ? (
+  return props.loading ? (
     <HouseDetailLoader />
   ) : (
-    // : error ? (
+    // : props.error ? (
     //   <>
     //     <ErrorBox message={error} />
     //     <AsyncButton
@@ -141,13 +92,18 @@ const HouseDetail = (props) => {
       <MyCard className="house-details-container">
         <AsyncButton
           className="blue back-button bck-transparent"
-          onClick={() => props.history.goBack()}
+          onClick={() => props.close()}
         >
           <i className="fas fa-chevron-left"></i> Back
         </AsyncButton>
         <br />
-        <div>
-          <Slick items={data.images} />
+        <div className="profile-logo-container flex-column">
+          <div
+            style={{
+              backgroundImage: `url(${data.logo || DefaultImage})`,
+            }}
+            className={`profile-logo`}
+          />
         </div>
         <br />
         <br />
@@ -163,16 +119,15 @@ const HouseDetail = (props) => {
         <br />
         <AsyncButton
           className="bg-blue"
-          disabled={data.requested}
-          onClick={sendRequest}
+          onClick={acceptRequest}
           loading={status.loading}
           status={status.status}
         >
-          {data.requested ? "Pending" : "Request"}
+          Accept
         </AsyncButton>
       </MyCard>
     </div>
   );
 };
 
-export default HouseDetail;
+export default withRouter(HouseDetail);

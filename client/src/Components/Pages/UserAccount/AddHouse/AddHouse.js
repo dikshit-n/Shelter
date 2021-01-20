@@ -134,6 +134,9 @@ const AddHouse = (props) => {
         // .post("/server1/AddHouse", {
         ...data,
         monthlyRent: filterNumbers(data.monthlyRent).toString(),
+        maximumSharing: filterNumbers(data.maximumSharing).toString(),
+        currentlyOccupied: filterNumbers(data.currentlyOccupied).toString(),
+        contact: filterNumbers(data.contact).toString(),
       })
       .then((res) => {
         console.log(res.data);

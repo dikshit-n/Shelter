@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import { fetchRequests } from "../../../../redux/UserAccount/Requests/actions";
 import { axiosInstance } from "../../../../Utility/axiosInstance";
 import RefreshButton from "../../../../UI/RefreshButton/RefreshButton";
+import HouseDetail from "./HouseDetail/HouseDetail";
 var mount = 0;
 const Incoming = (props) => {
   const incomingId = uniqueId();
@@ -17,6 +18,8 @@ const Incoming = (props) => {
     { name: "Dikshit", contact: "9025077644" },
     { name: "Mani", contact: "9999131313" },
   ];
+
+  const [detailError, setDetailError] = useState(null);
 
   const [acceptStatus, setAcceptStatus] = useState({
     loading: false,
@@ -52,28 +55,30 @@ const Incoming = (props) => {
 
   const clickHandler = (id) => {
     console.log(id);
+    open();
     setEachDetailLoading(true);
     axiosInstance
-      .post("/acceptrequest", { requestId: id })
+      .post("/detailedview", { requestId: id })
       .then((res) => {
         console.log(res.data);
         setEachDetailLoading(false);
-        open(res.data);
+        setEachDetail({ ...res.data });
       })
       .catch((err) => {
         console.log(err);
         setEachDetailLoading(false);
+        setDetailError("Something went wrong !");
       });
   };
 
-  const open = (detail) => {
-    setEachDetail({ ...detail });
+  const open = () => {
     const container = document.getElementById(incomingId);
     if (container.classList.contains("request-scroll-right"))
       container.classList.remove("request-scroll-right");
     container.classList.add("request-scroll-left");
   };
   const close = () => {
+    setDetailError(null);
     const container = document.getElementById(incomingId);
     if (container.classList.contains("request-scroll-left"))
       container.classList.remove("request-scroll-left");
@@ -107,7 +112,14 @@ const Incoming = (props) => {
             </AnimatedList>
           </div>
         </div>
-        <div className="each-request-view-container"></div>
+        <div className="each-request-view-container">
+          <HouseDetail
+            close={close}
+            details={eachDetail}
+            loading={eachDetailLoading}
+            error={detailError}
+          />
+        </div>
       </div>
     </div>
   );

@@ -54,7 +54,10 @@ const UserSignUp = (props) => {
     });
     console.log(formData);
     axiosInstance
-      .post("/server1/SignUp", formData)
+      .post("/server1/SignUp", {
+        ...formData,
+        phone: formData.phone.toString(),
+      })
       .then((res) => {
         console.log(res.data);
         setStatus({
