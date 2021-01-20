@@ -62,19 +62,19 @@ const Profile = (props) => {
       .catch((err) => {
         console.log(err);
         setLoading(false);
-        // setError(err.response?.statusText || "Something went wrong!");
-        setFormData({
-          name: "Nath",
-          password: "gokul",
-          accountType: "Owner",
-          gender: "Female",
-          phone: "3209432",
-          street: "Dindukal street",
-          town: "Dindukal town",
-          district: "Dindukal",
-          email: "gokul@mail.com",
-          logo: null,
-        });
+        setError(err.response?.statusText || "Something went wrong!");
+        //   setFormData({
+        //     name: "Nath",
+        //     password: "gokul",
+        //     accountType: "Owner",
+        //     gender: "Female",
+        //     phone: "3209432",
+        //     street: "Dindukal street",
+        //     town: "Dindukal town",
+        //     district: "Dindukal",
+        //     email: "gokul@mail.com",
+        //     logo: null,
+        //   });
       });
   };
 
