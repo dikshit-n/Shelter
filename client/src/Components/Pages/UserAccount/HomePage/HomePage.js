@@ -69,7 +69,7 @@ const HomePage = (props) => {
   }, []);
 
   const fetchHouses = () => {
-    fetchUsers("/server2/Home");
+    fetchUsers("/server1/Home");
   };
 
   const changeHandler = ({ target: { name, value } }) => {
