@@ -15,9 +15,9 @@ let districts = country_state_district.getDistrictsByStateId(32);
 
 const AddHouse = (props) => {
   const [data, setData] = useState({
-    ownerName: "",
     monthlyRent: "",
     feature: "",
+    rentalType: "",
     maximumSharing: "",
     currentlyOccupied: "",
     street: "",
@@ -37,26 +37,26 @@ const AddHouse = (props) => {
   const changeHandler = ({ target: { name, value } }) => {
     const numberTypes = ["contact", "maximumSharing", "currentlyOccupied"];
     const withCommas = ["monthlyRent"];
+    value = numberTypes.some((el) => el === name)
+      ? filterNumbers(value)
+      : withCommas.some((el) => el === name)
+      ? numberWithComma(filterNumbers(value))
+      : value;
+    if (name === "rentalType") {
+      setData((prev) => ({
+        ...prev,
+        currentlyOccupied: value === "Family" ? "" : prev.currentlyOccupied,
+        maximumSharing: value === "Family" ? "" : prev.maximumSharing,
+      }));
+    }
     setError("");
     setData((prev) => ({
       ...prev,
-      [name]: numberTypes.some((el) => el === name)
-        ? filterNumbers(value)
-        : withCommas.some((el) => el === name)
-        ? numberWithComma(filterNumbers(value))
-        : value,
+      [name]: value,
     }));
   };
 
   var schema = [
-    {
-      displayName: "Owner Name",
-      value: data.ownerName,
-      name: "ownerName",
-      onChange: changeHandler,
-      containerClassName: "each-house-detail",
-      required: true,
-    },
     {
       displayName: "Montly Rent",
       value: data.monthlyRent,
@@ -74,12 +74,25 @@ const AddHouse = (props) => {
       required: true,
     },
     {
+      type: "select",
+      options: ["Family", "Sharing"],
+      placeholder: "Choose Rental Type",
+      displayName: "Rental Type",
+      value: data.rentalType,
+      name: "rentalType",
+      onChange: changeHandler,
+      containerClassName: "each-house-detail",
+      required: true,
+    },
+    {
       displayName: "Maximum Sharing",
       value: data.maximumSharing,
       name: "maximumSharing",
       onChange: changeHandler,
       containerClassName: "each-house-detail",
-      required: true,
+      containerStyleWithLabel: {
+        display: data.rentalType === "Family" ? "none" : "block",
+      },
     },
     {
       displayName: "Currently Occupied",
@@ -87,7 +100,9 @@ const AddHouse = (props) => {
       name: "currentlyOccupied",
       onChange: changeHandler,
       containerClassName: "each-house-detail",
-      required: true,
+      containerStyleWithLabel: {
+        display: data.rentalType === "Family" ? "none" : "block",
+      },
     },
     {
       displayName: "Street",
@@ -131,7 +146,6 @@ const AddHouse = (props) => {
     setStatus({ loading: true, status: "" });
     axiosInstance
       .post("/server1/AddHouse", {
-        // .post("/server1/AddHouse", {
         ...data,
         monthlyRent: filterNumbers(data.monthlyRent).toString(),
         maximumSharing: filterNumbers(data.maximumSharing).toString(),
@@ -154,8 +168,22 @@ const AddHouse = (props) => {
   };
 
   const valid = () => {
-    let requiredFields = [...Object.values(data)];
-    return requiredFields.every((el) => el.toString().trim() !== "");
+    let requiredFieldsArray = [];
+    if (data.rentalType === "Family") {
+      requiredFieldsArray = [
+        data.monthlyRent,
+        data.feature,
+        data.rentalType,
+        data.street,
+        data.town,
+        data.district,
+        data.contact,
+        data.images,
+      ];
+    } else {
+      requiredFieldsArray = [...Object.values(data)];
+    }
+    return requiredFieldsArray.every((el) => el.toString().trim() !== "");
   };
 
   const openUploadPage = () => {

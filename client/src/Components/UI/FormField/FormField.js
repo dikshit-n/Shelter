@@ -11,7 +11,10 @@ const EachField = (props) => {
     switch (props.type) {
       case "text":
         return (
-          <Fragment>
+          <div
+            className={props.containerClassNameWithLabel}
+            style={{ ...props.containerStyleWithLabel }}
+          >
             {props.displayName ? (
               <Label className="form-label" for={id}>
                 {props.displayName}
@@ -38,11 +41,14 @@ const EachField = (props) => {
                 {...props}
               />
             </div>
-          </Fragment>
+          </div>
         );
       case "textarea":
         return (
-          <Fragment>
+          <div
+            className={props.containerClassNameWithLabel}
+            style={{ ...props.containerStyleWithLabel }}
+          >
             {props.displayName ? (
               <Label className="form-label" for={id}>
                 {props.displayName}
@@ -69,11 +75,14 @@ const EachField = (props) => {
                 {...props}
               />
             </div>
-          </Fragment>
+          </div>
         );
       case "select":
         return (
-          <Fragment>
+          <div
+            className={props.containerClassNameWithLabel}
+            style={{ ...props.containerStyleWithLabel }}
+          >
             {props.displayName ? (
               <Label className="form-label" for={id}>
                 {props.displayName}
@@ -135,11 +144,14 @@ const EachField = (props) => {
                 })}
               </select>
             </div>
-          </Fragment>
+          </div>
         );
       case "number":
         return (
-          <Fragment>
+          <div
+            className={props.containerClassNameWithLabel}
+            style={{ ...props.containerStyleWithLabel }}
+          >
             {props.displayName ? (
               <Label className="form-label" for={id}>
                 {props.displayName}
@@ -166,12 +178,15 @@ const EachField = (props) => {
                 {...props}
               />
             </div>
-          </Fragment>
+          </div>
         );
 
       case "date":
         return (
-          <Fragment>
+          <div
+            className={props.containerClassNameWithLabel}
+            style={{ ...props.containerStyleWithLabel }}
+          >
             {props.displayName ? (
               <Label className="form-label" for={id}>
                 {props.displayName}
@@ -192,11 +207,14 @@ const EachField = (props) => {
               readOnly={props.readOnly}
               {...props}
             />
-          </Fragment>
+          </div>
         );
       default:
         return (
-          <Fragment>
+          <div
+            className={props.containerClassNameWithLabel}
+            style={{ ...props.containerStyleWithLabel }}
+          >
             {props.displayName ? (
               <Label className="form-label" for={id}>
                 {props.displayName}
@@ -223,7 +241,7 @@ const EachField = (props) => {
                 {...props}
               />
             </div>
-          </Fragment>
+          </div>
         );
     }
   };
