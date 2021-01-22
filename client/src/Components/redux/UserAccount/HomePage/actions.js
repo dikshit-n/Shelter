@@ -13,8 +13,9 @@ export const fetchUsersFailure = (error) => ({
   error,
 });
 export const fetchUsers = (url) => {
-  console.log(url, "fetching");
   return (dispatch) => {
+    console.log(url, "fetching");
+    dispatch(fetchUsersStart());
     axiosInstance
       .post(url)
       .then((res) => {

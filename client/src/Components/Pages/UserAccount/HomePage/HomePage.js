@@ -1,6 +1,6 @@
 import "./HomePage.css";
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useRouteMatch } from "react-router";
 import { fetchUsers } from "../../../redux/UserAccount/HomePage/actions";
 import EmptyMessage from "../../../UI/EmptyMessage/EmptyMessage";
@@ -31,6 +31,7 @@ const HomePage = (props) => {
   });
   let { data, error, loading } = useSelector((state) => state.houses);
   const match = useRouteMatch();
+  const dispatch = useDispatch();
   // data = [
   //   {
   //     ownerName: "Gokulnath",
@@ -70,7 +71,7 @@ const HomePage = (props) => {
 
   const fetchHouses = () => {
     console.log("fetching houses");
-    fetchUsers("/server1/Home");
+    dispatch(fetchUsers("/server1/Home"));
   };
 
   const changeHandler = ({ target: { name, value } }) => {
