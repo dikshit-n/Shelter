@@ -35,9 +35,10 @@ const HouseDetail = (props) => {
   const params = useParams();
 
   useEffect(() => {
+    console.log(params.id);
     setLoading(true);
     axiosInstance
-      .post(`/singlehouse/`, { houseId: params.id })
+      .post(`/server1/visit`, { houseId: params.id })
       .then((res) => {
         console.log(res.data);
         setLoading(false);
@@ -107,7 +108,7 @@ const HouseDetail = (props) => {
   const sendRequest = () => {
     setStatus({ loading: true, status: "" });
     axiosInstance
-      .post("/sendrequest", { houseId: data.houseId })
+      .post("/sendrequest", { houseId: params.houseId })
       .then((res) => {
         console.log(res.data);
         setStatus({ loading: false, status: "success" });
