@@ -31,35 +31,35 @@ const HomePage = (props) => {
   });
   let { data, error, loading } = useSelector((state) => state.houses);
   const match = useRouteMatch();
-  data = [
-    {
-      ownerName: "Gokulnath",
-      monthlyRent: 1000,
-      town: "Dubai Town",
-      feature: "",
-      maximumSharing: 100,
-      district: "Dindigul",
-      image: null,
-    },
-    {
-      ownerName: "Hariharan",
-      monthlyRent: 2000,
-      town: "Amazon Forest",
-      feature: "",
-      maximumSharing: 100,
-      district: "Forest Main",
-      image: null,
-    },
-    {
-      ownerName: "Thirunelveli",
-      monthlyRent: 10000,
-      town: "Thirunelveli Cross Street",
-      feature: "",
-      maximumSharing: 100,
-      district: "Tirunelveli",
-      image: null,
-    },
-  ];
+  // data = [
+  //   {
+  //     ownerName: "Gokulnath",
+  //     monthlyRent: 1000,
+  //     town: "Dubai Town",
+  //     feature: "",
+  //     maximumSharing: 100,
+  //     district: "Dindigul",
+  //     image: null,
+  //   },
+  //   {
+  //     ownerName: "Hariharan",
+  //     monthlyRent: 2000,
+  //     town: "Amazon Forest",
+  //     feature: "",
+  //     maximumSharing: 100,
+  //     district: "Forest Main",
+  //     image: null,
+  //   },
+  //   {
+  //     ownerName: "Thirunelveli",
+  //     monthlyRent: 10000,
+  //     town: "Thirunelveli Cross Street",
+  //     feature: "",
+  //     maximumSharing: 100,
+  //     district: "Tirunelveli",
+  //     image: null,
+  //   },
+  // ];
 
   useEffect(() => {
     if (mount === 0 || match.state?.refresh) {
