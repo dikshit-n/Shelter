@@ -69,6 +69,7 @@ const HomePage = (props) => {
   }, []);
 
   const fetchHouses = () => {
+    console.log("fetching houses");
     fetchUsers("/server1/Home");
   };
 

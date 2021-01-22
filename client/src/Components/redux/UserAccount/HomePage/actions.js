@@ -13,16 +13,19 @@ export const fetchUsersFailure = (error) => ({
   error,
 });
 export const fetchUsers = (url) => {
+  console.log(url, "fetching");
   return (dispatch) => {
     axiosInstance
       .post(url)
       .then((res) => {
         console.log(res.data);
-        fetchUsersSuccess(res.data);
+        dispatch(fetchUsersSuccess(res.data));
       })
       .catch((err) => {
         console.log(err);
-        fetchUsersFailure(err.response?.statusText || "Something went wrong!");
+        dispatch(
+          fetchUsersFailure(err.response?.statusText || "Something went wrong!")
+        );
       });
   };
 };
