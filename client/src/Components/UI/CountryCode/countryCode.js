@@ -1,7 +1,6 @@
 import "./countryCode.css";
 var countries = require("country-data");
 const CountryCode = (props) => {
-  // console.log(countries.callingCodes.all);
   return (
     <div className="country-code">
       <select
