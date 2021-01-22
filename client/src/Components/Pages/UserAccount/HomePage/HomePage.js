@@ -7,7 +7,6 @@ import EmptyMessage from "../../../UI/EmptyMessage/EmptyMessage";
 import ErrorBox from "../../../UI/ErrorBox/ErrorBox";
 import EachHouse from "./EachHouse/EachHouse";
 import AsyncButton from "../../../UI/AsyncButton/AsyncButton";
-import { Modal } from "reactstrap";
 import { filterNumbers } from "../../../Utility/filterNumbers";
 import { numberWithComma } from "../../../Utility/numberWithComma";
 import EachField from "../../../UI/FormField/FormField";

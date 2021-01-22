@@ -1,6 +1,8 @@
 import "./countryCode.css";
 var countries = require("country-data");
+var { count } = require("countries-list");
 const CountryCode = (props) => {
+  console.log(count);
   // console.log(countries.callingCodes.all);
   return (
     <div className="country-code">

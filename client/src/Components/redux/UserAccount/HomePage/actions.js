@@ -20,7 +20,7 @@ export const fetchUsers = (url) => {
       .post(url)
       .then((res) => {
         console.log(res.data);
-        dispatch(fetchUsersSuccess(res.data));
+        dispatch(fetchUsersSuccess(res.data ? res.data.houses : []));
       })
       .catch((err) => {
         console.log(err);
