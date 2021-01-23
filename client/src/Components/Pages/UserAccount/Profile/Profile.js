@@ -10,6 +10,8 @@ import AsyncButton from "../../../UI/AsyncButton/AsyncButton";
 import ErrorBox from "../../../UI/ErrorBox/ErrorBox";
 import FormInfo from "../../../UI/FormInfo/FormInfo";
 import ProfileLoader from "./ProfileLoader/ProfileLoader";
+import { useDispatch } from "react-redux";
+import { upgradeAccount } from "../../../redux/Auth/Login/loginActions";
 
 let country_state_district = require("country_state_district");
 
@@ -31,6 +33,8 @@ const Profile = (props) => {
 
   // loading
   const [loading, setLoading] = useState(false);
+
+  const dispatch = useDispatch();
 
   // states for logo
   const [logoCache, setLogoCache] = useState(null);
@@ -266,6 +270,7 @@ const Profile = (props) => {
       .then((err) => {
         console.log(err);
         setStatus({ loading: false, status: "success" });
+        dispatch(upgradeAccount(formData.accountType));
         setTimeout(() => {
           setStatus({ loading: false, status: "" });
           setEdit(false);

@@ -8,6 +8,7 @@ import { axiosInstance } from "../../../Utility/axiosInstance";
 import HomeImageUpload from "../../../UI/HouseImageUpload/HouseImageUpload";
 import Slick from "../../../UI/Slick/Slick";
 import { numberWithComma } from "../../../Utility/numberWithComma";
+import { useSelector } from "react-redux";
 
 let country_state_district = require("country_state_district");
 
@@ -33,6 +34,7 @@ const AddHouse = (props) => {
   });
   const [error, setError] = useState(null);
   const [open, setOpen] = useState(false);
+  const show = useSelector((state) => state.login.data.userType === "owner");
 
   const changeHandler = ({ target: { name, value } }) => {
     const numberTypes = ["contact", "maximumSharing", "currentlyOccupied"];
@@ -193,7 +195,7 @@ const AddHouse = (props) => {
     setOpen(false);
   };
 
-  return (
+  return show ? (
     <>
       {open ? (
         <HomeImageUpload
@@ -232,9 +234,14 @@ const AddHouse = (props) => {
             Add
           </AsyncButton>
           <br />
+          <p style={{ textAlign: "left", color: "red" }}>{error}</p>
         </form>
       </MyCard>
     </>
+  ) : (
+    <MyCard className="add-house-form">
+      <h4>Upgrade To Owner Account To Add House</h4>
+    </MyCard>
   );
 };
 

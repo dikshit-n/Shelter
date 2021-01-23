@@ -11,11 +11,13 @@ import _3 from "../../../../../assets/demo3.jpg";
 import AsyncButton from "../../../../UI/AsyncButton/AsyncButton";
 import HouseDetailLoader from "./HouseDetailLoader/HouseDetailLoader";
 import ErrorBox from "../../../../UI/ErrorBox/ErrorBox";
+import { useSelector } from "react-redux";
 
 const HouseDetail = (props) => {
   const [data, setData] = useState({
     ownerName: "",
     monthlyRent: "",
+    rentalType: "",
     feature: "",
     maximumSharing: "",
     currentlyOccupied: "",
@@ -31,6 +33,7 @@ const HouseDetail = (props) => {
     loading: false,
     status: "",
   });
+  const block = useSelector((state) => state.login.data.userType === "owner");
 
   const params = useParams();
 
@@ -80,12 +83,22 @@ const HouseDetail = (props) => {
       value: data.feature,
     },
     {
+      displayName: "Rental Type",
+      value: data.rentalType,
+    },
+    {
       displayName: "Maximum Sharing",
       value: data.maximumSharing,
+      containerStyleWithLabel: {
+        display: data.rentalType === "Family" ? "none" : "block",
+      },
     },
     {
       displayName: "Currently Occupied",
       value: data.currentlyOccupied,
+      containerStyleWithLabel: {
+        display: data.rentalType === "Family" ? "none" : "block",
+      },
     },
     {
       displayName: "Street",
@@ -151,6 +164,7 @@ const HouseDetail = (props) => {
           <Slick items={data.images} />
         </div>
         <br />
+
         <br />
         {schema.map((el, index) => (
           <EachField
@@ -162,15 +176,17 @@ const HouseDetail = (props) => {
           />
         ))}
         <br />
-        <AsyncButton
-          className="bg-blue"
-          disabled={data.requested}
-          onClick={sendRequest}
-          loading={status.loading}
-          status={status.status}
-        >
-          {data.requested ? "Pending" : "Request"}
-        </AsyncButton>
+        {block ? null : (
+          <AsyncButton
+            className="bg-blue"
+            disabled={data.requested}
+            onClick={sendRequest}
+            loading={status.loading}
+            status={status.status}
+          >
+            {data.requested ? "Pending" : "Request"}
+          </AsyncButton>
+        )}
       </MyCard>
     </div>
   );

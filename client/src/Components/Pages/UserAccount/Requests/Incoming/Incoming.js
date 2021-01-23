@@ -8,6 +8,7 @@ import { fetchRequests } from "../../../../redux/UserAccount/Requests/actions";
 import { axiosInstance } from "../../../../Utility/axiosInstance";
 import RefreshButton from "../../../../UI/RefreshButton/RefreshButton";
 import HouseDetail from "./HouseDetail/HouseDetail";
+import EmptyMessage from "../../../../UI/EmptyMessage/EmptyMessage";
 var mount = 0;
 const Incoming = (props) => {
   const incomingId = uniqueId();
@@ -103,13 +104,17 @@ const Incoming = (props) => {
               className="refresh-button"
               loading={loading}
             />
-            <AnimatedList
-              // error={error?.length > 0 ? error : null}
-              loading={loading}
-              emptyMessage="No Incoming Requests"
-            >
-              {getList()}
-            </AnimatedList>
+            {getList().length === 0 ? (
+              <EmptyMessage message="No Requests" />
+            ) : (
+              <AnimatedList
+                // error={error?.length > 0 ? error : null}
+                loading={loading}
+                emptyMessage="No Incoming Requests"
+              >
+                {getList()}
+              </AnimatedList>
+            )}
           </div>
         </div>
         <div className="each-request-view-container">

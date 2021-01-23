@@ -24,6 +24,11 @@ export const loginSuccess = (data) => {
   };
 };
 
+export const upgradeAccount = (accountType) => ({
+  type: actionTypes.UPGRADEACCOUNT,
+  accountType,
+});
+
 export const logout = () => {
   deleteCookie("token");
   localStorage.removeItem("route");

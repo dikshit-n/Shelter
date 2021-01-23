@@ -1,13 +1,18 @@
+import { useSelector } from "react-redux";
 import { Redirect, Route } from "react-router";
 import Sidebar from "../../UI/Sidebar/Sidebar";
 import AddHouse from "./AddHouse/AddHouse";
 import HomePage from "./HomePage/HomePage";
 import HouseDetail from "./HomePage/HouseDetail/HouseDetail";
+import MyHouseDetail from "./MyHouses/HouseDetail/HouseDetail";
+import MyHouses from "./MyHouses/MyHouses";
 import Profile from "./Profile/Profile";
 import Requests from "./Requests/Requests";
 import "./UserAccount.css";
 
 const UserAccount = (props) => {
+  // const show = true;
+  const show = useSelector((state) => state.login.data.userType === "owner");
   var sidebarRoutes = [
     // {
     //   component: (
@@ -26,14 +31,21 @@ const UserAccount = (props) => {
     { name: "Profile", to: "/profile", icon: "fas fa-user" },
     { name: "Requests", to: "/requests", icon: "fas fa-paper-plane" },
     { name: "Add House", to: "/addhouse", icon: "fas fa-upload" },
+    show
+      ? { name: "My Houses", to: "/myhouses", icon: "fas fa-dollar-sign" }
+      : null,
     { name: "Logout", to: "/logout", icon: "fas fa-power-off" },
-  ];
+  ].filter((el) => el !== null);
 
   return (
     <div className="page-container">
       <Sidebar routes={sidebarRoutes} />
       <div className="page-content">
         <Route path="/requests" component={Requests} />
+        {show ? (
+          <Route path="/myhouses/:id" exact component={MyHouseDetail} />
+        ) : null}
+        {show ? <Route path="/myhouses" exact component={MyHouses} /> : null}
         <Route path="/addhouse" exact component={AddHouse} />
         <Route path="/profile" exact component={Profile} />
         <Route path="/home" exact component={HomePage} />

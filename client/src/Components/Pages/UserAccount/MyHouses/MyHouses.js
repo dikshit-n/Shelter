@@ -1,8 +1,8 @@
-import "./HomePage.css";
+import "./MyHouses.css";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router";
-import { fetchUsers } from "../../../redux/UserAccount/HomePage/actions";
+import { fetchMyHouses } from "../../../redux/UserAccount/MyHouses/actions";
 import EmptyMessage from "../../../UI/EmptyMessage/EmptyMessage";
 import ErrorBox from "../../../UI/ErrorBox/ErrorBox";
 import EachHouse from "./EachHouse/EachHouse";
@@ -19,7 +19,7 @@ let country_state_district = require("country_state_district");
 
 let districts = country_state_district.getDistrictsByStateId(32);
 
-const HomePage = (props) => {
+const MyHouses = (props) => {
   const [show, setShow] = useState(false);
   const [formData, setFormData] = useState({
     ownerName: "",
@@ -28,38 +28,38 @@ const HomePage = (props) => {
     maximumSharing: "",
     district: "",
   });
-  let { data, error, loading } = useSelector((state) => state.houses);
+  let { data, error, loading } = useSelector((state) => state.myHouses);
   const location = useLocation();
   const dispatch = useDispatch();
-  // data = [
-  //   {
-  //     ownerName: "Gokulnath",
-  //     monthlyRent: 1000,
-  //     town: "Dubai Town",
-  //     feature: "",
-  //     maximumSharing: 100,
-  //     district: "Dindigul",
-  //     image: null,
-  //   },
-  //   {
-  //     ownerName: "Hariharan",
-  //     monthlyRent: 2000,
-  //     town: "Amazon Forest",
-  //     feature: "",
-  //     maximumSharing: 100,
-  //     district: "Forest Main",
-  //     image: null,
-  //   },
-  //   {
-  //     ownerName: "Thirunelveli",
-  //     monthlyRent: 10000,
-  //     town: "Thirunelveli Cross Street",
-  //     feature: "",
-  //     maximumSharing: 100,
-  //     district: "Tirunelveli",
-  //     image: null,
-  //   },
-  // ];
+  data = [
+    {
+      ownerName: "Gokulnath",
+      monthlyRent: 1000,
+      town: "Dubai Town",
+      feature: "",
+      maximumSharing: 100,
+      district: "Dindigul",
+      image: null,
+    },
+    {
+      ownerName: "Hariharan",
+      monthlyRent: 2000,
+      town: "Amazon Forest",
+      feature: "",
+      maximumSharing: 100,
+      district: "Forest Main",
+      image: null,
+    },
+    {
+      ownerName: "Thirunelveli",
+      monthlyRent: 10000,
+      town: "Thirunelveli Cross Street",
+      feature: "",
+      maximumSharing: 100,
+      district: "Tirunelveli",
+      image: null,
+    },
+  ];
 
   useEffect(() => {
     if (mount === 0 || location.state?.refresh) {
@@ -70,7 +70,7 @@ const HomePage = (props) => {
 
   const fetchHouses = () => {
     console.log("fetching houses");
-    dispatch(fetchUsers("/server1/Home"));
+    dispatch(fetchMyHouses("/server1/myHouses"));
   };
 
   const changeHandler = ({ target: { name, value } }) => {
@@ -216,9 +216,10 @@ const HomePage = (props) => {
         </div>
         {loading ? (
           <div>loading...</div>
-        ) : error ? (
+        ) : /* error ? (
           <ErrorBox message={error} />
-        ) : afterFilter.length === 0 ? (
+        ) :  */
+        afterFilter.length === 0 ? (
           <EmptyMessage message={"No Houses Found"} />
         ) : (
           <>
@@ -232,4 +233,4 @@ const HomePage = (props) => {
   );
 };
 
-export default HomePage;
+export default MyHouses;

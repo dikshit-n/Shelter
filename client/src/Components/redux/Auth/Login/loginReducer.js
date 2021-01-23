@@ -8,6 +8,14 @@ var initialState = {
 
 const loginReducer = (state = initialState, actions) => {
   switch (actions.type) {
+    case actionTypes.UPGRADEACCOUNT:
+      return {
+        ...state,
+        data: {
+          ...state.data,
+          userType: actions.accountType,
+        },
+      };
     case actionTypes.LOGIN_START:
       return {
         ...state,

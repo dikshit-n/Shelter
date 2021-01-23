@@ -2,23 +2,31 @@ import { Redirect, Route, Switch } from "react-router";
 import Incoming from "./Incoming/Incoming";
 import Sent from "./Sent/Sent";
 import "./Requests.css";
-import RequestsNavigator from "./RequestsNavigator/RequestsNavigator";
+// import RequestsNavigator from "./RequestsNavigator/RequestsNavigator";
+import { useSelector } from "react-redux";
 
 const Requests = (props) => {
   const {
     match: { url },
   } = props;
-  const requestsNavigationRoutes = [
-    { name: "Incoming", to: url + "/incoming" },
-    { name: "Sent", to: url + "/sent" },
-  ];
+  // const requestsNavigationRoutes = [
+  //   { name: "Incoming", to: url + "/incoming" },
+  //   { name: "Sent", to: url + "/sent" },
+  // ];
+
+  const incoming = useSelector(
+    (state) => state.login.data.userType === "owner"
+  );
   console.log(url);
   return (
     <div className="height_100 requests-container">
-      <RequestsNavigator routes={requestsNavigationRoutes} />
+      {/* <RequestsNavigator routes={requestsNavigationRoutes} /> */}
       <Switch>
-        <Route path={url + "/sent"} component={Sent} />
-        <Route path={url + "/incoming"} component={Incoming} />
+        {incoming ? (
+          <Route path={url + "/incoming"} component={Incoming} />
+        ) : (
+          <Route path={url + "/sent"} component={Sent} />
+        )}
         <Redirect to={url + "/incoming"} />
       </Switch>
     </div>
