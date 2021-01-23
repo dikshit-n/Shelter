@@ -3,7 +3,7 @@ import { getCookie } from "./cookies";
 
 // creating axios instance
 export const axiosInstance = axios.create({
-  baseURL: "http://localhost:5000/",
+  baseURL: "http://localhost:6700/",
   // baseURL: "http://65.0.72.225:5000/api/",
   // baseURL: "https://cors-anywhere.herokuapp.com/http://65.0.72.225:5000",
   // baseURL: "http://localhost:5000",
