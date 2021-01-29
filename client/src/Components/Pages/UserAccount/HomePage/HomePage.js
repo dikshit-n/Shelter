@@ -12,6 +12,7 @@ import { numberWithComma } from "../../../Utility/numberWithComma";
 import EachField from "../../../UI/FormField/FormField";
 import ReactModal from "../../../UI/ReactModal/ReactModal";
 import { deleteEmptyKeys } from "../../../Utility/deleteEmptyKeys";
+import Loader from "./Loader";
 
 var mount = 0;
 
@@ -215,7 +216,7 @@ const HomePage = (props) => {
           </AsyncButton>
         </div>
         {loading ? (
-          <div>loading...</div>
+          <Loader />
         ) : error ? (
           <ErrorBox message={error} />
         ) : afterFilter.length === 0 ? (
