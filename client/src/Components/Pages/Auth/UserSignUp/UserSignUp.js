@@ -70,10 +70,11 @@ const UserSignUp = (props) => {
             status: "",
           });
         }, 500);
-        setCookie("token", res.data.token, {
-          expires: new Date(3030, 0, 1).toUTCString(),
-        });
-        dispatch(loginSuccess(res.data));
+        props.history.replace("auth/signin")
+        // setCookie("token", res.data.token, {
+        //   expires: new Date(3030, 0, 1).toUTCString(),
+        // });
+        // dispatch(loginSuccess(res.data));
       })
       .catch((err) => {
         console.log(err);

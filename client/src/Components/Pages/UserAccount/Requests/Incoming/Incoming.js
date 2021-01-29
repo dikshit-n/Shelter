@@ -12,13 +12,15 @@ import EmptyMessage from "../../../../UI/EmptyMessage/EmptyMessage";
 var mount = 0;
 const Incoming = (props) => {
   const incomingId = uniqueId();
-  var { data, error, loading } = useSelector((state) => state.requests);
+  var { incomingRequests, error, loading } = useSelector(
+    (state) => state.requests
+  );
   const dispatch = useDispatch();
-  data = [
-    { name: "Hariharan", contact: "90321930" },
-    { name: "Dikshit", contact: "9025077644" },
-    { name: "Mani", contact: "9999131313" },
-  ];
+  // data = [
+  //   { name: "Hariharan", contact: "90321930" },
+  //   { name: "Dikshit", contact: "9025077644" },
+  //   { name: "Mani", contact: "9999131313" },
+  // ];
 
   const [detailError, setDetailError] = useState(null);
 
@@ -43,7 +45,7 @@ const Incoming = (props) => {
   };
 
   const getList = () => {
-    return data.map((el, index) => (
+    return incomingRequests.map((el, index) => (
       <EachRequest
         {...el}
         clickHandler={clickHandler}

@@ -195,6 +195,8 @@ const AddHouse = (props) => {
     setOpen(false);
   };
 
+  console.log(show);
+
   return show ? (
     <>
       {open ? (

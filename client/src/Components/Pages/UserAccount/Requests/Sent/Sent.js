@@ -10,13 +10,13 @@ import RefreshButton from "../../../../UI/RefreshButton/RefreshButton";
 var mount = 0;
 const Sent = (props) => {
   const incomingId = uniqueId();
-  var { data, error, loading } = useSelector((state) => state.requests);
+  var { sentRequests, error, loading } = useSelector((state) => state.requests);
   const dispatch = useDispatch();
-  data = [
-    { name: "Hariharan", contact: "90321930" },
-    { name: "Dikshit", contact: "9025077644" },
-    { name: "Mani", contact: "9999131313" },
-  ];
+  // data = [
+  //   { name: "Hariharan", contact: "90321930" },
+  //   { name: "Dikshit", contact: "9025077644" },
+  //   { name: "Mani", contact: "9999131313" },
+  // ];
 
   const [acceptStatus, setAcceptStatus] = useState({
     loading: false,
@@ -39,7 +39,7 @@ const Sent = (props) => {
   };
 
   const getList = () => {
-    return data.map((el, index) => (
+    return sentRequests.map((el, index) => (
       <EachRequest
         {...el}
         clickHandler={() => {}}

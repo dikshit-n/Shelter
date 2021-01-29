@@ -27,7 +27,7 @@ const Requests = (props) => {
         ) : (
           <Route path={url + "/sent"} component={Sent} />
         )}
-        <Redirect to={url + "/incoming"} />
+        <Redirect to={url + (incoming ? "/incoming" : "/sent")} />
       </Switch>
     </div>
   );
