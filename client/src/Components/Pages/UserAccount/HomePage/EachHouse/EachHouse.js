@@ -8,7 +8,7 @@ const EachHouse = (props) => {
   return (
     <div
       className="each-house flex-row hover-grow"
-      onClick={() => history.push(`/home/${props.houseId || "afokdk"}`)}
+      onClick={() => history.push(`/home/${props.houseId}`)}
     >
       <div
         style={{ backgroundImage: `url(${props.image || DefaultHouse})` }}

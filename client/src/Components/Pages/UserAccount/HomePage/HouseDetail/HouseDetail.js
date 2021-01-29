@@ -119,9 +119,10 @@ const HouseDetail = (props) => {
   ];
 
   const sendRequest = () => {
+    console.log(params.id);
     setStatus({ loading: true, status: "" });
     axiosInstance
-      .post("/server1/SendRequest", { houseId: params.houseId })
+      .post("/server1/SendRequest", { houseId: params.id })
       .then((res) => {
         console.log(res.data);
         setStatus({ loading: false, status: "success" });
@@ -139,18 +140,17 @@ const HouseDetail = (props) => {
 
   return loading ? (
     <HouseDetailLoader />
+  ) : error ? (
+    <>
+      <ErrorBox message={error} />
+      <AsyncButton
+        className="blue back-button bck-transparent"
+        onClick={() => props.history.goBack()}
+      >
+        <i className="fas fa-chevron-left"></i> Back
+      </AsyncButton>
+    </>
   ) : (
-    // : error ? (
-    //   <>
-    //     <ErrorBox message={error} />
-    //     <AsyncButton
-    //       className="blue back-button bck-transparent"
-    //       onClick={() => props.history.goBack()}
-    //     >
-    //       <i className="fas fa-chevron-left"></i> Back
-    //     </AsyncButton>
-    //   </>
-    // )
     <div className="house-detail">
       <MyCard className="house-details-container">
         <AsyncButton
