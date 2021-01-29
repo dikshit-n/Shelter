@@ -4,7 +4,7 @@ const initialState = {
   error: "",
   incomingRequests: [],
   sentRequests: [],
-  loading: false,
+  loading: true,
 };
 
 const requestsReducer = (state = initialState, actions) => {

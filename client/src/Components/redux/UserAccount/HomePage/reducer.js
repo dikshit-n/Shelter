@@ -1,7 +1,7 @@
 import * as actionTypes from "../../constants";
 
 const initialReducer = {
-  loading: false,
+  loading: true,
   error: null,
   data: [],
 };
