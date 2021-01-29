@@ -121,7 +121,7 @@ const HouseDetail = (props) => {
   const sendRequest = () => {
     setStatus({ loading: true, status: "" });
     axiosInstance
-      .post("/sendrequest", { houseId: params.houseId })
+      .post("/server1/SendRequest", { houseId: params.houseId })
       .then((res) => {
         console.log(res.data);
         setStatus({ loading: false, status: "success" });
