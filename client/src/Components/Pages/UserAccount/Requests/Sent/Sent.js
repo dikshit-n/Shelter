@@ -38,7 +38,7 @@ const Sent = (props) => {
     dispatch(fetchRequests("/server1/sentRequests"));
     console.log("Data Format", {
       "route-I-am-Posting": "/server1/sentRequests",
-      incomingRequests: [
+      sentRequests: [
         { name: "...", contact: "...", requestId: "...", image: "..." },
         { name: "...", contact: "...", requestId: "...", image: "..." },
       ],
