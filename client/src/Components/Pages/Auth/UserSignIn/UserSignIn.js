@@ -59,6 +59,7 @@ const UserSignIn = (props) => {
         setCookie("token", res.data.token, {
           expires: new Date(3030, 0, 1).toUTCString(),
         });
+        setCookie("userType", res.data.userType);
         props.loginSuccess(res.data);
       })
       .catch((err) => {

@@ -45,8 +45,9 @@ export const checkAuthStatus = () => {
   return (dispatch) => {
     dispatch(loginStart());
     let token = getCookie("token");
+    let userType = getCookie("userType");
     if (token) {
-      dispatch(loginSuccess({ token: token }));
+      dispatch(loginSuccess({ token: token, userType }));
     } else {
       dispatch(loginFailure());
     }
