@@ -7,6 +7,7 @@ const RefreshButton = (props) => {
       onClick={props.onClick}
       disabled={props.loading}
       className={classNames.join(" ")}
+      style={props.style}
     >
       <svg
         className="icon"

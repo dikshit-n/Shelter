@@ -13,6 +13,7 @@ import EachField from "../../../UI/FormField/FormField";
 import ReactModal from "../../../UI/ReactModal/ReactModal";
 import { deleteEmptyKeys } from "../../../Utility/deleteEmptyKeys";
 import Loader from "./Loader";
+import RefreshButton from "../../../UI/RefreshButton/RefreshButton";
 
 var mount = 0;
 
@@ -32,36 +33,6 @@ const HomePage = (props) => {
   let { data, error, loading } = useSelector((state) => state.houses);
   const location = useLocation();
   const dispatch = useDispatch();
-  // data = [
-  //   {
-  //     ownerName: "Gokulnath",
-  //     monthlyRent: 1000,
-  //     town: "Dubai Town",
-  //     feature: "",
-  //     maximumSharing: 100,
-  //     district: "Dindigul",
-  //     image: null,
-  //   },
-  //   {
-  //     ownerName: "Hariharan",
-  //     monthlyRent: 2000,
-  //     town: "Amazon Forest",
-  //     feature: "",
-  //     maximumSharing: 100,
-  //     district: "Forest Main",
-  //     image: null,
-  //   },
-  //   {
-  //     ownerName: "Thirunelveli",
-  //     monthlyRent: 10000,
-  //     town: "Thirunelveli Cross Street",
-  //     feature: "",
-  //     maximumSharing: 100,
-  //     district: "Tirunelveli",
-  //     image: null,
-  //   },
-  // ];
-
   useEffect(() => {
     if (mount === 0 || location.state?.refresh) {
       mount = 1;
@@ -214,6 +185,13 @@ const HomePage = (props) => {
           >
             Add Filters
           </AsyncButton>
+          &nbsp;&nbsp;&nbsp;
+          <RefreshButton
+            onClick={fetchHouses}
+            style={{ marginTop: 23 }}
+            className="refresh-button"
+            loading={loading}
+          />
         </div>
         {loading ? (
           <Loader />

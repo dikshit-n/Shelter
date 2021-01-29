@@ -13,6 +13,7 @@ import EachField from "../../../UI/FormField/FormField";
 import ReactModal from "../../../UI/ReactModal/ReactModal";
 import { deleteEmptyKeys } from "../../../Utility/deleteEmptyKeys";
 import Loader from "../HomePage/Loader";
+import RefreshButton from "../../../UI/RefreshButton/RefreshButton";
 
 var mount = 0;
 
@@ -214,6 +215,13 @@ const MyHouses = (props) => {
           >
             Add Filters
           </AsyncButton>
+          &nbsp;&nbsp;&nbsp;
+          <RefreshButton
+            onClick={fetchHouses}
+            style={{ marginTop: 23 }}
+            className="refresh-button"
+            loading={loading}
+          />
         </div>
         {loading ? (
           <Loader />
