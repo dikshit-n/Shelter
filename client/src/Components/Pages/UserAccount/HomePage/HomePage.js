@@ -26,7 +26,7 @@ const HomePage = (props) => {
   const [formData, setFormData] = useState({
     ownerName: "",
     monthlyRent: "",
-    feature: "",
+    // feature: "",
     maximumSharing: "",
     district: "",
   });
@@ -76,14 +76,14 @@ const HomePage = (props) => {
       containerClassName: "each-house-detail",
       required: true,
     },
-    {
-      displayName: "Feature",
-      value: formData.feature,
-      name: "feature",
-      onChange: changeHandler,
-      containerClassName: "each-house-detail",
-      required: true,
-    },
+    // {
+    //   displayName: "Feature",
+    //   value: formData.feature,
+    //   name: "feature",
+    //   onChange: changeHandler,
+    //   containerClassName: "each-house-detail",
+    //   required: true,
+    // },
     {
       displayName: "Maximum Sharing",
       value: formData.maximumSharing,
@@ -146,7 +146,7 @@ const HomePage = (props) => {
     setFormData({
       ownerName: "",
       monthlyRent: "",
-      feature: "",
+      // feature: "",
       maximumSharing: "",
       district: "",
     });
