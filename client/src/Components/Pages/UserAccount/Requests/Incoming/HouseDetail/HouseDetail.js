@@ -57,8 +57,13 @@ const HouseDetail = (props) => {
 
   const acceptRequest = () => {
     setStatus({ loading: true, status: "" });
+    console.log("Data Format", {
+      "route-I-am-Posting": "/server1/acceptrequest",
+      "what-I-post": { requestId: "..." },
+      "In-res.data-I-need-this": "status-200 (on success)",
+    });
     axiosInstance
-      .post("/acceptrequest", { houseId: data.houseId })
+      .post("/acceptrequest", { requestId: data.requestId })
       .then((res) => {
         console.log(res.data);
         setStatus({ loading: false, status: "success" });

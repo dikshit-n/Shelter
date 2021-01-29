@@ -41,7 +41,14 @@ const Incoming = (props) => {
   }, []);
 
   const fetchData = () => {
-    dispatch(fetchRequests("/requests"));
+    console.log("Data Format", {
+      "route-I-am-Posting": "/server1/incomingRequests",
+      incomingRequests: [
+        { name: "...", contact: "...", requestId: "...", image: "..." },
+        { name: "...", contact: "...", requestId: "...", image: "..." },
+      ],
+    });
+    dispatch(fetchRequests("/server1/incomingRequests"));
   };
 
   const getList = () => {
@@ -60,8 +67,21 @@ const Incoming = (props) => {
     console.log(id);
     open();
     setEachDetailLoading(true);
+    console.log("Data Format", {
+      "route-I-am-Posting": "/server1/detailedview",
+      "what-I-post": { requestId: "..." },
+      "In-res.data-I-need-this": {
+        name: "...",
+        street: "...",
+        town: "...",
+        district: "...",
+        contact: "...",
+        logo: "...",
+        requestId: "...",
+      },
+    });
     axiosInstance
-      .post("/detailedview", { requestId: id })
+      .post("/server1/detailedview", { requestId: id })
       .then((res) => {
         console.log(res.data);
         setEachDetailLoading(false);

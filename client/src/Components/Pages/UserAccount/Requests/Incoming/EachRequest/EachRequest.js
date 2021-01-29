@@ -13,6 +13,11 @@ const EachRequest = (props) => {
   const acceptRequest = (id) => {
     console.log(id);
     setAcceptStatus({ loading: true, status: "" });
+    console.log("Data Format", {
+      "route-I-am-Posting": "/server1/acceptrequest",
+      "what-I-post": { requestId: "..." },
+      "In-res.data-I-need-this": "status-200 (on success)",
+    });
     axiosInstance
       .post("/acceptrequest", { requestId: id })
       .then((res) => {

@@ -35,7 +35,14 @@ const Sent = (props) => {
   }, []);
 
   const fetchData = () => {
-    dispatch(fetchRequests("/requests"));
+    dispatch(fetchRequests("/server1/sentRequests"));
+    console.log("Data Format", {
+      "route-I-am-Posting": "/server1/sentRequests",
+      incomingRequests: [
+        { name: "...", contact: "...", requestId: "...", image: "..." },
+        { name: "...", contact: "...", requestId: "...", image: "..." },
+      ],
+    });
   };
 
   const getList = () => {
