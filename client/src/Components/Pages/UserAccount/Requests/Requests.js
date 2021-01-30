@@ -18,7 +18,6 @@ const Requests = (props) => {
   const incoming = useSelector(
     (state) => state.login.data.userType === "owner"
   );
-  console.log(url);
   return (
     <div className="height_100 requests-container">
       {/* <RequestsNavigator routes={requestsNavigationRoutes} /> */}

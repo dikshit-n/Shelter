@@ -94,6 +94,9 @@ const HomePage = (props) => {
       onChange: changeHandler,
       containerClassName: "each-house-detail",
       required: true,
+      containerStyleWithLabel: {
+        display: formData.rentalType === "Family" ? "none" : "block",
+      },
     },
     {
       type: "select",

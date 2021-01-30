@@ -2,6 +2,7 @@ import "./EachHouse.css";
 import DefaultHouse from "../../../../../../assets/default-house-image.jpg";
 
 const EachHouse = (props) => {
+  console.log(props);
   return (
     <div
       className="each-house flex-row hover-grow"
