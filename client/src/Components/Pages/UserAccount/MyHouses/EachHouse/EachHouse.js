@@ -26,6 +26,11 @@ const EachHouse = (props) => {
               <strong>₹ {numberWithComma(props.monthlyRent)}</strong>
             </small>
           </div>
+          <div>
+            <small className="text-left">
+              <strong>{props.rentalType}</strong>
+            </small>
+          </div>
         </div>
         <div className="each-house-description address">
           <div>
