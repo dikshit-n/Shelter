@@ -10,6 +10,7 @@ import Profile from "./Profile/Profile";
 import Requests from "./Requests/Requests";
 import RoomMates from "./RoomMates/RoomMates";
 import "./UserAccount.css";
+import appLogo from "../../../assets/app-logo.png";
 
 const UserAccount = (props) => {
   // const show = true;
@@ -20,13 +21,13 @@ const UserAccount = (props) => {
     (state) => state.login.data.userType === "user"
   );
   var sidebarRoutes = [
-    // {
-    //   component: (
-    //     <div className="sidebar-logo">
-    //       <img src={schoolLogo} alt=" " />
-    //     </div>
-    //   ),
-    // },
+    {
+      component: (
+        <div className="sidebar-logo">
+          <img src={appLogo} alt=" " />
+        </div>
+      ),
+    },
     // {
     //   profile: {
     //     name: "Mani",

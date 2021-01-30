@@ -39,6 +39,7 @@ const Houses = (props) => {
   };
 
   const openHouse = (id) => {
+    console.log(id);
     setRequest({ id, show: true });
   };
 
