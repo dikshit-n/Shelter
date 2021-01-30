@@ -20,7 +20,7 @@ export const fetchMyHouses = (url) => {
       .post(url)
       .then((res) => {
         console.log(res.data);
-        dispatch(fetchMyHousesSuccess(res.data ? res.data.houses : []));
+        dispatch(fetchMyHousesSuccess(res.data ? res.data.myHouses : []));
       })
       .catch((err) => {
         console.log(err);
