@@ -29,7 +29,7 @@ export const fetchRequests = (url, id) => {
       .post(url, { houseId: id })
       .then((res) => {
         console.log(res.data);
-        dispatch(fetchRequestsSuccess());
+        dispatch(fetchRequestsSuccess(res.data));
       })
       .catch((err) => {
         console.log(err);
