@@ -24,6 +24,7 @@ const fetchRequestsFailure = (error) => {
 export const fetchRequests = (url, id) => {
   return (dispatch) => {
     dispatch(fetchRequestsStart());
+    console.log("calling " + url);
     axiosInstance
       .post(url, { houseId: id })
       .then((res) => {

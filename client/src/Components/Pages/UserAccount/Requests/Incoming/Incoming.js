@@ -11,7 +11,7 @@ import HouseDetail from "./HouseDetail/HouseDetail";
 import EmptyMessage from "../../../../UI/EmptyMessage/EmptyMessage";
 import Loader from "./Loader";
 import AsyncButton from "../../../../UI/AsyncButton/AsyncButton";
-var mount = 0;
+
 const Incoming = (props) => {
   const incomingId = uniqueId();
   var { incomingRequests, error, loading } = useSelector(
@@ -36,6 +36,7 @@ const Incoming = (props) => {
   const [eachDetail, setEachDetail] = useState({});
 
   useEffect(() => {
+    console.log("hello world");
     fetchData();
   }, []);
 

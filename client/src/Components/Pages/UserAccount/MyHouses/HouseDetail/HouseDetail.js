@@ -41,6 +41,10 @@ const HouseDetail = (props) => {
     loading: false,
     status: "",
   });
+  const [deleteStatus, setDeleteStatus] = useState({
+    loading: false,
+    status: "",
+  });
 
   const params = useParams();
 
@@ -48,7 +52,7 @@ const HouseDetail = (props) => {
     console.log(params.id);
     setLoading(true);
     axiosInstance
-      .post(`/server1/visit`, { houseId: params.id })
+      .post(`/server1/MyHouseDetails`, { houseId: params.id })
       .then((res) => {
         console.log(res.data);
         setLoading(false);
@@ -186,7 +190,7 @@ const HouseDetail = (props) => {
     setFormError(null);
     setStatus({ loading: true, status: "" });
     axiosInstance
-      .post("/updatemyhouse", { ...data, houseId: params.houseId })
+      .post("/server1/UpdateDetails", { ...data, houseId: params.houseId })
       .then((res) => {
         console.log(res.data);
         setStatus({ loading: false, status: "success" });
@@ -201,6 +205,28 @@ const HouseDetail = (props) => {
       .catch((err) => {
         console.log(err);
         setStatus({ loading: false, status: "error" });
+        setTimeout(() => setStatus({ loading: false, status: "" }), 1000);
+        setFormError(err.response?.statusText || "Something went wrong !");
+      });
+  };
+
+  const deleteHouse = () => {
+    setDeleteStatus({ loaing: true, status: "" });
+    axiosInstance
+      .post("/server1/DeleteHouse", { houseId: params.houseId })
+      .then((res) => {
+        setDeleteStatus({ loading: false, status: "success" });
+        setTimeout(() => {
+          setDeleteStatus({ loading: false, status: "" });
+          props.history.push({
+            pathname: "/myhouses",
+            state: { refresh: true },
+          });
+        }, 500);
+      })
+      .catch((err) => {
+        console.log(err);
+        setDeleteStatus({ loading: false, status: "error" });
         setTimeout(() => setStatus({ loading: false, status: "" }), 1000);
         setFormError(err.response?.statusText || "Something went wrong !");
       });
@@ -295,6 +321,15 @@ const HouseDetail = (props) => {
               status={status.status}
             >
               Update
+            </AsyncButton>
+            &nbsp;&nbsp;&nbsp;
+            <AsyncButton
+              className="bg-blue"
+              type="submit"
+              loading={deleteStatus.loading}
+              status={deleteStatus.status}
+            >
+              <i className="fas fa-trash-alt" /> &nbsp;&nbsp;Update
             </AsyncButton>
             <br />
             <p style={{ color: "red", textAlign: "left" }}>{formError}</p>

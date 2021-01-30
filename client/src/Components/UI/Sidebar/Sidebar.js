@@ -84,6 +84,7 @@ const Sidebar = (props) => {
       <div className="s-layout__sidebar">
         <div className="s-layout_header">
           <div className="s-layout_heading">
+            {props.heading}
             {props.topRightRoutes && (
               <div className="top-right-icons">
                 {props.topRightRoutes.map((el, index) =>

@@ -47,9 +47,15 @@ const UserAccount = (props) => {
     { name: "Logout", to: "/logout", icon: "fas fa-power-off" },
   ].filter((el) => el !== null);
 
+  const heading = (
+    <div className="app-heading">
+      <div className="top-logo"></div>
+    </div>
+  );
+
   return (
     <div className="page-container">
-      <Sidebar routes={sidebarRoutes} />
+      <Sidebar routes={sidebarRoutes} heading={heading} />
       <div className="page-content">
         <Route path="/requests" component={Requests} />
         {addHouse ? (
