@@ -18,19 +18,19 @@ const Houses = (props) => {
     axiosInstance
       .get("/server1/myhouses")
       .then((res) => {
-        console.log(res.data);
+        console.log(res.data.myHouses);
         setLoading(false);
-        setHouses([...res.data]);
+        setHouses([...res.data.myHouses]);
       })
       .catch((err) => {
         console.log(err);
         setLoading(false);
-        // setError(true);
-        setHouses([
-          { image: null, address: "manitheru" },
-          { image: null, address: "manitheru" },
-          { image: null, address: "manitheru" },
-        ]);
+        setError(true);
+        // setHouses([
+        //   { image: null, address: "manitheru" },
+        //   { image: null, address: "manitheru" },
+        //   { image: null, address: "manitheru" },
+        // ]);
       });
   }, []);
 
