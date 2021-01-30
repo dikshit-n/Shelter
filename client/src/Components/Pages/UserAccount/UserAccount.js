@@ -17,7 +17,7 @@ const UserAccount = (props) => {
     (state) => state.login.data.userType === "owner"
   );
   const roomMates = useSelector(
-    (state) => state.login.data.userType === "user" || true
+    (state) => state.login.data.userType === "user"
   );
   var sidebarRoutes = [
     // {
