@@ -12,4 +12,9 @@
   height: 50px;
   border-radius: 50%;
   background-color: white;
+  margin: auto 20px;
+}
+
+.app-heading {
+  color: rgb(247, 247, 247);
 }
