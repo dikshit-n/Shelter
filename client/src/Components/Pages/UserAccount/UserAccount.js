@@ -50,7 +50,7 @@ const UserAccount = (props) => {
   const heading = (
     <div className="app-heading flex-vertical-center flex-row">
       <div className="top-logo"></div>
-      <strong>Rent it when u can't own it !</strong>
+      <strong>Rent it when you can't own it !</strong>
     </div>
   );
 
