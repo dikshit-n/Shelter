@@ -4,6 +4,7 @@ import Sent from "./Sent/Sent";
 import "./Requests.css";
 // import RequestsNavigator from "./RequestsNavigator/RequestsNavigator";
 import { useSelector } from "react-redux";
+import Houses from "./Incoming/houses";
 
 const Requests = (props) => {
   const {
@@ -23,7 +24,7 @@ const Requests = (props) => {
       {/* <RequestsNavigator routes={requestsNavigationRoutes} /> */}
       <Switch>
         {incoming ? (
-          <Route path={url + "/incoming"} component={Incoming} />
+          <Route path={url + "/incoming"} component={Houses} />
         ) : (
           <Route path={url + "/sent"} component={Sent} />
         )}

@@ -1,0 +1,39 @@
+.house-details-container {
+  flex: 1;
+}
+
+.house-details-container > .each-detail {
+  height: fit-content;
+  margin: auto 20px;
+}
+
+.each-house-description {
+  margin: 0 10px;
+}
+
+.each-house {
+  width: 100%;
+  max-width: 600px;
+  margin: 10px;
+  text-align: left;
+  background: white;
+  padding: 20px;
+  border-radius: 20px;
+  max-height: fit-content;
+  box-shadow: 9px 9px 16px rgb(163, 177, 198, 0.6),
+    -9px -9px 16px rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+}
+
+.each-house > .house-image {
+  width: 100px;
+  height: 80px;
+  margin: 5px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 10px;
+}
+
+.address {
+  max-width: 200px;
+}

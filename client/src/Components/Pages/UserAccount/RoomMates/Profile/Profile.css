@@ -1,0 +1,19 @@
+.profile-logo {
+  width: 150px;
+  height: 150px;
+  min-height: 150px !important;
+  max-height: 150px !important;
+  background-size: cover;
+  background-position: center;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.profile-logo-container {
+  width: fit-content;
+  max-width: 100%;
+  min-height: fit-content;
+  margin: 20px 0;
+  max-height: 200px;
+  height: 160px;
+}

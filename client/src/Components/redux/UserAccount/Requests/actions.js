@@ -21,11 +21,11 @@ const fetchRequestsFailure = (error) => {
   };
 };
 
-export const fetchRequests = (url) => {
+export const fetchRequests = (url, id) => {
   return (dispatch) => {
     dispatch(fetchRequestsStart());
     axiosInstance
-      .get(url)
+      .post(url, { houseId: id })
       .then((res) => {
         console.log(res.data);
         dispatch(fetchRequestsSuccess());

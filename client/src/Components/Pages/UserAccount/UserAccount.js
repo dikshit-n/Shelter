@@ -8,11 +8,17 @@ import MyHouseDetail from "./MyHouses/HouseDetail/HouseDetail";
 import MyHouses from "./MyHouses/MyHouses";
 import Profile from "./Profile/Profile";
 import Requests from "./Requests/Requests";
+import RoomMates from "./RoomMates/RoomMates";
 import "./UserAccount.css";
 
 const UserAccount = (props) => {
   // const show = true;
-  const show = useSelector((state) => state.login.data.userType === "owner");
+  const addHouse = useSelector(
+    (state) => state.login.data.userType === "owner"
+  );
+  const roomMates = useSelector(
+    (state) => state.login.data.userType === "user" || true
+  );
   var sidebarRoutes = [
     // {
     //   component: (
@@ -31,8 +37,11 @@ const UserAccount = (props) => {
     { name: "Profile", to: "/profile", icon: "fas fa-user" },
     { name: "Requests", to: "/requests", icon: "fas fa-paper-plane" },
     { name: "Add House", to: "/addhouse", icon: "fas fa-upload" },
-    show
+    addHouse
       ? { name: "My Houses", to: "/myhouses", icon: "fas fa-dollar-sign" }
+      : null,
+    roomMates
+      ? { name: "Room Mates", to: "/roommates", icon: "fas fa-user-friends" }
       : null,
     { name: "Logout", to: "/logout", icon: "fas fa-power-off" },
   ].filter((el) => el !== null);
@@ -42,10 +51,13 @@ const UserAccount = (props) => {
       <Sidebar routes={sidebarRoutes} />
       <div className="page-content">
         <Route path="/requests" component={Requests} />
-        {show ? (
+        {addHouse ? (
           <Route path="/myhouses/:id" exact component={MyHouseDetail} />
         ) : null}
-        {show ? <Route path="/myhouses" exact component={MyHouses} /> : null}
+        {roomMates ? <Route path="/roommates" component={RoomMates} /> : null}
+        {addHouse ? (
+          <Route path="/myhouses" exact component={MyHouses} />
+        ) : null}
         <Route path="/addhouse" exact component={AddHouse} />
         <Route path="/profile" exact component={Profile} />
         <Route path="/home" exact component={HomePage} />

@@ -7,6 +7,8 @@ import { useEffect, useState } from "react";
 import { fetchRequests } from "../../../../redux/UserAccount/Requests/actions";
 import { axiosInstance } from "../../../../Utility/axiosInstance";
 import RefreshButton from "../../../../UI/RefreshButton/RefreshButton";
+import Loader from "../Incoming/Loader";
+import EmptyMessage from "../../../../UI/EmptyMessage/EmptyMessage";
 var mount = 0;
 const Sent = (props) => {
   const incomingId = uniqueId();
@@ -105,13 +107,18 @@ const Sent = (props) => {
               className="refresh-button"
               loading={loading}
             />
-            <AnimatedList
-              // error={error?.length > 0 ? error : null}
-              loading={loading}
-              emptyMessage="No Incoming Requests"
-            >
-              {getList()}
-            </AnimatedList>
+            {loading ? (
+              <Loader />
+            ) : getList().length === 0 ? (
+              <EmptyMessage message="No Requests Sent" />
+            ) : (
+              <AnimatedList
+                // error={error?.length > 0 ? error : null}
+                loading={loading}
+              >
+                {getList()}
+              </AnimatedList>
+            )}
           </div>
         </div>
         <div className="each-request-view-container"></div>

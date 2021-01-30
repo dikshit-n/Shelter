@@ -9,6 +9,8 @@ import { axiosInstance } from "../../../../Utility/axiosInstance";
 import RefreshButton from "../../../../UI/RefreshButton/RefreshButton";
 import HouseDetail from "./HouseDetail/HouseDetail";
 import EmptyMessage from "../../../../UI/EmptyMessage/EmptyMessage";
+import Loader from "./Loader";
+import AsyncButton from "../../../../UI/AsyncButton/AsyncButton";
 var mount = 0;
 const Incoming = (props) => {
   const incomingId = uniqueId();
@@ -48,7 +50,7 @@ const Incoming = (props) => {
         { name: "...", contact: "...", requestId: "...", image: "..." },
       ],
     });
-    dispatch(fetchRequests("/server1/incomingRequests"));
+    dispatch(fetchRequests("/server1/incomingRequests", props.id));
   };
 
   const getList = () => {
@@ -121,21 +123,38 @@ const Incoming = (props) => {
             }}
             className="view-requests-list"
           >
+            <AsyncButton
+              className="blue back-button bck-transparent"
+              style={{
+                position: "absolute",
+                left: 20,
+                top: -70,
+                zIndex: 10,
+              }}
+              onClick={props.close}
+            >
+              <i className="fas fa-chevron-left"></i> Back
+            </AsyncButton>
             <RefreshButton
               onClick={fetchData}
               className="refresh-button"
               loading={loading}
             />
-            {getList().length === 0 ? (
-              <EmptyMessage message="No Requests" />
+
+            {loading ? (
+              <Loader />
+            ) : getList().length === 0 ? (
+              <EmptyMessage message="No Incoming Requests" />
             ) : (
-              <AnimatedList
-                // error={error?.length > 0 ? error : null}
-                loading={loading}
-                emptyMessage="No Incoming Requests"
-              >
-                {getList()}
-              </AnimatedList>
+              <>
+                <AnimatedList
+                  // error={error?.length > 0 ? error : null}
+                  loading={loading}
+                  emptyMessage="No Incoming Requests"
+                >
+                  {getList()}
+                </AnimatedList>
+              </>
             )}
           </div>
         </div>
