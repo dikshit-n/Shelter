@@ -33,35 +33,35 @@ const MyHouses = (props) => {
   let { data, error, loading } = useSelector((state) => state.myHouses);
   const location = useLocation();
   const dispatch = useDispatch();
-  data = [
-    {
-      ownerName: "Gokulnath",
-      monthlyRent: 1000,
-      town: "Dubai Town",
-      feature: "",
-      maximumSharing: 100,
-      district: "Dindigul",
-      image: null,
-    },
-    {
-      ownerName: "Hariharan",
-      monthlyRent: 2000,
-      town: "Amazon Forest",
-      feature: "",
-      maximumSharing: 100,
-      district: "Forest Main",
-      image: null,
-    },
-    {
-      ownerName: "Thirunelveli",
-      monthlyRent: 10000,
-      town: "Thirunelveli Cross Street",
-      feature: "",
-      maximumSharing: 100,
-      district: "Tirunelveli",
-      image: null,
-    },
-  ];
+  // data = [
+  //   {
+  //     ownerName: "Gokulnath",
+  //     monthlyRent: 1000,
+  //     town: "Dubai Town",
+  //     feature: "",
+  //     maximumSharing: 100,
+  //     district: "Dindigul",
+  //     image: null,
+  //   },
+  //   {
+  //     ownerName: "Hariharan",
+  //     monthlyRent: 2000,
+  //     town: "Amazon Forest",
+  //     feature: "",
+  //     maximumSharing: 100,
+  //     district: "Forest Main",
+  //     image: null,
+  //   },
+  //   {
+  //     ownerName: "Thirunelveli",
+  //     monthlyRent: 10000,
+  //     town: "Thirunelveli Cross Street",
+  //     feature: "",
+  //     maximumSharing: 100,
+  //     district: "Tirunelveli",
+  //     image: null,
+  //   },
+  // ];
 
   useEffect(() => {
     if (mount === 0 || location.state?.refresh) {
@@ -72,7 +72,7 @@ const MyHouses = (props) => {
 
   const fetchHouses = () => {
     console.log("fetching houses");
-    dispatch(fetchMyHouses("/server1/myHouses"));
+    dispatch(fetchMyHouses("/server1/MyHouses"));
   };
 
   const changeHandler = ({ target: { name, value } }) => {
@@ -225,10 +225,9 @@ const MyHouses = (props) => {
         </div>
         {loading ? (
           <Loader />
-        ) : /* error ? (
+        ) : error ? (
           <ErrorBox message={error} />
-        ) :  */
-        afterFilter.length === 0 ? (
+        ) : afterFilter.length === 0 ? (
           <EmptyMessage message={"No Houses Found"} />
         ) : (
           <>
