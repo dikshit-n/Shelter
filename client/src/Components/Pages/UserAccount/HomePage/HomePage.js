@@ -24,7 +24,7 @@ let districts = country_state_district.getDistrictsByStateId(32);
 const HomePage = (props) => {
   const [show, setShow] = useState(false);
   const [formData, setFormData] = useState({
-    ownerName: "",
+    rentalType: "",
     monthlyRent: "",
     // feature: "",
     maximumSharing: "",
@@ -60,9 +60,9 @@ const HomePage = (props) => {
 
   var schema = [
     {
-      displayName: "Owner Name",
-      value: formData.ownerName,
-      name: "ownerName",
+      displayName: "Rental Type",
+      value: formData.rentalType,
+      name: "rentalType",
       onChange: changeHandler,
       containerClassName: "each-house-detail",
       required: true,
@@ -144,7 +144,7 @@ const HomePage = (props) => {
 
   const clearFilters = () => {
     setFormData({
-      ownerName: "",
+      rentalType: "",
       monthlyRent: "",
       // feature: "",
       maximumSharing: "",
