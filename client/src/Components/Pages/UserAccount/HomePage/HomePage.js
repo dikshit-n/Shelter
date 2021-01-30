@@ -60,6 +60,9 @@ const HomePage = (props) => {
 
   var schema = [
     {
+      type: "select",
+      options: ["Family", "Sharing"],
+      placeholder: "Rental Type",
       displayName: "Rental Type",
       value: formData.rentalType,
       name: "rentalType",
