@@ -5,6 +5,7 @@ import { deleteCookie } from "../../../Utility/cookies";
 import { axiosInstance } from "../../../Utility/axiosInstance";
 // import { logout } from "../../../redux/Auth/Login";
 import { deleteToken, logout } from "../../../redux/Auth/Login/loginActions";
+import AppSpinner from "../../../UI/AppSpinner/AppSpinner";
 
 const Logout = (props) => {
   localStorage.removeItem("route");
@@ -20,7 +21,7 @@ const Logout = (props) => {
     //   // dispatch(logout());
     // }, 500);
   }, []);
-  return <div>logging out.....</div>;
+  return <AppSpinner />;
 };
 
 export default Logout;

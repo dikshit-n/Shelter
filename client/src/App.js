@@ -7,6 +7,7 @@ import Logout from "./Components/Pages/Auth/Logout/Logout";
 import { checkAuthStatus } from "./Components/redux/Auth/Login";
 import UserAccount from "./Components/Pages/UserAccount/UserAccount";
 import { setCookie } from "./Components/Utility/cookies";
+import AppSpinner from "./Components/UI/AppSpinner/AppSpinner";
 
 function App(props) {
   const location = useLocation();
@@ -57,8 +58,8 @@ function App(props) {
   return (
     <div className="App full-page-wrapper">
       {
-        <Suspense fallback={<div>loading...</div>}>
-          {props.loading ? <div>Authenticating...</div> : getRoutes()}
+        <Suspense fallback={<AppSpinner />}>
+          {props.loading ? <AppSpinner /> : getRoutes()}
         </Suspense>
       }
     </div>

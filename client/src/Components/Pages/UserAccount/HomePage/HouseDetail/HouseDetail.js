@@ -54,18 +54,18 @@ const HouseDetail = (props) => {
         console.log(err);
         setLoading(false);
         setError("We ran into trouble !");
-        setData({
-          ownerName: "Gokulnath",
-          monthlyRent: "1000",
-          feature: "BHK - bla bla bla",
-          maximumSharing: "3",
-          currentlyOccupied: "1",
-          street: "Dindukal street",
-          town: "dindukal town",
-          district: "dindukal",
-          contact: "923840923094",
-          images: [_1, _2, _3],
-        });
+        // setData({
+        //   ownerName: "Gokulnath",
+        //   monthlyRent: "1000",
+        //   feature: "BHK - bla bla bla",
+        //   maximumSharing: "3",
+        //   currentlyOccupied: "1",
+        //   street: "Dindukal street",
+        //   town: "dindukal town",
+        //   district: "dindukal",
+        //   contact: "923840923094",
+        //   images: [_1, _2, _3],
+        // });
       });
   }, []);
 
