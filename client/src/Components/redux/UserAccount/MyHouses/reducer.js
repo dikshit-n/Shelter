@@ -18,6 +18,7 @@ const myHousesReducer = (state = initialReducer, actions) => {
         ...state,
         loading: false,
         data: [...actions.data],
+        error: null,
       };
     case actionTypes.FETCH_MY_HOUSES_FAILURE:
       return {
