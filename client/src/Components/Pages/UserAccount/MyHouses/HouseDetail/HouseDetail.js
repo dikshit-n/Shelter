@@ -61,18 +61,18 @@ const HouseDetail = (props) => {
         console.log(err);
         setLoading(false);
         setError("We ran into trouble !");
-        setData({
-          ownerName: "Gokulnath",
-          monthlyRent: "1000",
-          feature: "BHK - bla bla bla",
-          maximumSharing: "3",
-          currentlyOccupied: "1",
-          street: "Dindukal street",
-          town: "dindukal town",
-          district: "dindukal",
-          contact: "923840923094",
-          images: [_1, _2, _3],
-        });
+        // setData({
+        //   ownerName: "Gokulnath",
+        //   monthlyRent: "1000",
+        //   feature: "BHK - bla bla bla",
+        //   maximumSharing: "3",
+        //   currentlyOccupied: "1",
+        //   street: "Dindukal street",
+        //   town: "dindukal town",
+        //   district: "dindukal",
+        //   contact: "923840923094",
+        //   images: [_1, _2, _3],
+        // });
       });
   }, []);
 
@@ -234,18 +234,17 @@ const HouseDetail = (props) => {
 
   return loading ? (
     <HouseDetailLoader />
+  ) : error ? (
+    <>
+      <ErrorBox message={error} />
+      <AsyncButton
+        className="blue back-button bck-transparent"
+        onClick={() => props.history.goBack()}
+      >
+        <i className="fas fa-chevron-left"></i> Back
+      </AsyncButton>
+    </>
   ) : (
-    // : error ? (
-    //   <>
-    //     <ErrorBox message={error} />
-    //     <AsyncButton
-    //       className="blue back-button bck-transparent"
-    //       onClick={() => props.history.goBack()}
-    //     >
-    //       <i className="fas fa-chevron-left"></i> Back
-    //     </AsyncButton>
-    //   </>
-    // )
     <>
       {open ? (
         <HomeImageUpload
