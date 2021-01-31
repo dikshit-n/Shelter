@@ -32,7 +32,8 @@ const HouseMembers = (props) => {
   let element = (
     <div>
       <AsyncButton
-        className="blue back-button bck-transparent move-left"
+        className="blue back-button bck-transparent"
+        style={{ float: "left" }}
         onClick={props.close}
       >
         <i className="fas fa-chevron-left"></i> Back
