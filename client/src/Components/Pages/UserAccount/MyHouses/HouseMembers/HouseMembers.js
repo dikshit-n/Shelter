@@ -46,20 +46,20 @@ const HouseMembers = (props) => {
     element = <Loader />;
   } else if (data.length === 0) {
     element = (
-      <div>
+      <div className="margin-auto">
         <AsyncButton
           className="blue back-button bck-transparent"
           onClick={props.close}
         >
           <i className="fas fa-chevron-left"></i> Back
         </AsyncButton>
-        <EmptyMessage message="No Roommates found !" />
+        <EmptyMessage message="No Members found !" />
       </div>
     );
   }
   if (error) {
     element = (
-      <div>
+      <div className="margin-auto">
         <ErrorBox message="Something went wrong !" />
         <br />
         <AsyncButton
