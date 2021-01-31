@@ -13,6 +13,7 @@ const HouseMembers = (props) => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
+    console.log("House id", props.houseId);
     axiosInstance
       .post("/server1/ViewMembers", { houseId: props.houseId })
       .then((res) => {
