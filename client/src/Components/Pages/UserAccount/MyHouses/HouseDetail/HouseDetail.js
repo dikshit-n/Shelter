@@ -132,6 +132,7 @@ const HouseDetail = (props) => {
       required: true,
       displayName: "Rental Type",
       value: data.rentalType,
+      placeholder: "Choose Rental Type",
     },
     {
       name: "maximumSharing",
@@ -324,12 +325,13 @@ const HouseDetail = (props) => {
             </AsyncButton>
             &nbsp;&nbsp;&nbsp;
             <AsyncButton
-              className="bg-blue"
+              className="bg-red"
               type="submit"
+              onClick={deleteHouse}
               loading={deleteStatus.loading}
               status={deleteStatus.status}
             >
-              <i className="fas fa-trash-alt" /> &nbsp;&nbsp;Update
+              <i className="fas fa-trash-alt" /> &nbsp;&nbsp;Delete
             </AsyncButton>
             <br />
             <p style={{ color: "red", textAlign: "left" }}>{formError}</p>

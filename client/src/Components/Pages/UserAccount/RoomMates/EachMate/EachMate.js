@@ -23,7 +23,7 @@ const EachMate = (props) => {
           </div>
           <div>
             <small className="text-left">
-              <strong>{numberWithComma(props.contact)}</strong>
+              <strong>{props.contact}</strong>
             </small>
           </div>
         </div>
