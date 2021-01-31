@@ -58,18 +58,19 @@ const Incoming = (props) => {
         clickHandler={clickHandler}
         key={index}
         requestId={el.requestId}
+        houseId={props.id}
         fetchData={fetchData}
       />
     ));
   };
 
-  const clickHandler = (id) => {
-    console.log(id);
+  const clickHandler = (id, houseId) => {
+    console.log(id, houseId);
     open();
     setEachDetailLoading(true);
     console.log("Data Format", {
       "route-I-am-Posting": "/server1/detailedview",
-      "what-I-post": { requestId: "..." },
+      "what-I-post": { requestId: "...", houseId: "..." },
       "In-res.data-I-need-this": {
         name: "...",
         street: "...",
@@ -81,7 +82,7 @@ const Incoming = (props) => {
       },
     });
     axiosInstance
-      .post("/server1/detailedview", { requestId: id })
+      .post("/server1/detailedview", { requestId: id, houseId: houseId })
       .then((res) => {
         console.log(res.data);
         setEachDetailLoading(false);

@@ -10,7 +10,7 @@ const EachRequest = (props) => {
     status: "",
   });
 
-  const acceptRequest = (id) => {
+  const acceptRequest = (id, houseId) => {
     console.log(id);
     setAcceptStatus({ loading: true, status: "" });
     console.log("Data Format", {
@@ -19,7 +19,7 @@ const EachRequest = (props) => {
       "In-res.data-I-need-this": "status-200 (on success)",
     });
     axiosInstance
-      .post("/acceptrequest", { requestId: id })
+      .post("/acceptrequest", { requestId: id, houseId })
       .then((res) => {
         console.log(res.data);
         setAcceptStatus({ loading: false, status: "success" });
@@ -48,7 +48,7 @@ const EachRequest = (props) => {
       <div className="house-details-container d-flex justify-content-between">
         <div
           className="each-house-description"
-          onClick={() => props.clickHandler(props.requestId)}
+          onClick={() => props.clickHandler(props.requestId, props.houseId)}
         >
           <div>
             <small className="text-left">
@@ -63,7 +63,7 @@ const EachRequest = (props) => {
         </div>
         <AsyncButton
           loading={acceptStatus.loading}
-          onClick={() => acceptRequest(props.requestId)}
+          onClick={() => acceptRequest(props.requestId, props.houseId)}
           className={`request-button ${
             acceptStatus.loading ? "bg-blue" : "bck-transparent"
           }`}
