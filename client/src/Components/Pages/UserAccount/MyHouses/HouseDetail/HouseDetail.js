@@ -187,6 +187,7 @@ const HouseDetail = (props) => {
   const updateHouse = (event) => {
     event.preventDefault();
     setFormError(null);
+    console.log({ ...data, houseId: params.houseId });
     setStatus({ loading: true, status: "" });
     axiosInstance
       .post("/server1/UpdateDetails", { ...data, houseId: params.houseId })
