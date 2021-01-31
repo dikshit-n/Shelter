@@ -5,6 +5,7 @@ import { axiosInstance } from "../../../../Utility/axiosInstance";
 import EachMate from "./EachMate/EachMate";
 import Loader from "./Loader";
 import "./HouseMembers.css";
+import AsyncButton from "../../../../UI/AsyncButton/AsyncButton";
 
 const HouseMembers = (props) => {
   const [loading, setLoading] = useState(true);
@@ -29,6 +30,12 @@ const HouseMembers = (props) => {
 
   let element = (
     <>
+      <AsyncButton
+        className="blue back-button bck-transparent"
+        onClick={props.close}
+      >
+        <i className="fas fa-chevron-left"></i> Back
+      </AsyncButton>
       {data.map((el, index) => (
         <EachMate {...el} key={index} />
       ))}
@@ -38,10 +45,31 @@ const HouseMembers = (props) => {
   if (loading) {
     element = <Loader />;
   } else if (data.length === 0) {
-    element = <EmptyMessage message="No Roommates found !" />;
+    element = (
+      <>
+        <AsyncButton
+          className="blue back-button bck-transparent"
+          onClick={props.close}
+        >
+          <i className="fas fa-chevron-left"></i> Back
+        </AsyncButton>
+        <EmptyMessage message="No Roommates found !" />
+      </>
+    );
   }
   if (error) {
-    element = <ErrorBox message="Something went wrong !" />;
+    element = (
+      <>
+        <ErrorBox message="Something went wrong !" />
+        <br />
+        <AsyncButton
+          className="blue back-button bck-transparent"
+          onClick={props.close}
+        >
+          <i className="fas fa-chevron-left"></i> Back
+        </AsyncButton>
+      </>
+    );
   }
 
   return (

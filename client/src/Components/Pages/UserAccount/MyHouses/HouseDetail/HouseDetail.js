@@ -216,7 +216,7 @@ const HouseDetail = (props) => {
   const deleteHouse = () => {
     setDeleteStatus({ loaing: true, status: "" });
     axiosInstance
-      .post("/server1/DeleteHouse", { houseId: params.houseId })
+      .post("/server1/DeleteHouse", { houseId: params.id })
       .then((res) => {
         setDeleteStatus({ loading: false, status: "success" });
         setTimeout(() => {
@@ -290,7 +290,7 @@ const HouseDetail = (props) => {
         />
       ) : null}
       {show ? (
-        <HouseMembers />
+        <HouseMembers close={back} />
       ) : (
         <div className="house-detail">
           <MyCard className="house-details-container">
