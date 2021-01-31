@@ -32,7 +32,7 @@ const HouseMembers = (props) => {
   }, []);
 
   let element = (
-    <div>
+    <div style={{ margin: "auto" }}>
       <AsyncButton
         className="blue back-button bck-transparent"
         style={{ float: "left" }}
