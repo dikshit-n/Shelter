@@ -244,7 +244,7 @@ const HouseDetail = (props) => {
         data.town,
         data.district,
         data.contact,
-        data.images,
+        // data.images,
       ];
     } else {
       requiredFieldsArray = [...Object.values(data)];
