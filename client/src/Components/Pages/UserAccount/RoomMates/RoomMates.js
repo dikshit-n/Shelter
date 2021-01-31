@@ -24,8 +24,13 @@ const RoomMates = (props) => {
       .catch((err) => {
         console.log(err);
         setLoading(false);
-        setError(true);
-        // setData([{ name: "Mani", contact: 329049 }]);
+        // setError(true);
+        setData([
+          { name: "Gokul Nath", contact: 32904982394 },
+          { name: "Shanthini", contact: 32904982394 },
+          { name: "Hari", contact: 32904982394 },
+          { name: "Dikshit", contact: 32904982394 },
+        ]);
       });
   }, []);
 
