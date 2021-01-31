@@ -12,6 +12,7 @@ import FormInfo from "../../../UI/FormInfo/FormInfo";
 import ProfileLoader from "./ProfileLoader/ProfileLoader";
 import { useDispatch } from "react-redux";
 import { upgradeAccount } from "../../../redux/Auth/Login/loginActions";
+import { setCookie } from "../../../Utility/cookies";
 
 let country_state_district = require("country_state_district");
 
@@ -271,6 +272,7 @@ const Profile = (props) => {
         console.log(err);
         setStatus({ loading: false, status: "success" });
         dispatch(upgradeAccount(formData.accountType));
+        setCookie("userType", formData.accountType);
         setTimeout(() => {
           setStatus({ loading: false, status: "" });
           setEdit(false);
