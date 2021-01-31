@@ -32,6 +32,11 @@ const EachMate = (props) => {
           </div>
           <div>
             <small className="text-left">
+              <strong>{props.gender}</strong>
+            </small>
+          </div>
+          <div>
+            <small className="text-left">
               <strong>{props.district}</strong>
             </small>
           </div>
