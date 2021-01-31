@@ -290,7 +290,7 @@ const HouseDetail = (props) => {
         />
       ) : null}
       {show ? (
-        <HouseMembers close={back} />
+        <HouseMembers houseId={params.id} close={back} />
       ) : (
         <div className="house-detail">
           <MyCard className="house-details-container">
