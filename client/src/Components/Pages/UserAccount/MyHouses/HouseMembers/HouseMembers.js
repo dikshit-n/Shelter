@@ -16,7 +16,7 @@ const HouseMembers = (props) => {
     axiosInstance
       .post("/server1/ViewMembers")
       .then((res) => {
-        console.log(res.data.result);
+        console.log(res.data);
         setData([...res.data.result]);
         setLoading(false);
       })
