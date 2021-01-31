@@ -14,6 +14,7 @@ import ErrorBox from "../../../../UI/ErrorBox/ErrorBox";
 import { filterNumbers } from "../../../../Utility/filterNumbers";
 import { numberWithComma } from "../../../../Utility/numberWithComma";
 import HomeImageUpload from "../../../../UI/HouseImageUpload/HouseImageUpload";
+import HouseMembers from "../HouseMembers/HouseMembers";
 
 let country_state_district = require("country_state_district");
 
@@ -45,6 +46,8 @@ const HouseDetail = (props) => {
     loading: false,
     status: "",
   });
+
+  const [show, setShow] = useState(false);
 
   const params = useParams();
 
@@ -258,6 +261,12 @@ const HouseDetail = (props) => {
     setOpen(false);
   };
 
+  const viewHouseMembers = () => {
+    setShow(true);
+  };
+
+  const back = () => setShow(false);
+
   return loading ? (
     <HouseDetailLoader />
   ) : error ? (
@@ -280,20 +289,23 @@ const HouseDetail = (props) => {
           close={closeUploadPage}
         />
       ) : null}
-      <div className="house-detail">
-        <MyCard className="house-details-container">
-          <AsyncButton
-            className="blue back-button bck-transparent"
-            onClick={() => props.history.goBack()}
-          >
-            <i className="fas fa-chevron-left"></i> Back
-          </AsyncButton>
-          {/* <br />
+      {show ? (
+        <HouseMembers />
+      ) : (
+        <div className="house-detail">
+          <MyCard className="house-details-container">
+            <AsyncButton
+              className="blue back-button bck-transparent"
+              onClick={() => props.history.goBack()}
+            >
+              <i className="fas fa-chevron-left"></i> Back
+            </AsyncButton>
+            {/* <br />
           <div>
             <Slick items={data.images} />
           </div> */}
-          <br />
-          {/* <div
+            <br />
+            {/* <div
             onClick={openUploadPage}
             to="/uploadfile"
             className="no-nav-default fit-content"
@@ -302,41 +314,50 @@ const HouseDetail = (props) => {
               <i className="fas fa-upload"></i>&nbsp;&nbsp;Upload Images
             </button>
           </div> */}
-          <br />
-          <form onSubmit={updateHouse}>
-            {schema.map((el, index) => (
-              <EachField
-                key={index}
-                {...el}
-                containerClassName="each-house-detail"
-                className="cursor-default"
-              />
-            ))}
             <br />
-            <AsyncButton
-              className="bg-blue"
-              disabled={!valid()}
-              type="submit"
-              loading={status.loading}
-              status={status.status}
-            >
-              Update
-            </AsyncButton>
-            &nbsp;&nbsp;&nbsp;
-            <AsyncButton
-              className="bg-red"
-              type="button"
-              onClick={deleteHouse}
-              loading={deleteStatus.loading}
-              status={deleteStatus.status}
-            >
-              <i className="fas fa-trash-alt" /> &nbsp;&nbsp;Delete
-            </AsyncButton>
-            <br />
-            <p style={{ color: "red", textAlign: "left" }}>{formError}</p>
-          </form>
-        </MyCard>
-      </div>
+            <form onSubmit={updateHouse}>
+              {schema.map((el, index) => (
+                <EachField
+                  key={index}
+                  {...el}
+                  containerClassName="each-house-detail"
+                  className="cursor-default"
+                />
+              ))}
+              <br />
+              <AsyncButton
+                className="bg-blue"
+                disabled={!valid()}
+                type="submit"
+                loading={status.loading}
+                status={status.status}
+              >
+                Update
+              </AsyncButton>
+              &nbsp;&nbsp;&nbsp;
+              <AsyncButton
+                className="bg-red"
+                type="button"
+                onClick={deleteHouse}
+                loading={deleteStatus.loading}
+                status={deleteStatus.status}
+              >
+                <i className="fas fa-trash-alt" /> &nbsp;&nbsp;Delete
+              </AsyncButton>
+              &nbsp;&nbsp;&nbsp;
+              <AsyncButton
+                className="bg-yellow"
+                type="button"
+                onClick={viewHouseMembers}
+              >
+                <i className="fas fa-trash-alt" /> &nbsp;&nbsp;View Members
+              </AsyncButton>
+              <br />
+              <p style={{ color: "red", textAlign: "left" }}>{formError}</p>
+            </form>
+          </MyCard>
+        </div>
+      )}
     </>
   );
 };

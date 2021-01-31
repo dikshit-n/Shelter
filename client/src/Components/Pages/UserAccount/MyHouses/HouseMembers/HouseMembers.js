@@ -1,21 +1,19 @@
 import { useEffect, useState } from "react";
-import EmptyMessage from "../../../UI/EmptyMessage/EmptyMessage";
-import ErrorBox from "../../../UI/ErrorBox/ErrorBox";
-import { axiosInstance } from "../../../Utility/axiosInstance";
+import EmptyMessage from "../../../../UI/EmptyMessage/EmptyMessage";
+import ErrorBox from "../../../../UI/ErrorBox/ErrorBox";
+import { axiosInstance } from "../../../../Utility/axiosInstance";
 import EachMate from "./EachMate/EachMate";
 import Loader from "./Loader";
-import Profile from "./Profile/Profile";
-import "./RoomMates.css";
+import "./HouseMembers.css";
 
-const RoomMates = (props) => {
+const HouseMembers = (props) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
   const [data, setData] = useState([]);
-  const [details, setDetails] = useState({ show: false, id: "" });
 
   useEffect(() => {
     axiosInstance
-      .post("/server1/roommates")
+      .post("/server1/houseMembers")
       .then((res) => {
         console.log(res.data);
         setData([...res.data]);
@@ -29,18 +27,10 @@ const RoomMates = (props) => {
       });
   }, []);
 
-  const showDetail = (id) => {
-    setDetails({ show: true, id: id });
-  };
-
-  const close = () => {
-    setDetails({ show: false, id: "" });
-  };
-
   let element = (
     <>
       {data.map((el, index) => (
-        <EachMate {...el} key={index} onClick={() => showDetail(el.userId)} />
+        <EachMate {...el} key={index} />
       ))}
     </>
   );
@@ -54,9 +44,7 @@ const RoomMates = (props) => {
     element = <ErrorBox message="Something went wrong !" />;
   }
 
-  return details.show ? (
-    <Profile id={details.id} close={close} />
-  ) : (
+  return (
     <div
       className="houses-container flex-row flex-wrap"
       style={{ position: "relative", marginTop: 30 }}
@@ -66,4 +54,4 @@ const RoomMates = (props) => {
   );
 };
 
-export default RoomMates;
+export default HouseMembers;
