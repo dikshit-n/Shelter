@@ -18,7 +18,7 @@ const HouseMembers = (props) => {
       .post("/server1/ViewMembers", { houseId: props.houseId })
       .then((res) => {
         console.log(res.data);
-        if (res.data === 0) {
+        if (res.data === "") {
           setData([]);
         } else setData([...res.data.result]);
         setLoading(false);
