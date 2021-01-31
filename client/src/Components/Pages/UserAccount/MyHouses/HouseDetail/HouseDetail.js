@@ -103,13 +103,13 @@ const HouseDetail = (props) => {
   };
 
   var schema = [
-    {
-      name: "ownerName",
-      onChange: changeHandler,
-      required: true,
-      displayName: "Owner Name",
-      value: data.ownerName,
-    },
+    // {
+    //   name: "ownerName",
+    //   onChange: changeHandler,
+    //   required: true,
+    //   displayName: "Owner Name",
+    //   value: data.ownerName,
+    // },
     {
       name: "monthlyRent",
       onChange: changeHandler,
@@ -289,12 +289,12 @@ const HouseDetail = (props) => {
           >
             <i className="fas fa-chevron-left"></i> Back
           </AsyncButton>
-          <br />
+          {/* <br />
           <div>
             <Slick items={data.images} />
-          </div>
+          </div> */}
           <br />
-          <div
+          {/* <div
             onClick={openUploadPage}
             to="/uploadfile"
             className="no-nav-default fit-content"
@@ -302,7 +302,7 @@ const HouseDetail = (props) => {
             <button className="house-image-upload flex-row flex-center">
               <i className="fas fa-upload"></i>&nbsp;&nbsp;Upload Images
             </button>
-          </div>
+          </div> */}
           <br />
           <form onSubmit={updateHouse}>
             {schema.map((el, index) => (
