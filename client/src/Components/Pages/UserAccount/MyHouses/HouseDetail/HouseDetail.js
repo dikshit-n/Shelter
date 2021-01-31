@@ -137,7 +137,6 @@ const HouseDetail = (props) => {
     {
       name: "maximumSharing",
       onChange: changeHandler,
-      required: true,
       displayName: "Maximum Sharing",
       value: data.maximumSharing,
       containerStyleWithLabel: {
@@ -147,7 +146,6 @@ const HouseDetail = (props) => {
     {
       name: "currentlyOccupied",
       onChange: changeHandler,
-      required: true,
       displayName: "Currently Occupied",
       value: data.currentlyOccupied,
       containerStyleWithLabel: {
@@ -326,7 +324,7 @@ const HouseDetail = (props) => {
             &nbsp;&nbsp;&nbsp;
             <AsyncButton
               className="bg-red"
-              type="submit"
+              type="button"
               onClick={deleteHouse}
               loading={deleteStatus.loading}
               status={deleteStatus.status}
