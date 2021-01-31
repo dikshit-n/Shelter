@@ -350,7 +350,7 @@ const HouseDetail = (props) => {
                 type="button"
                 onClick={viewHouseMembers}
               >
-                <i className="fas fa-trash-alt" /> &nbsp;&nbsp;View Members
+                View Members
               </AsyncButton>
               <br />
               <p style={{ color: "red", textAlign: "left" }}>{formError}</p>

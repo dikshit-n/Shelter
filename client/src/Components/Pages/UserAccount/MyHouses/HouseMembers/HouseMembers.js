@@ -29,9 +29,9 @@ const HouseMembers = (props) => {
   }, []);
 
   let element = (
-    <>
+    <div>
       <AsyncButton
-        className="blue back-button bck-transparent"
+        className="blue back-button bck-transparent move-left"
         onClick={props.close}
       >
         <i className="fas fa-chevron-left"></i> Back
@@ -39,14 +39,14 @@ const HouseMembers = (props) => {
       {data.map((el, index) => (
         <EachMate {...el} key={index} />
       ))}
-    </>
+    </div>
   );
 
   if (loading) {
     element = <Loader />;
   } else if (data.length === 0) {
     element = (
-      <>
+      <div>
         <AsyncButton
           className="blue back-button bck-transparent"
           onClick={props.close}
@@ -54,12 +54,12 @@ const HouseMembers = (props) => {
           <i className="fas fa-chevron-left"></i> Back
         </AsyncButton>
         <EmptyMessage message="No Roommates found !" />
-      </>
+      </div>
     );
   }
   if (error) {
     element = (
-      <>
+      <div>
         <ErrorBox message="Something went wrong !" />
         <br />
         <AsyncButton
@@ -68,7 +68,7 @@ const HouseMembers = (props) => {
         >
           <i className="fas fa-chevron-left"></i> Back
         </AsyncButton>
-      </>
+      </div>
     );
   }
 
