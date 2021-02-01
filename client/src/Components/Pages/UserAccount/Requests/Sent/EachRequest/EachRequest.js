@@ -19,7 +19,10 @@ const EachRequest = (props) => {
       "In-res.data-I-need-this": "status-200 (on success)",
     });
     axiosInstance
-      .post("/server1/cancelrequest", { requestId: id })
+      .post("/server1/cancelrequest", {
+        requestId: requestId,
+        houseId: props.houseId,
+      })
       .then((res) => {
         console.log(res.data);
         setCancelStatus({ loading: false, status: "success" });

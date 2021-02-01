@@ -53,7 +53,8 @@ const Sent = (props) => {
         {...el}
         clickHandler={() => {}}
         key={index}
-        requestId="aifkd"
+        requestId={el.requestId}
+        houseId={el.houseId}
         fetchData={fetchData}
       />
     ));
