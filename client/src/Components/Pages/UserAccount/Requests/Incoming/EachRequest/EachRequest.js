@@ -11,7 +11,7 @@ const EachRequest = (props) => {
   });
 
   const acceptRequest = (id, houseId) => {
-    console.log(id);
+    console.log(id, houseId);
     setAcceptStatus({ loading: true, status: "" });
     console.log("Data Format", {
       "route-I-am-Posting": "/server1/acceptrequest",
@@ -19,7 +19,7 @@ const EachRequest = (props) => {
       "In-res.data-I-need-this": "status-200 (on success)",
     });
     axiosInstance
-      .post("/acceptrequest", { requestId: id, houseId })
+      .post("server1/acceptrequest", { requestId: id, houseId })
       .then((res) => {
         console.log(res.data);
         setAcceptStatus({ loading: false, status: "success" });

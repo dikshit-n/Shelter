@@ -59,11 +59,14 @@ const HouseDetail = (props) => {
     setStatus({ loading: true, status: "" });
     console.log("Data Format", {
       "route-I-am-Posting": "/server1/acceptrequest",
-      "what-I-post": { requestId: "..." },
+      "what-I-post": { requestId: data.requestId, houseId: props.houseId },
       "In-res.data-I-need-this": "status-200 (on success)",
     });
     axiosInstance
-      .post("/acceptrequest", { requestId: data.requestId })
+      .post("server1/acceptrequest", {
+        requestId: data.requestId,
+        houseId: props.houseId,
+      })
       .then((res) => {
         console.log(res.data);
         setStatus({ loading: false, status: "success" });

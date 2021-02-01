@@ -163,6 +163,7 @@ const Incoming = (props) => {
             details={eachDetail}
             loading={eachDetailLoading}
             error={detailError}
+            houseId={props.id}
           />
         </div>
       </div>
