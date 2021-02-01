@@ -15,7 +15,7 @@ const EachRequest = (props) => {
     setCancelStatus({ loading: true, status: "" });
     console.log("Data Format", {
       requestId: requestId,
-      houseId: props.houseId,
+      houseId: props.houseId, //
     });
     axiosInstance
       .post("/server1/cancelrequest", {
