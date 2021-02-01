@@ -133,7 +133,7 @@ const HomePage = (props) => {
               return el[ele] === values[index];
             }
             return el[ele]
-              .toString()
+              ?.toString()
               .toLowerCase()
               .includes(values[index].toString().toLowerCase());
           });
