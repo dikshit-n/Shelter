@@ -15,22 +15,30 @@ const RoomMates = (props) => {
 
   useEffect(() => {
     axiosInstance
-      .post("/server1/roommates")
+      .post("/server1/RoomMates")
       .then((res) => {
         console.log(res.data);
-        setData([...res.data]);
+        if (res.data.result) {
+          if (res.data.result !== "") {
+            setData([...res.data.result]);
+          } else {
+            setData([]);
+          }
+        } else {
+          setData([]);
+        }
         setLoading(false);
       })
       .catch((err) => {
         console.log(err);
         setLoading(false);
-        // setError(true);
-        setData([
-          { name: "Gokul Nath", contact: 32904982394 },
-          { name: "Shanthini", contact: 32904982394 },
-          { name: "Hari", contact: 32904982394 },
-          { name: "Dikshit", contact: 32904982394 },
-        ]);
+        setError(true);
+        // setData([
+        //   { name: "Gokul Nath", contact: 32904982394 },
+        //   { name: "Shanthini", contact: 32904982394 },
+        //   { name: "Hari", contact: 32904982394 },
+        //   { name: "Dikshit", contact: 32904982394 },
+        // ]);
       });
   }, []);
 
@@ -45,7 +53,11 @@ const RoomMates = (props) => {
   let element = (
     <>
       {data.map((el, index) => (
-        <EachMate {...el} key={index} onClick={() => showDetail(el.userId)} />
+        <EachMate
+          {...el}
+          key={index}
+          // onClick={() => showDetail(el.userId)}
+        />
       ))}
     </>
   );
