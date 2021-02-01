@@ -30,10 +30,7 @@ const Sent = (props) => {
   const [eachDetail, setEachDetail] = useState({});
 
   useEffect(() => {
-    if (mount === 0) {
-      mount = 1;
-      fetchData();
-    }
+    fetchData();
   }, []);
 
   const fetchData = () => {

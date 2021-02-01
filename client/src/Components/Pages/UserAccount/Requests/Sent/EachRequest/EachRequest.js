@@ -14,13 +14,12 @@ const EachRequest = (props) => {
     console.log(id);
     setCancelStatus({ loading: true, status: "" });
     console.log("Data Format", {
-      "route-I-am-Posting": "/server1/cancelrequest",
-      "what-I-post": { requestId: "..." },
-      "In-res.data-I-need-this": "status-200 (on success)",
+      requestId: requestId,
+      houseId: props.houseId,
     });
     axiosInstance
       .post("/server1/cancelrequest", {
-        requestId: requestId,
+        requestId: props.requestId,
         houseId: props.houseId,
       })
       .then((res) => {
