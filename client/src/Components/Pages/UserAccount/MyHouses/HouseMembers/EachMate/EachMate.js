@@ -1,9 +1,24 @@
 import "./EachMate.css";
 import DefaultHouse from "../../../../../../assets/default-house-image.jpg";
+import MenuButton from "../../../../../UI/MenuButton/MenuButton";
+import { axiosInstance } from "../../../../../Utility/axiosInstance";
 
 const EachMate = (props) => {
+  const deleteUser = () => {
+    axiosInstance
+      .post("/server1/deleteuser", { userId: props.userId })
+      .then((res) => console.log(res.data))
+      .catch((err) => console.log(err));
+  };
+
   return (
-    <div className="each-house flex-row hover-grow">
+    <div
+      className="each-house flex-row hover-grow my-each-mate"
+      style={{ position: "relative" }}
+    >
+      <MenuButton onClick={deleteUser} className="delete-button">
+        <i className="fas fa-trash-alt" />
+      </MenuButton>
       <div
         className="house-image"
         style={{

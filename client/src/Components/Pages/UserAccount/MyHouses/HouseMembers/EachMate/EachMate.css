@@ -37,3 +37,16 @@
 .address {
   max-width: 200px;
 }
+
+.my-each-mate:hover .my-each-mate.delete-button {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.my-each-mate .delete-button {
+  opacity: 0;
+  transform: translateY(-30px);
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
