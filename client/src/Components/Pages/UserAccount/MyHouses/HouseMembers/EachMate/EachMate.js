@@ -6,7 +6,7 @@ import { axiosInstance } from "../../../../../Utility/axiosInstance";
 const EachMate = (props) => {
   const deleteUser = () => {
     axiosInstance
-      .post("/server1/deleteuser", { userId: props.userId })
+      .post("/server1/RemoveMember", { userId: props.userId })
       .then((res) => console.log(res.data))
       .catch((err) => console.log(err));
   };
