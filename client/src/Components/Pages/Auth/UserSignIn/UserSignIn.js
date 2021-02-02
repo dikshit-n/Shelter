@@ -13,6 +13,7 @@ const UserSignIn = (props) => {
   const match = useRouteMatch();
   useEffect(() => {
     localStorage.removeItem("route");
+    localStorage.removeItem("userType");
   }, []);
 
   const [formData, setFormData] = useState({

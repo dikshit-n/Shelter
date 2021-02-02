@@ -31,6 +31,7 @@ export const upgradeAccount = (accountType) => ({
 
 export const logout = () => {
   deleteCookie("token");
+  deleteCookie("userType");
   localStorage.removeItem("route");
   window.location.reload();
 };
