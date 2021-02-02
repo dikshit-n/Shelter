@@ -130,7 +130,7 @@ const HomePage = (props) => {
             }
             console.log(ele, el[ele], values[index]);
             if (absolutes.includes(ele)) {
-              return el[ele] === values[index];
+              return el[ele] <= values[index];
             }
             return el[ele]
               ?.toString()
