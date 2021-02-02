@@ -34,10 +34,10 @@ const HomePage = (props) => {
   const location = useLocation();
   const dispatch = useDispatch();
   useEffect(() => {
-    if (mount === 0 || location.state?.refresh) {
-      mount = 1;
-      fetchHouses();
-    }
+    // if (mount === 0 || location.state?.refresh) {
+    //   mount = 1;
+    fetchHouses();
+    // }
   }, []);
 
   const fetchHouses = () => {

@@ -15,10 +15,14 @@ import appLogo from "../../../assets/app-logo.png";
 const UserAccount = (props) => {
   // const show = true;
   const addHouse = useSelector(
-    (state) => state.login.data.userType === "owner"
+    (state) =>
+      state.login.data.userType === "owner" ||
+      state.login.data.userType === "Owner"
   );
   const roomMates = useSelector(
-    (state) => state.login.data.userType === "user"
+    (state) =>
+      state.login.data.userType === "user" ||
+      state.login.data.userType === "User"
   );
   var sidebarRoutes = [
     {

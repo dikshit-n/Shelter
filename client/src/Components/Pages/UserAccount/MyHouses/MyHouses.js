@@ -64,10 +64,10 @@ const MyHouses = (props) => {
   // ];
 
   useEffect(() => {
-    if (mount === 0 || location.state?.refresh) {
-      mount = 1;
-      fetchHouses();
-    }
+    // if (mount === 0 || location.state?.refresh) {
+    //   mount = 1;
+    fetchHouses();
+    // }
   }, []);
 
   const fetchHouses = () => {
