@@ -12,11 +12,12 @@ import AppSpinner from "./Components/UI/AppSpinner/AppSpinner";
 function App(props) {
   const location = useLocation();
   useEffect(() => {
+    props.checkAuthStatus();
     // setCookie("token", "waidskjm");
-    let unsupportedRoutes = ["verifyToken", "visitors"];
-    let currentLocation = window.location.href;
-    if (!unsupportedRoutes.some((el) => currentLocation.includes(el)))
-      props.checkAuthStatus(); // checking authentication status of user on each reload
+    // let unsupportedRoutes = ["verifyToken", "visitors"];
+    // let currentLocation = window.location.href;
+    // if (!unsupportedRoutes.some((el) => currentLocation.includes(el)))
+    //   props.checkAuthStatus(); // checking authentication status of user on each reload
   }, []);
 
   useEffect(() => {

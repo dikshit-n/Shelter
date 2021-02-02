@@ -61,7 +61,6 @@ const HomePage = (props) => {
   var schema = [
     {
       type: "select",
-      options: ["Family", "Sharing"],
       placeholder: "Rental Type",
       displayName: "Rental Type",
       value: formData.rentalType,
@@ -69,6 +68,7 @@ const HomePage = (props) => {
       onChange: changeHandler,
       containerClassName: "each-house-detail",
       required: true,
+      options: ["Family", "Sharing"],
     },
 
     {
@@ -110,7 +110,7 @@ const HomePage = (props) => {
       required: true,
     },
   ];
-
+  console.log(data);
   const getFilteredList = () => {
     const absolutes = ["maximumSharing", "monthlyRent"];
     const numbers = ["monthlyRent"];
