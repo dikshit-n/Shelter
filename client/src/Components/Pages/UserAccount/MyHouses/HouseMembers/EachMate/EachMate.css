@@ -59,4 +59,5 @@
 
 .cancel-button {
   background-color: var(--red);
+  color: white;
 }
