@@ -17,12 +17,14 @@ const EachMate = (props) => {
       .post("/server1/RemoveMember", { userId: props.userId })
       .then((res) => {
         setStatus({ loading: false, status: "success" });
+        setTimeout(() => setStatus({ loading: false, status: "" }), 1000);
         setOpen(false);
         props.fetchData();
         console.log(res.data);
       })
       .catch((err) => {
         setStatus({ loading: false, status: "error" });
+        setTimeout(() => setStatus({ loading: false, status: "" }), 1000);
         console.log(err);
       });
   };
