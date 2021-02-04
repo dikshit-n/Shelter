@@ -29,7 +29,7 @@ const EachMate = (props) => {
   return (
     <>
       <ReactModal
-        isOpen={open}
+        open={open}
         toggle={() => setOpen((prev) => (status.loading ? true : !prev))}
       >
         <h4 className="text-center">Are you sure ?</h4>
