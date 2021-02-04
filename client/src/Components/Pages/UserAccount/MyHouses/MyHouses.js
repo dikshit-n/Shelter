@@ -208,13 +208,13 @@ const MyHouses = (props) => {
             Clear Filters
           </AsyncButton>
           &nbsp;&nbsp;
-          <AsyncButton
+          {/* <AsyncButton
             className="bg-blue"
             disabled={loading}
             onClick={() => setShow(true)}
           >
             Add Filters
-          </AsyncButton>
+          </AsyncButton> */}
           &nbsp;&nbsp;&nbsp;
           <RefreshButton
             onClick={fetchHouses}
