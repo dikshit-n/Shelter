@@ -11,7 +11,8 @@ const EachMate = (props) => {
   const [open, setOpen] = useState(false);
 
   const deleteUser = () => {
-    setStatus({ lioading: true, status: "" });
+    console.log("called");
+    setStatus({ loading: true, status: "" });
     axiosInstance
       .post("/server1/RemoveMember", { userId: props.userId })
       .then((res) => {
