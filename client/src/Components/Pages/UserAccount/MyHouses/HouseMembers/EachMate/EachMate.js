@@ -53,12 +53,13 @@ const EachMate = (props) => {
       </ReactModal>
       <div
         className="each-house flex-row hover-grow my-each-mate"
-        onClick={() => setOpen(true)}
         style={{ position: "relative" }}
       >
-        <MenuButton className="delete-button">
-          <i className="fas fa-trash-alt" />
-        </MenuButton>
+        <div onClick={() => setOpen(true)}>
+          <MenuButton className="delete-button">
+            <i className="fas fa-trash-alt" />
+          </MenuButton>
+        </div>
         <div
           className="house-image"
           style={{
