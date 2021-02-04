@@ -33,7 +33,10 @@ const EachMate = (props) => {
         toggle={() => setOpen((prev) => (status.loading ? true : !prev))}
       >
         <h4 className="text-center">Are you sure ?</h4>
-        <div className="modal-buttons-container">
+        <div
+          className="modal-buttons-container"
+          style={{ margin: "auto", width: "fit-content" }}
+        >
           <AsyncButton
             style={status.loading ? { background: "var(--my-blue)" } : null}
             onClick={deleteUser}
@@ -43,6 +46,7 @@ const EachMate = (props) => {
           >
             Yes
           </AsyncButton>
+          &nbsp;&nbsp;&nbsp;
           <AsyncButton
             className="cancel-button"
             onClick={() => setOpen(status.loading)}
