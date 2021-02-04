@@ -3,7 +3,6 @@ import { Modal, ModalHeader, ModalBody } from "reactstrap";
 
 const ReactModal = (props) => {
   const { className } = props;
-  console.log(props);
   return (
     <div>
       {/* <Button color="danger" onClick={toggle}>

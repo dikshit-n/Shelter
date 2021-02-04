@@ -45,3 +45,18 @@
   right: 5px;
   z-index: 100;
 }
+
+.yes-button {
+  border: 1px solid var(--blue);
+  background-color: transparent;
+  color: var(--blue);
+  transition: all 0.3s ease;
+}
+.yes-button:hover {
+  color: white;
+  background-color: var(--blue);
+}
+
+.cancel-button {
+  background-color: var(--blue);
+}
