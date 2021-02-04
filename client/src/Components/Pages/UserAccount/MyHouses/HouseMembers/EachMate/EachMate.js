@@ -57,7 +57,7 @@ const EachMate = (props) => {
       >
         <div
           onClick={() => {
-            console.log("Fuck you");
+            console.log("Clicked");
             setOpen(true);
           }}
         >
