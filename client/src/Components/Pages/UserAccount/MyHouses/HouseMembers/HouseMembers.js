@@ -13,7 +13,11 @@ const HouseMembers = (props) => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    console.log("House id", props.houseId);
+    fetchData();
+  }, []);
+
+  const fetchData = () => {
+    setLoading(true);
     axiosInstance
       .post("/server1/ViewMembers", { houseId: props.houseId })
       .then((res) => {
@@ -29,7 +33,7 @@ const HouseMembers = (props) => {
         setError(true);
         // setData([{ name: "Mani", contact: 329049 }]);
       });
-  }, []);
+  };
 
   let element = (
     <div style={{ margin: "auto" }}>
@@ -41,7 +45,7 @@ const HouseMembers = (props) => {
         <i className="fas fa-chevron-left"></i> Back
       </AsyncButton>
       {data.map((el, index) => (
-        <EachMate {...el} key={index} />
+        <EachMate fetchData={fetchData} {...el} key={index} />
       ))}
     </div>
   );
