@@ -232,6 +232,8 @@ const HomePage = (props) => {
           <EmptyMessage message={"No Houses Found"} />
         ) : (
           <>
+            <br />
+            <br />
             {afterFilter.map((el, index) => (
               <EachHouse key={index} {...el} />
             ))}
