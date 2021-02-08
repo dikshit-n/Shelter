@@ -185,7 +185,7 @@ const UserSignIn = (props) => {
         <div className="panel left-panel">
           <div className="content">
             <h3>Hello there !</h3>
-            <p>We are Happy to welcome you to our organization !</p>
+            <p>At Last, This Is What You've Been Searching For</p>
             {/* <button className="btn bg-transparent white" id="sign-up-btn">
               Sign up
             </button> */}

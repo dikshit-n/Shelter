@@ -70,7 +70,7 @@ const UserSignUp = (props) => {
             status: "",
           });
         }, 500);
-        props.history.replace("auth/signin")
+        props.history.replace("auth/signin");
         // setCookie("token", res.data.token, {
         //   expires: new Date(3030, 0, 1).toUTCString(),
         // });
@@ -238,7 +238,7 @@ const UserSignUp = (props) => {
         <div className="panel left-panel">
           <div className="content">
             <h3>Hello there !</h3>
-            <p>We are Happy to welcome you to our organization !</p>
+            <p>At Last, This Is What You've Been Searching For</p>
           </div>
           <img
             src="img/log.svg"
@@ -250,7 +250,7 @@ const UserSignUp = (props) => {
         <div className="panel right-panel">
           <div className="content">
             <h3>Hello there !</h3>
-            <p>We are Happy to welcome you to our organization !</p>
+            <p>At Last, This Is What You've Been Searching For</p>
           </div>
           <img src="img/log.svg" className="image" alt="" />
         </div>

@@ -16,6 +16,7 @@ import DefaultLogo from "../../../assets/default-logo.png";
 const UserAccount = (props) => {
   // const show = true;
   const logo = useSelector((state) => state.login.data.logo);
+  const userName = useSelector((state) => state.login.data.userName);
   const addHouse = useSelector(
     (state) =>
       state.login.data.userType === "owner" ||
@@ -63,7 +64,7 @@ const UserAccount = (props) => {
         className="top-logo"
         style={{ backgroundImage: `url(${logo || DefaultLogo})` }}
       ></div>
-      <span>Rent it when you can't own it !</span>
+      <span>Hey, {userName}</span>
     </div>
   );
 
