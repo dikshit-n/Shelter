@@ -53,7 +53,8 @@ const EachMate = (props) => {
           </AsyncButton>
           &nbsp;&nbsp;&nbsp;
           <AsyncButton
-            className="cancel-button"
+            style={{ color: "white", backgroundColor: "red" }}
+            // className="cancel-button"
             onClick={() => setOpen(status.loading)}
           >
             No
