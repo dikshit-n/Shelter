@@ -265,20 +265,16 @@ const HouseDetail = (props) => {
 
   const valid = () => {
     let requiredFieldsArray = [];
-    if (data.rentalType === "Family") {
-      requiredFieldsArray = [
-        data.monthlyRent,
-        data.feature,
-        data.rentalType,
-        data.street,
-        data.town,
-        data.district,
-        data.contact,
-        // data.images,
-      ];
-    } else {
-      requiredFieldsArray = [...Object.values(data)];
-    }
+    requiredFieldsArray = [
+      data.monthlyRent,
+      data.feature,
+      data.rentalType,
+      data.street,
+      data.town,
+      data.district,
+      data.contact,
+      // data.images,
+    ];
     return requiredFieldsArray.every((el) => el.toString().trim() !== "");
   };
 
