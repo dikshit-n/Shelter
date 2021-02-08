@@ -12,6 +12,7 @@ import RoomMates from "./RoomMates/RoomMates";
 import "./UserAccount.css";
 import appLogo from "../../../assets/app-logo.png";
 import DefaultLogo from "../../../assets/default-logo.png";
+import appGif from "../../../assets/app-logo.mp4";
 
 const UserAccount = (props) => {
   // const show = true;
@@ -32,7 +33,12 @@ const UserAccount = (props) => {
       component: (
         <>
           <div className="sidebar-logo">
-            <img src={appLogo} alt=" " />
+            <img
+              src={
+                window.location.href.includes("/roommates") ? appGif : appLogo
+              }
+              alt=" "
+            />
           </div>
           <br />
           {/* <hr style={{ marginTop: 0 }} /> */}
