@@ -380,7 +380,8 @@ const HouseDetail = (props) => {
                 loading={holdStatus.loading}
                 status={holdStatus.status}
               >
-                <i className="fas fa-trash-alt" /> &nbsp;&nbsp;
+                <i className={data.hold ? "fas fa-play" : "fas fa-pause"} />{" "}
+                &nbsp;&nbsp;
                 {data.hold ? "Retain" : "Hold"}
               </AsyncButton>
               &nbsp;&nbsp;&nbsp;
