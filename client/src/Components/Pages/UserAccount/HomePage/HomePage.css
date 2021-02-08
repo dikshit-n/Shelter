@@ -10,3 +10,10 @@
   top: -45px;
   right: 10px;
 }
+
+.app-head {
+  position: absolute;
+  top: -15px;
+  left: 10px;
+  height: fit-content;
+}

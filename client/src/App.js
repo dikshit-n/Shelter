@@ -38,7 +38,7 @@ function App(props) {
 
   // filtering routes based on the authentication state of user
   const getRoutes = () => {
-    if (props.auth) {
+    if (true) {
       return (
         <Switch>
           <Route path="/logout" component={Logout} />

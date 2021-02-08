@@ -14,6 +14,7 @@ import ReactModal from "../../../UI/ReactModal/ReactModal";
 import { deleteEmptyKeys } from "../../../Utility/deleteEmptyKeys";
 import Loader from "./Loader";
 import RefreshButton from "../../../UI/RefreshButton/RefreshButton";
+import Raven from "../../../../assets/raven.png";
 
 var mount = 0;
 
@@ -174,30 +175,54 @@ const HomePage = (props) => {
         className="houses-container flex-row flex-wrap"
         style={{ position: "relative", marginTop: 30 }}
       >
-        <div className="flex-row filter-button">
-          <AsyncButton
-            className="bg-red"
-            style={{ visibility: getFilterStatus() ? "hidden" : "visible" }}
-            disabled={loading}
-            onClick={clearFilters}
-          >
-            Clear Filters
-          </AsyncButton>
-          &nbsp;&nbsp;
-          <AsyncButton
-            className="bg-blue"
-            disabled={loading}
-            onClick={() => setShow(true)}
-          >
-            Add Filters
-          </AsyncButton>
-          &nbsp;&nbsp;&nbsp;
-          <RefreshButton
-            onClick={fetchHouses}
-            style={{ marginTop: 23 }}
-            className="refresh-button"
-            loading={loading}
-          />
+        <div className="d-flex justify-content-between">
+          <div className="app-head">
+            <span
+              style={{
+                backgroundColor: "white",
+                padding: 25,
+                paddingTop: 30,
+                borderRadius: 30,
+                border: "1px solid grey",
+              }}
+            >
+              <span style={{ color: "red", fontSize: 30, fontWeight: "bold" }}>
+                Cuckoo
+              </span>
+              {"  "}
+              <span
+                style={{ color: "black", fontSize: 30, fontWeight: "bold" }}
+              >
+                {" "}
+                Raven
+              </span>
+            </span>
+          </div>
+          <div className="flex-row filter-button">
+            <AsyncButton
+              className="bg-red"
+              style={{ visibility: getFilterStatus() ? "hidden" : "visible" }}
+              disabled={loading}
+              onClick={clearFilters}
+            >
+              Clear Filters
+            </AsyncButton>
+            &nbsp;&nbsp;
+            <AsyncButton
+              className="bg-blue"
+              disabled={loading}
+              onClick={() => setShow(true)}
+            >
+              Add Filters
+            </AsyncButton>
+            &nbsp;&nbsp;&nbsp;
+            <RefreshButton
+              onClick={fetchHouses}
+              style={{ marginTop: 23 }}
+              className="refresh-button"
+              loading={loading}
+            />
+          </div>
         </div>
         {loading ? (
           <Loader />
