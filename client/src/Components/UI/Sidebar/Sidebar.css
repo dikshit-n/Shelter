@@ -356,7 +356,7 @@
 .page-container {
   display: flex;
   background-image: url("../../../assets/app-background.png");
-  background-color: #ededed;
+  background-color: #ddd9d9;
   /* animation: slide 100s linear infinite; */
 }
 
