@@ -231,13 +231,11 @@ const HomePage = (props) => {
         ) : afterFilter.length === 0 ? (
           <EmptyMessage message={"No Houses Found"} />
         ) : (
-          <>
-            <br />
-            <br />
+          <div style={{ marginTop: 30 }}>
             {afterFilter.map((el, index) => (
               <EachHouse key={index} {...el} />
             ))}
-          </>
+          </div>
         )}
       </div>
     </>

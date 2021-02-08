@@ -52,7 +52,10 @@ export const checkAuthStatus = () => {
           console.log(res.data);
           dispatch(loginSuccess({ ...res.data, token }));
         })
-        .catch((err) => dispatch(loginFailure()));
+        .catch((err) => {
+          console.log(err);
+          dispatch(loginFailure());
+        });
     } else {
       dispatch(loginFailure());
     }
