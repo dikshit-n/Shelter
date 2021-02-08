@@ -38,6 +38,11 @@ const EachMate = (props) => {
               <strong>{props.gender}</strong>
             </small>
           </div>
+          <div>
+            <small className="text-left" style={{ color: "coral" }}>
+              <strong>Share: {props.amount}</strong>
+            </small>
+          </div>
         </div>
       </div>
     </div>
