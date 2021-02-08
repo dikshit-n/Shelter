@@ -61,7 +61,7 @@ const UserAccount = (props) => {
     <div className="app-heading flex-vertical-center flex-row">
       <div
         className="top-logo"
-        style={{ backgroundImage: `url(${DefaultLogo || logo})` }}
+        style={{ backgroundImage: `url(${logo || DefaultLogo})` }}
       ></div>
       <span>Rent it when you can't own it !</span>
     </div>
