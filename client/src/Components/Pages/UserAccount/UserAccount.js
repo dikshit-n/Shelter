@@ -11,9 +11,11 @@ import Requests from "./Requests/Requests";
 import RoomMates from "./RoomMates/RoomMates";
 import "./UserAccount.css";
 import appLogo from "../../../assets/app-logo.png";
+import DefaultLogo from "../../../assets/default-logo.png";
 
 const UserAccount = (props) => {
   // const show = true;
+  const logo = useSelector((state) => state.login.data.logo);
   const addHouse = useSelector(
     (state) =>
       state.login.data.userType === "owner" ||
@@ -57,7 +59,10 @@ const UserAccount = (props) => {
 
   const heading = (
     <div className="app-heading flex-vertical-center flex-row">
-      <div className="top-logo"></div>
+      <div
+        className="top-logo"
+        style={{ backgroundImage: `url(${DefaultLogo || logo})` }}
+      ></div>
       <span>Rent it when you can't own it !</span>
     </div>
   );
