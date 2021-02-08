@@ -9,7 +9,14 @@ const EachHouse = (props) => {
     <div
       className="each-house flex-row hover-grow"
       onClick={() => history.push(`/myhouses/${props.houseId}`)}
+      style={{ position: "relative" }}
     >
+      {props.hold && (
+        <i
+          className="fas fa-flag"
+          style={{ color: "coral", position: "absolute", top: 5, right: 5 }}
+        />
+      )}
       <div
         style={{ backgroundImage: `url(${props.image || DefaultHouse})` }}
         className="house-image"

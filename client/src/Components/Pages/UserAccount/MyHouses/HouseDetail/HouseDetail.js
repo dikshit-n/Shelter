@@ -46,6 +46,10 @@ const HouseDetail = (props) => {
     loading: false,
     status: "",
   });
+  const [holdStatus, setHoldStatus] = useState({
+    loading: false,
+    status: "",
+  });
 
   const [show, setShow] = useState(false);
 
@@ -234,6 +238,27 @@ const HouseDetail = (props) => {
         setFormError(err.response?.statusText || "Something went wrong !");
       });
   };
+  const toggleHold = () => {
+    setHoldStatus({ loaing: true, status: "" });
+    axiosInstance
+      .post("/server1/hold", { houseId: params.id })
+      .then((res) => {
+        setHoldStatus({ loading: false, status: "success" });
+        setTimeout(() => {
+          setHoldStatus({ loading: false, status: "" });
+          props.history.push({
+            pathname: "/myhouses",
+            state: { refresh: true },
+          });
+        }, 500);
+      })
+      .catch((err) => {
+        console.log(err);
+        setHoldStatus({ loading: false, status: "error" });
+        setTimeout(() => setStatus({ loading: false, status: "" }), 1000);
+        setFormError(err.response?.statusText || "Something went wrong !");
+      });
+  };
 
   const valid = () => {
     let requiredFieldsArray = [];
@@ -343,6 +368,17 @@ const HouseDetail = (props) => {
                 status={deleteStatus.status}
               >
                 <i className="fas fa-trash-alt" /> &nbsp;&nbsp;Delete
+              </AsyncButton>
+              &nbsp;&nbsp;&nbsp;
+              <AsyncButton
+                className="bg-green"
+                type="button"
+                onClick={toggleHold}
+                loading={holdStatus.loading}
+                status={holdStatus.status}
+              >
+                <i className="fas fa-trash-alt" /> &nbsp;&nbsp;
+                {data.hold ? "Retain" : "Hold"}
               </AsyncButton>
               &nbsp;&nbsp;&nbsp;
               <AsyncButton
