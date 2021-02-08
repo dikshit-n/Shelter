@@ -48,7 +48,7 @@ export const checkAuthStatus = () => {
     let token = getCookie("token");
     if (token) {
       axiosInstance
-        .post("/checkauthstatus", { token: token })
+        .post("/server1/checkauthstatus", { token: token })
         .then((res) => {
           console.log(res.data);
           dispatch(loginSuccess({ ...res.data, token }));
