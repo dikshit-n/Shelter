@@ -46,11 +46,14 @@ export const checkAuthStatus = () => {
   return (dispatch) => {
     dispatch(loginStart());
     let token = getCookie("token");
-    let userType = getCookie("userType");
-    let userName = getCookie("userName");
-    let logo = getCookie("logo");
     if (token) {
-      dispatch(loginSuccess({ token, userType, userName, logo }));
+      axiosInstance
+        .post("/checkauthstatus")
+        .then((res) => {
+          console.log(res.data);
+          dispatch(loginSuccess({ ...res.data, token }));
+        })
+        .catch((err) => dispatch(loginFailure()));
     } else {
       dispatch(loginFailure());
     }
