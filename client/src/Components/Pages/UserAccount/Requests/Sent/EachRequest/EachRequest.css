@@ -45,7 +45,7 @@
 .cancel-button {
   /* background: transparent; */
   border: 2px solid var(--my-red);
-  color: var(--my-red);
+  color: var(--my-red) !important;
   transition: all 0.3s ease-out;
   margin: 0;
   width: fit-content;
