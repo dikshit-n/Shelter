@@ -12,7 +12,7 @@ import RoomMates from "./RoomMates/RoomMates";
 import "./UserAccount.css";
 import appLogo from "../../../assets/app-logo.png";
 import DefaultLogo from "../../../assets/default-logo.png";
-import appGif from "../../../assets/app-logo.mp4";
+import appGif from "../../../assets/app-logo.gif";
 
 const UserAccount = (props) => {
   // const show = true;
