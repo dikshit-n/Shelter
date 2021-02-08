@@ -1,7 +1,6 @@
 import { axiosInstance } from "../../../Utility/axiosInstance";
 import { deleteCookie, getCookie } from "../../../Utility/cookies";
 import * as actionTypes from "../../constants";
-import avatar from "../../../../assets/default-logo.png";
 
 export const loginStart = () => {
   return {
