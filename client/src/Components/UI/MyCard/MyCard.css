@@ -22,7 +22,7 @@
   padding: 50px;
   border-radius: 10px;
   text-align: left;
-  background-color: var(--white);
+  /* background-color: var(--white); */
   box-shadow: 9px 9px 16px rgb(163, 177, 198, 0.6),
     -9px -9px 16px rgba(255, 255, 255, 0.5);
 }

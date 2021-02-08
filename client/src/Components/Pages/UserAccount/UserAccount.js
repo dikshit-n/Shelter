@@ -27,9 +27,13 @@ const UserAccount = (props) => {
   var sidebarRoutes = [
     {
       component: (
-        <div className="sidebar-logo">
-          <img src={appLogo} alt=" " />
-        </div>
+        <>
+          <div className="sidebar-logo">
+            <img src={appLogo} alt=" " />
+          </div>
+          <br />
+          {/* <hr style={{ marginTop: 0 }} /> */}
+        </>
       ),
     },
     // {
