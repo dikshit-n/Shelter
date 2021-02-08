@@ -60,6 +60,12 @@ const UserSignIn = (props) => {
         setCookie("token", res.data.token, {
           expires: new Date(3030, 0, 1).toUTCString(),
         });
+        setCookie("userName", res.data.userName, {
+          expires: new Date(3030, 0, 1).toUTCString(),
+        });
+        setCookie("logo", res.data.logo, {
+          expires: new Date(3030, 0, 1).toUTCString(),
+        });
         setCookie("userType", res.data.userType);
         props.loginSuccess(res.data);
       })
