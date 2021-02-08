@@ -63,7 +63,7 @@ const UserSignIn = (props) => {
         setCookie("userName", res.data.userName, {
           expires: new Date(3030, 0, 1).toUTCString(),
         });
-        setCookie("logo", res.data.logo, {
+        setCookie("logo", "dummy", {
           expires: new Date(3030, 0, 1).toUTCString(),
         });
         setCookie("userType", res.data.userType);
