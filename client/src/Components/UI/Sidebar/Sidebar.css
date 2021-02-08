@@ -356,8 +356,8 @@
 .page-container {
   display: flex;
   background-image: url("../../../assets/app-background.png");
-  background-color: rgb(238, 202, 202);
-  animation: slide 100s linear infinite;
+  background-color: #ededed;
+  /* animation: slide 100s linear infinite; */
 }
 
 @keyframes slide {
