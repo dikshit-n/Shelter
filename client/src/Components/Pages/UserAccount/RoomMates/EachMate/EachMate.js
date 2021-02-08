@@ -1,5 +1,6 @@
 import "./EachMate.css";
 import DefaultHouse from "../../../../../assets/default-house-image.jpg";
+import { numberWithComma } from "../../../../Utility/numberWithComma";
 
 const EachMate = (props) => {
   return (
@@ -40,7 +41,7 @@ const EachMate = (props) => {
           </div>
           <div>
             <small className="text-left" style={{ color: "coral" }}>
-              <strong>Share: {props.amount}</strong>
+              <strong>Share: ₹ {numberWithComma(props.amount)}</strong>
             </small>
           </div>
         </div>
