@@ -241,7 +241,10 @@ const HouseDetail = (props) => {
   const toggleHold = () => {
     setHoldStatus({ loaing: true, status: "" });
     axiosInstance
-      .post("/server1/hold", { houseId: params.id })
+      .post("/server1/hold", {
+        houseId: params.id,
+        flag: data.hold ? "retain" : "hold",
+      })
       .then((res) => {
         setHoldStatus({ loading: false, status: "success" });
         setTimeout(() => {
