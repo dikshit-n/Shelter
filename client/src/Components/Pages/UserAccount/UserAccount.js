@@ -16,6 +16,13 @@ import appGif from "../../../assets/app-logo.gif";
 
 const UserAccount = (props) => {
   // const show = true;
+  var sidebarLogo = appLogo;
+  let route = window.location.href;
+  if (route.includes("/roommates")) {
+    sidebarLogo = appGif;
+  } else if (route.includes("/home")) {
+    sidebarLogo = appLogo;
+  }
   const logo = useSelector((state) => state.login.data.logo);
   const userName = useSelector((state) => state.login.data.userName);
   const addHouse = useSelector(
@@ -33,12 +40,7 @@ const UserAccount = (props) => {
       component: (
         <>
           <div className="sidebar-logo">
-            <img
-              src={
-                window.location.href.includes("/roommates") ? appGif : appLogo
-              }
-              alt=" "
-            />
+            <img src={sidebarLogo} alt=" " />
           </div>
           <br />
           {/* <hr style={{ marginTop: 0 }} /> */}
