@@ -231,7 +231,10 @@ const HomePage = (props) => {
         ) : afterFilter.length === 0 ? (
           <EmptyMessage message={"No Houses Found"} />
         ) : (
-          <div style={{ marginTop: 30 }}>
+          <div
+            className="flex-row flex-wrap"
+            style={{ width: "100%", marginTop: 30 }}
+          >
             {afterFilter.map((el, index) => (
               <EachHouse key={index} {...el} />
             ))}
