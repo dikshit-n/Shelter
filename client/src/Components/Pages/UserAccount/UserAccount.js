@@ -13,16 +13,42 @@ import "./UserAccount.css";
 import appLogo from "../../../assets/app-logo.png";
 import DefaultLogo from "../../../assets/default-logo.png";
 import appGif from "../../../assets/app-logo.gif";
+import appGif2 from "../../../assets/app-logo2.gif";
+import appGif3 from "../../../assets/app-logo3.gif";
+import appGif4 from "../../../assets/app-logo4.gif";
+import appGif5 from "../../../assets/app-logo5.gif";
+import appGif6 from "../../../assets/app-logo6.gif";
+
 
 const UserAccount = (props) => {
   // const show = true;
   var sidebarLogo = appLogo;
   let route = window.location.href;
-  if (route.includes("/roommates")) {
-    sidebarLogo = appGif;
-  } else if (route.includes("/home")) {
+  console.log(route);
+
+  if (route.includes("/home")) {
     sidebarLogo = appLogo;
   }
+  else if(route.includes("/requests/sent")){
+    sidebarLogo = appGif2;
+  }
+  else if(route.includes("/profile")){
+    sidebarLogo = appGif3;
+  }
+  else if(route.includes("/roommates")){
+    sidebarLogo = appGif4;
+  }
+  else if(route.includes("/requests/incoming")){
+    sidebarLogo = appGif5;
+  }
+  else if(route.includes("/myhouses")){
+    sidebarLogo = appGif6;
+  }
+  else if(route.includes("/addhouse")){
+    sidebarLogo = appGif;
+  }
+  
+
   const logo = useSelector((state) => state.login.data.logo);
   const userName = useSelector((state) => state.login.data.userName);
   const addHouse = useSelector(
