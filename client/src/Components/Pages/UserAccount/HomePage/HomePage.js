@@ -180,10 +180,10 @@ const HomePage = (props) => {
             <span
               style={{
                 backgroundColor: "white",
-                padding: 25,
-                paddingTop: 30,
-                borderRadius: 30,
-                border: "1px solid grey",
+                padding: 20,
+                paddingTop: 25,
+                borderRadius: 15,
+                // border: "1px solid grey",
               }}
             >
               <span style={{ color: "red", fontSize: 30, fontWeight: "bold" }}>
