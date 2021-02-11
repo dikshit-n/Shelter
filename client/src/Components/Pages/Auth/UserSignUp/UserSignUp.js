@@ -138,7 +138,7 @@ const UserSignUp = (props) => {
       onChange: changeHandler,
       required: true,
       containerClassName: "sign-up-textboxes",
-      placeholder: "Contact Nmber",
+      placeholder: "Contact Number",
       addon: <i className="fas fa-phone" />,
     },
     {

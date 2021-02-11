@@ -11,7 +11,10 @@ import ErrorBox from "../../../UI/ErrorBox/ErrorBox";
 import FormInfo from "../../../UI/FormInfo/FormInfo";
 import ProfileLoader from "./ProfileLoader/ProfileLoader";
 import { useDispatch } from "react-redux";
-import { upgradeAccount } from "../../../redux/Auth/Login/loginActions";
+import {
+  updateProfile,
+  upgradeAccount,
+} from "../../../redux/Auth/Login/loginActions";
 import { setCookie } from "../../../Utility/cookies";
 
 let country_state_district = require("country_state_district");
@@ -278,6 +281,7 @@ const Profile = (props) => {
           setEdit(false);
           fetchData();
         }, 500);
+        dispatch(updateProfile(formData.logo));
       })
       .catch((err) => {
         console.log(err);

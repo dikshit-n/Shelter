@@ -27,6 +27,10 @@ export const upgradeAccount = (accountType) => ({
   type: actionTypes.UPGRADEACCOUNT,
   accountType,
 });
+export const updateProfile = (logo) => ({
+  type: actionTypes.UPDATE_PROFILE,
+  logo,
+});
 
 export const logout = () => {
   deleteCookie("token");

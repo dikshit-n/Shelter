@@ -9,6 +9,7 @@ export const LOGIN_FAILURE = "LOGIN_FAILURE";
 export const LOGOUT = "LOGOUT";
 export const SET_TEMPORARY_TOKEN = "SET_TEMPORARY_TOKEN";
 export const UPGRADEACCOUNT = "UPGRADEACCOUNT";
+export const UPDATE_PROFILE = "UPDATE_PROFILE";
 
 // Admins [Super Admin-login]
 

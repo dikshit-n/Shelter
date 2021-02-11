@@ -16,6 +16,14 @@ const loginReducer = (state = initialState, actions) => {
           userType: actions.accountType,
         },
       };
+    case actionTypes.UPDATE_PROFILE:
+      return {
+        ...state,
+        data: {
+          ...state.data,
+          logo: actions.logo,
+        },
+      };
     case actionTypes.LOGIN_START:
       return {
         ...state,
