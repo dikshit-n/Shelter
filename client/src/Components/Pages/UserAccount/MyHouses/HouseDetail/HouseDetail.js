@@ -197,7 +197,11 @@ const HouseDetail = (props) => {
     console.log({ ...data, houseId: params.id });
     setStatus({ loading: true, status: "" });
     axiosInstance
-      .post("/server1/UpdateDetails", { ...data, houseId: params.id })
+      .post("/server1/UpdateDetails", {
+        ...data,
+        contact: filterNumbers(data.contact).toString(),
+        houseId: params.id,
+      })
       .then((res) => {
         console.log(res.data);
         setStatus({ loading: false, status: "success" });

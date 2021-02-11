@@ -226,7 +226,7 @@ const Profile = (props) => {
     axiosInstance
       .post("server1/UpdateProfile", {
         ...formData,
-        phone: formData.phone.toString(),
+        phone: filterNumbers(formData.phone).toString(),
       })
       .then((err) => {
         console.log(err);
